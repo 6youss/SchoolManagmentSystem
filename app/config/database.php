@@ -43,17 +43,25 @@ return array(
 	| choice installed on your machine before you begin development.
 	|
 	*/
-
+	$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+	$host = $url["host"] ?? null;
+	$username = $url["user"] ?? null;
+	$password = $url["pass"] ?? null;
+	$database = substr($url["path"], 1);
 	'connections' => array(
 		'mysql' => array(
-			'driver'    => 'mysql',
-			'host'      => 'localhost',
-			'database'  => 'dbschool',
-			'username'  => 'root',
-			'password'  => '',
+			'driver' => 'mysql',
+			'host' => $host,
+			'port' => env('DB_PORT', '3306'),
+			'database' => $database,
+			'username' => $username,
+			'password' => $password,
+			'unix_socket' => env('DB_SOCKET', ''),
 			'charset'   => 'utf8',
-			'collation' => 'utf8_unicode_ci',
-			'prefix'    => '',
+			'collation' => 'utf8mb4_unicode_ci',
+			'prefix' => '',
+			'strict' => true,
+			'engine' => null,
 		)
 	),
 

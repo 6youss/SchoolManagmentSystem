@@ -1,10 +1,14 @@
-#! /usr/bin/env php
-<?php
+#!/usr/bin/env sh
 
-if (file_exists($autoloadPath = __DIR__ . '/../../autoload.php')) {
-    require_once $autoloadPath;
-} else {
-    require_once __DIR__ . '/vendor/autoload.php';
-}
-$application = new ClassPreloader\Application();
-$application->run();
+dir=$(cd "${0%[/\\]*}" > /dev/null; cd "../classpreloader/classpreloader" && pwd)
+
+if [ -d /proc/cygdrive ]; then
+    case $(which php) in
+        $(readlink -n /proc/cygdrive)/*)
+            # We are in Cygwin using Windows php, so the path must be translated
+            dir=$(cygpath -m "$dir");
+            ;;
+    esac
+fi
+
+"${dir}/classpreloader.php" "$@"

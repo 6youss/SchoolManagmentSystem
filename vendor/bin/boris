@@ -1,16 +1,14 @@
-#!/usr/bin/env php
-<?php
+#!/usr/bin/env sh
 
-/* vim: set shiftwidth=2 expandtab softtabstop=2: */
+dir=$(cd "${0%[/\\]*}" > /dev/null; cd "../d11wtq/boris/bin" && pwd)
 
-require_once __DIR__.'/../lib/autoload.php';
+if [ -d /proc/cygdrive ]; then
+    case $(which php) in
+        $(readlink -n /proc/cygdrive)/*)
+            # We are in Cygwin using Windows php, so the path must be translated
+            dir=$(cygpath -m "$dir");
+            ;;
+    esac
+fi
 
-$boris  = new \Boris\Boris();
-
-$config = new \Boris\Config();
-$config->apply($boris);
-
-$options = new \Boris\CLIOptionsHandler();
-$options->handle($boris);
-
-$boris->start();
+"${dir}/boris" "$@"

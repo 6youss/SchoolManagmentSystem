@@ -16,6 +16,9 @@
     "classmap": [
       "database"
     ],
+    "files": [
+      "app/libraries/DashboardInit.php"
+    ],
     "psr-4": {
       "Blog\\": "app/"
     }

@@ -1,19 +1,26 @@
+
 <?php
 class DBController {
-	private $conn = "";
-	private $host = "localhost";
-	private $user = "root";
-	private $password = "";
-	private $database = "dbschool";
+	private $conn;
+	private $host;
+	private $user;
+	private $password;
+	private $database;
 
 	function __construct() {
+		$url = parse_url(getenv("JAWSDB_URL"));
+		$this->host = $url["host"];
+		$this->user = $url["user"];
+		$this->password = $url["pass"];
+		$this->database = substr($url["path"], 1);
+		
 		$conn = $this->connectDB();
 		if(!empty($conn)) {
 			$this->conn = $conn;			
 		}
 	}
 
-	function connectDB() {
+	function connectDB() {		
 		$conn = mysqli_connect($this->host,$this->user,$this->password,$this->database);
 		return $conn;
 	}

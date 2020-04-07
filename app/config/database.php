@@ -1,7 +1,6 @@
 <?php
 
 	$url = parse_url(getenv("JAWSDB_URL"));
-
 	$host = $url["host"];
 	$username = $url["user"];
 	$password = $url["pass"];

@@ -51,9 +51,9 @@ class UserRestHandler extends SimpleRest {
 		
 	}
 	
-	function login_verification($un,$pw){
+	function login_verification($userName,$password){
 		$user = new User();
-		$rawData = $user->login($un/*,$pw*/);
+		$rawData = $user->login($userName/*,$password*/);
 		
 		 
 		 
@@ -75,7 +75,7 @@ class UserRestHandler extends SimpleRest {
 					//$rawData = array('status' => 'you are an admin');
 					$rawData = array('status' => 'user doesn\'t exist');
 				}else{
-				if(password_verify($pw,$password)==1 ){
+				if(password_verify($password,$password)==1 ){
 						$statusCode = 200;
 						$rawData = array('status' => 'login successfully');
 					 }else{
@@ -106,10 +106,10 @@ class UserRestHandler extends SimpleRest {
 	}
 
 
-	function getUserrole($un){
+	function getUserrole($userName){
 		
 		$user = new User();
-	$rawData = $user->getUserrole($un);
+	$rawData = $user->getUserrole($userName);
 	
 	if(empty($rawData)) {
 		$statusCode = 404;
@@ -130,15 +130,16 @@ class UserRestHandler extends SimpleRest {
 	
 	 }
 		
-		function register_teacher($t_un,$t_eml,$t_pw,$t_fn,$t_bd,$t_g,$t_adr,$t_pn,$t_mn){
+		function register_teacher($teacherUserName,$teacherEmail,$teacherPassword,$teacherFullName,$teacherBirthDay,
+		$teacherGender,$teacherAdress,$teacherPhoneNumber,$teacherMobileNumber){
 		$user = new User();
 		/*$birthday = explode("/", "03/25/1998");
 			$birthday = mktime(0,0,0,$birthday['0'],$birthday['1'],$birthday['2']);
 			echo $birthday;
 			echo "////// " .date('m/d/Y',$birthday);*/
-		$birthday = explode("/", $t_bd);
+		$birthday = explode("/", $teacherBirthDay);
 		$birthday = mktime(0,0,0,$birthday['0'],$birthday['1'],$birthday['2']);
-		$rawData = $user->register_teacher($t_un,$t_eml,$this->make($t_pw),$t_fn,$birthday,$t_g,$t_adr,$t_pn,$t_mn);
+		$rawData = $user->register_teacher($teacherUserName,$teacherEmail,$this->make($teacherPassword),$teacherFullName,$birthday,$teacherGender,$teacherAdress,$teacherPhoneNumber,$teacherMobileNumber);
         
 		
 		if(empty($rawData)) {
@@ -160,15 +161,17 @@ class UserRestHandler extends SimpleRest {
 		}
 		}
 
-		function register_student($t_un,$t_eml,$t_pw,$t_fn,$t_bd,$s_ri,$s_ci,$t_g,$t_adr,$t_pn,$t_mn){
+		function register_student($studentUserName,$studentEmail,$studentPassword,$studentFullName,$studentBirthDay,$studentRollingId,
+		$studentClassId,$studentGender,$studentAdress,$studentPhoneNumber,$studentMobileNumber){
 			$user = new User();
 			/*$birthday = explode("/", "03/25/1998");
 				$birthday = mktime(0,0,0,$birthday['0'],$birthday['1'],$birthday['2']);
 				echo $birthday;
 				echo "////// " .date('m/d/Y',$birthday);*/
-			$birthday = explode("/", $t_bd);
+			$birthday = explode("/", $studentBirthDay);
 			$birthday = mktime(0,0,0,$birthday['0'],$birthday['1'],$birthday['2']);
-			$rawData = $user->register_student($t_un,$t_eml,$this->make($t_pw),$t_fn,$birthday,$s_ri,$s_ci,$t_g,$t_adr,$t_pn,$t_mn);
+			$rawData = $user->register_student($studentUserName,$studentEmail,$this->make($studentPassword),$studentFullName,
+			$birthday,$studentRollingId,$studentClassId,$studentGender,$studentAdress,$studentPhoneNumber,$studentMobileNumber);
 			
 			
 			if(empty($rawData)) {
@@ -190,15 +193,17 @@ class UserRestHandler extends SimpleRest {
 			}
 			}
 
-			function register_parent($t_un,$t_eml,$t_pw,$t_fn,$t_bd,$p_p,$t_g,$t_adr,$t_pn,$t_mn,$p_of){
+			function register_parent($parentUserName,$parentEmail,$parentPassword,$parentFullName,$parentBirthDay,$parentProfession,$parentGender,
+			$parentAdress,$parentPhoneNumber,$parentMobileNumber,$parentOf){
 				$user = new User();
 				/*$birthday = explode("/", "03/25/1998");
 					$birthday = mktime(0,0,0,$birthday['0'],$birthday['1'],$birthday['2']);
 					echo $birthday;
 					echo "////// " .date('m/d/Y',$birthday);*/
-				$birthday = explode("/", $t_bd);
+				$birthday = explode("/", $parentBirthDay);
 				$birthday = mktime(0,0,0,$birthday['0'],$birthday['1'],$birthday['2']);
-				$rawData = $user->register_parent($t_un,$t_eml,$this->make($t_pw),$t_fn,$birthday,$p_p,$t_g,$t_adr,$t_pn,$t_mn,$p_of);
+				$rawData = $user->register_parent($parentUserName,$parentEmail,$this->make($parentPassword),$parentFullName,$birthday,
+				$parentProfession,$parentGender,$parentAdress,$parentPhoneNumber,$parentMobileNumber,$parentOf);
 				
 				
 				if(empty($rawData)) {
@@ -218,6 +223,30 @@ class UserRestHandler extends SimpleRest {
 					$response = $this->encodeJson($result);
 					echo $response;
 				}
+				}
+
+				function fetchLinkStudent($userName) {	
+
+					$user = new User();
+					$rawData = $user->fetchLinkStudent($userName);
+					
+					if(empty($rawData)) {
+						$statusCode = 404;
+						$rawData = array('error' => 'No user found!');		
+					} else {
+						$statusCode = 200;
+					}
+			
+					$requestContentType = 'application/json';//$_POST['HTTP_ACCEPT'];
+					$this ->setHttpHeaders($requestContentType, $statusCode);
+					
+					$result["user"] = $rawData;
+							
+					if(strpos($requestContentType,'application/json') !== false){
+						$response = $this->encodeJson($result);
+						echo $response;
+					}
+					
 				}
 	
 	public function encodeJson($responseData) {

@@ -9,15 +9,15 @@ $json = file_get_contents('php://input');
 	 // name store into $name.
 	$view = $obj['view'];
 
-	$tun=$obj['un'];
-	$teml=$obj['eml'];
-	$tpw=$obj['pw'];
-	$tfn=$obj['fn'];
-	$tbd=$obj['bd'];
-	$tg=$obj['g'];
-	$tadr=$obj['adr'];
-	$tpn=$obj['pn'];
-	$tmn=$obj['mn'];
+	$teacherUserName=$obj['userName'];
+	$teacherEmail=$obj['email'];
+	$teacherPassword=$obj['password'];
+	$teacherFullName=$obj['fullName'];
+	$teacherBirthDay=$obj['birthDay'];
+	$teacherGender=$obj['gender'];
+	$teacherAdress=$obj['adress'];
+	$teacherPhoneNumber=$obj['phoneNumber'];
+	$teacherMobileNumber=$obj['mobileNumber'];
 
 
 switch($view){
@@ -26,7 +26,8 @@ switch($view){
         
 		case "register_teacher":
 		$userRestHandler = new UserRestHandler();
-		$userRestHandler->register_teacher($tun,$teml,$tpw,$tfn,$tbd,$tg,$tadr,$tpn,$tmn);
+		$userRestHandler->register_teacher($teacherUserName,$teacherEmail,$teacherPassword,$teacherFullName,
+		$teacherBirthDay,$teacherGender,$teacherAdress,$teacherPhoneNumber,$teacherMobileNumber);
 		break;
 
 }

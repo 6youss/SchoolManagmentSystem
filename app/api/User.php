@@ -72,7 +72,12 @@ Class User {
 		return $this->user;
 	}
 	
-	
+	public function fetchLinkStudent($userName){
+		$query = "SELECT id,fullName FROM users where username ='".$userName."' and role='student'";
+		$dbcontroller = new DBController();
+		$this->user = $dbcontroller->executeSelectQuery($query);
+		return $this->user;
+	}
 	
 }
 ?>

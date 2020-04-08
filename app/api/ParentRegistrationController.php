@@ -18,7 +18,7 @@ $pg=$obj['g'];
 $padr=$obj['adr'];
 $ppn=$obj['pn'];
 $pmn=$obj['mn'];
-$pof=$obj['parentOf'];
+$pof=$obj['ParentOf'];
 
 switch($view){
 

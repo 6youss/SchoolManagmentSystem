@@ -73,7 +73,7 @@ class UserRestHandler extends SimpleRest {
 				if($role=="admin"){
 				$statusCode = 404;
 					//$rawData = array('status' => 'you are an admin');
-					$rawData = array('status' => 'user doesn\'t exist');
+					$rawData = array('status' => 'admin not allowed');
 				}else{
 				if(password_verify($password,$password)==1 ){
 						$statusCode = 200;

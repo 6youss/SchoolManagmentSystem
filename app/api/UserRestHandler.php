@@ -75,7 +75,7 @@ class UserRestHandler extends SimpleRest {
 					//$rawData = array('status' => 'you are an admin');
 					$rawData = array('status' => 'admin not allowed');
 				}else{
-				if(password_verify($password,$enteredPassword)==1 ){
+				if(password_verify($enteredPassword,$password)==1 ){
 						$statusCode = 200;
 						$rawData = array('status' => 'login successfully');
 					 }else{

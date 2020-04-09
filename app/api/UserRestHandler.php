@@ -208,7 +208,7 @@ class UserRestHandler extends SimpleRest {
 				
 				if(empty($rawData)) {
 					$statusCode = 404;
-					$rawData = array('error' => 'ERROR !');		
+					$rawData = array('status' => 'ERROR !');		
 				} else {
 					$statusCode = 200;
 					
@@ -217,7 +217,7 @@ class UserRestHandler extends SimpleRest {
 				$requestContentType = 'application/json';//$_POST['HTTP_ACCEPT'];
 				$this ->setHttpHeaders($requestContentType, $statusCode);
 				
-				$result["insert status"] = $rawData;
+				$result["status"] = $rawData;
 						
 				if(strpos($requestContentType,'application/json') !== false){
 					$response = $this->encodeJson($result);

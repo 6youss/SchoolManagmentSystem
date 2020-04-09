@@ -65,7 +65,7 @@ Class User {
 		$query="INSERT INTO `users`(`username`, `email`, `password`, `fullName`, `role`,
 		  `gender`, `address`, `phoneNo`, `mobileNo`,`activated`, `birthday`,`parentProfession`, `parentOf`
 		) VALUES ('".$tun."','".$teml."','".$tpw."','".$tfn."','parent','".$tg."','".$tadr."','".$tpn."','".$tmn
-		."',0,".$tbd.",'".$pp."','".$pof."')";
+		."',0,'".$tbd."','".$pp."','".$pof."')";
 		//echo $query;
 		$dbcontroller = new DBController();
 		$this->user = $dbcontroller->executeInsertQuery($query);

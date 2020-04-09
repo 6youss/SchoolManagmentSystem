@@ -32,7 +32,7 @@ $obj = json_decode($json,true);
 // name store into $name.
 $view = $obj['view'];
 $userName=$obj['userName'];
-    switch($get){
+    switch($view){
 
         /*case "all":
         $userinfoRestHandler = new UserInfoRestHandler();

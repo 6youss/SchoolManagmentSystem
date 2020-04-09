@@ -32,7 +32,6 @@ $obj = json_decode($json,true);
 // name store into $name.
 $view = $obj['view'];
 $userName=$obj['userName'];
-$password=$obj['password'];
     switch($get){
 
         /*case "all":

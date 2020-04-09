@@ -8,17 +8,17 @@ $json = file_get_contents('php://input');
 	 
 	 // name store into $name.
     $view = $obj['view'];
-    $pun=$obj['un'];
-$peml=$obj['eml'];
-$ppw=$obj['pw'];
-$pfn=$obj['fn'];
-$pbd=$obj['bd'];
+    $pun=$obj['userName'];
+$peml=$obj['email'];
+$ppw=$obj['password'];
+$pfn=$obj['fullName'];
+$pbd=$obj['birthDay'];
 $pp=$obj['profession'];
-$pg=$obj['g'];
-$padr=$obj['adr'];
-$ppn=$obj['pn'];
-$pmn=$obj['mn'];
-$pof=$obj['Parentof'];
+$pg=$obj['gender'];
+$padr=$obj['adress'];
+$ppn=$obj['phoneNumber'];
+$pmn=$obj['mobileNumber'];
+$pof=$obj['parentOf'];
 
 switch($view){
 

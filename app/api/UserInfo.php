@@ -22,6 +22,13 @@ Class UserInfo {
 		$this->user = $dbcontroller->executeSelectQuery($query);
 		return $this->user;
 	}
+
+	public function getUserbyinfo($userName){
+		$query = "SELECT * FROM users where username ='".$userName."'";
+		$dbcontroller = new DBController();
+		$this->user = $dbcontroller->executeSelectQuery($query);
+		return $this->user;
+	}
 	
 	
 

@@ -17,19 +17,19 @@ if(isset($_GET["view"]) ){
             $newsRestHandler->getAllNews();
             break;
 
-            case "students":
+            case "student":
                 // to handle REST Url /mobile/list/
                 $newsRestHandler = new NewsRestHandler();
                 $newsRestHandler->getStudentsNews();
                 break;
 
-                case "teachers":
+                case "teacher":
                     // to handle REST Url /mobile/list/
                     $newsRestHandler = new NewsRestHandler();
                     $newsRestHandler->getTeachersNews();
                     break;
 
-                    case "parents":
+                    case "parent":
                         // to handle REST Url /mobile/list/
                         $newsRestHandler = new NewsRestHandler();
                         $newsRestHandler->getParentsNews();

@@ -80,8 +80,8 @@ class SiteSettingsController extends \BaseController {
 		}
 		if($title == "terms"){
 			$settings = settings::where('fieldName','schoolTerms')->first();
-			//$settings->fieldValue = htmlspecialchars(Input::get('fieldValue'),ENT_QUOTES);
-			$settings->fieldValue =Input::get('fieldValue');
+			$settings->fieldValue = strip_tags(htmlspecialchars_decode(Input::get('fieldValue'),ENT_QUOTES));
+			
 			$settings->save();
 			echo "1";
 			exit;

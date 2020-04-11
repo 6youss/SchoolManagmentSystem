@@ -62,7 +62,7 @@ class NewsBoardController extends \BaseController {
 
 	function fetch($id){
 		$data = newsboard::where('id',$id)->first()->toArray();
-		$data['newsText'] = htmlspecialchars_decode($data['newsText'],ENT_QUOTES);
+		$data['newsText'] = strip_tags(htmlspecialchars_decode($data['newsText'],ENT_QUOTES));
 		$data['newsDate'] = date('m/d/Y',$data['newsDate']);
 		return json_encode($data);
 	}
@@ -72,7 +72,7 @@ class NewsBoardController extends \BaseController {
 		$newsboard = newsboard::find($id);
 		$newsboard->newsTitle = Input::get('newsTitle');
 		//$newsboard->newsText = htmlspecialchars(Input::get('newsText'),ENT_QUOTES);
-		$newsboard->newsText = htmlspecialchars_decode(Input::get('newsText'),ENT_QUOTES);
+		$newsboard->newsText = strip_tags(htmlspecialchars_decode(Input::get('newsText'),ENT_QUOTES));
 		$newsboard->newsFor = Input::get('newsFor');
 		if(Input::get('newsDate') != ""){
 			$newsDate = explode("/", Input::get('newsDate'));

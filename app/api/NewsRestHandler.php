@@ -43,7 +43,7 @@ class NewsRestHandler extends SimpleRest {
 		$requestContentType = 'application/json';//$_POST['HTTP_ACCEPT'];
 		$this ->setHttpHeaders($requestContentType, $statusCode);
 		
-		$result["students news"] = $rawData;
+		$result["student news"] = $rawData;
 				
 		if(strpos($requestContentType,'application/json') !== false){
 			$response = $this->encodeJson($result);
@@ -66,7 +66,7 @@ class NewsRestHandler extends SimpleRest {
 		$requestContentType = 'application/json';//$_POST['HTTP_ACCEPT'];
 		$this ->setHttpHeaders($requestContentType, $statusCode);
 		
-		$result["teachers news"] = $rawData;
+		$result["teacher news"] = $rawData;
 				
 		if(strpos($requestContentType,'application/json') !== false){
 			$response = $this->encodeJson($result);
@@ -89,7 +89,7 @@ class NewsRestHandler extends SimpleRest {
 		$requestContentType = 'application/json';//$_POST['HTTP_ACCEPT'];
 		$this ->setHttpHeaders($requestContentType, $statusCode);
 		
-		$result["parents news"] = $rawData;
+		$result["parent news"] = $rawData;
 				
 		if(strpos($requestContentType,'application/json') !== false){
 			$response = $this->encodeJson($result);

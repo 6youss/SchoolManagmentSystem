@@ -47,8 +47,8 @@ class NewsBoardController extends \BaseController {
 		if($this->data['users']->role != "admin") exit;
 		$newsboard = new newsboard();
 		$newsboard->newsTitle = Input::get('newsTitle'); 
-		//$newsboard->newsText = htmlspecialchars(Input::get('newsText'),ENT_QUOTES);
-		$newsboard->newsText = strip_tags(htmlspecialchars_decode(Input::get('newsText'),ENT_QUOTES));
+		$newsboard->newsText = htmlspecialchars(Input::get('newsText'),ENT_QUOTES);
+		//$newsboard->newsText = strip_tags(htmlspecialchars_decode(Input::get('newsText'),ENT_QUOTES));
 		$newsboard->newsFor = Input::get('newsFor');
 		if(Input::get('newsDate') != ""){
 			$newsDate = explode("/", Input::get('newsDate'));
@@ -71,8 +71,8 @@ class NewsBoardController extends \BaseController {
 		if($this->data['users']->role != "admin") exit;
 		$newsboard = newsboard::find($id);
 		$newsboard->newsTitle = Input::get('newsTitle');
-		//$newsboard->newsText = htmlspecialchars(Input::get('newsText'),ENT_QUOTES);
-		$newsboard->newsText = strip_tags(htmlspecialchars_decode(Input::get('newsText'),ENT_QUOTES));
+		$newsboard->newsText = htmlspecialchars(Input::get('newsText'),ENT_QUOTES);
+		//$newsboard->newsText = strip_tags(htmlspecialchars_decode(Input::get('newsText'),ENT_QUOTES));
 		$newsboard->newsFor = Input::get('newsFor');
 		if(Input::get('newsDate') != ""){
 			$newsDate = explode("/", Input::get('newsDate'));

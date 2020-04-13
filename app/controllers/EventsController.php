@@ -46,7 +46,8 @@ class EventsController extends \BaseController {
 		if($this->data['users']->role != "admin") exit;
 		$events = new events();
 		$events->eventTitle = Input::get('eventTitle');
-		$events->eventDescription = htmlspecialchars(Input::get('eventDescription'),ENT_QUOTES);
+		//$events->eventDescription = htmlspecialchars(Input::get('eventDescription'),ENT_QUOTES);
+		$events->eventDescription = strip_tags(htmlspecialchars_decode(Input::get('eventDescription'),ENT_QUOTES));
 		$events->eventFor = Input::get('eventFor');
 		$events->enentPlace = Input::get('enentPlace');
 		$events->eventDate = Input::get('eventDate');
@@ -65,7 +66,8 @@ class EventsController extends \BaseController {
 		if($this->data['users']->role != "admin") exit;
 		$events = events::find($id);
 		$events->eventTitle = Input::get('eventTitle');
-		$events->eventDescription = htmlspecialchars(Input::get('eventDescription'),ENT_QUOTES);
+		//$events->eventDescription = htmlspecialchars(Input::get('eventDescription'),ENT_QUOTES);
+		$events->eventDescription = strip_tags(htmlspecialchars_decode(Input::get('eventDescription'),ENT_QUOTES));
 		$events->eventFor = Input::get('eventFor');
 		$events->enentPlace = Input::get('enentPlace');
 		$events->eventDate = Input::get('eventDate');

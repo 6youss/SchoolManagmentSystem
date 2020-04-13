@@ -9,7 +9,7 @@ if(isset($_GET["view"]) ){
 	$view = $_GET["view"];
     }}
     
-{///////class id
+{///////album id
 	$id = "";
 if(isset($_GET["id"]) ){
 	$id = $_GET["id"];

@@ -17,21 +17,21 @@ Class Assignments {
 	}	
 
 	public function getClassAssignments($id){
-		$query = "SELECT * FROM assignments where classId= ".$id;
+		$query = "SELECT * FROM assignments where classId= '".$id."'";
 		$dbcontroller = new DBController();
 		$this->assignments = $dbcontroller->executeSelectQuery($query);
 		return $this->assignments;
 	}	
 
 	public function getSubjectAssignments($id){
-		$query = "SELECT * FROM assignments where subjectId= ".$id;
+		$query = "SELECT * FROM assignments where subjectId= '".$id."'";
 		$dbcontroller = new DBController();
 		$this->assignments = $dbcontroller->executeSelectQuery($query);
 		return $this->assignments;
 	}
 
 	public function getTeacherAssignments($id){
-		$query = "SELECT * FROM assignments where teacherId= ".$id;
+		$query = "SELECT * FROM assignments where teacherId= '".$id."'";
 		$dbcontroller = new DBController();
 		$this->assignments = $dbcontroller->executeSelectQuery($query);
 		return $this->assignments;

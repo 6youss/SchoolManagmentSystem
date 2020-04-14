@@ -8,7 +8,11 @@ require_once("Assignments.php");
 if(isset($_GET["view"]) && isset($_GET["id"])){
 	$view = $_GET["view"];$id = $_GET["id"];
     }}
-
+{///////view
+	$id="";
+if(isset($_GET["id"])){
+	$id = $_GET["id"];
+    }}
     switch($view){
 
        

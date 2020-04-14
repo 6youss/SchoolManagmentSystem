@@ -35,7 +35,7 @@ class PollsRestHandler extends SimpleRest {
         
 		if(empty($rawData)) {
 			$statusCode = 404;
-			$rawData = array('error' => 'No students polls found!');		
+			$rawData = array('error' => 'No student polls found!');		
 		} else {
 			$statusCode = 200;
 		}
@@ -43,7 +43,7 @@ class PollsRestHandler extends SimpleRest {
 		$requestContentType = 'application/json';//$_POST['HTTP_ACCEPT'];
 		$this ->setHttpHeaders($requestContentType, $statusCode);
 		
-		$result["students polls"] = $rawData;
+		$result["student polls"] = $rawData;
 				
 		if(strpos($requestContentType,'application/json') !== false){
 			$response = $this->encodeJson($result);
@@ -58,7 +58,7 @@ class PollsRestHandler extends SimpleRest {
         
 		if(empty($rawData)) {
 			$statusCode = 404;
-			$rawData = array('error' => 'No teachers polls found!');		
+			$rawData = array('error' => 'No teacher polls found!');		
 		} else {
 			$statusCode = 200;
 		}
@@ -66,7 +66,7 @@ class PollsRestHandler extends SimpleRest {
 		$requestContentType = 'application/json';//$_POST['HTTP_ACCEPT'];
 		$this ->setHttpHeaders($requestContentType, $statusCode);
 		
-		$result["teachers polls"] = $rawData;
+		$result["teacher polls"] = $rawData;
 				
 		if(strpos($requestContentType,'application/json') !== false){
 			$response = $this->encodeJson($result);
@@ -81,7 +81,7 @@ class PollsRestHandler extends SimpleRest {
         
 		if(empty($rawData)) {
 			$statusCode = 404;
-			$rawData = array('error' => 'No parents polls found!');		
+			$rawData = array('error' => 'No parent polls found!');		
 		} else {
 			$statusCode = 200;
 		}
@@ -89,7 +89,7 @@ class PollsRestHandler extends SimpleRest {
 		$requestContentType = 'application/json';//$_POST['HTTP_ACCEPT'];
 		$this ->setHttpHeaders($requestContentType, $statusCode);
 		
-		$result["parents polls"] = $rawData;
+		$result["parent polls"] = $rawData;
 				
 		if(strpos($requestContentType,'application/json') !== false){
 			$response = $this->encodeJson($result);

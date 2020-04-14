@@ -17,19 +17,19 @@ if(isset($_GET["view"]) ){
             $pollsRestHandler->getAllPolls();
             break;
 
-            case "students":
+            case "student":
                 // to handle REST Url /mobile/list/
                 $pollsRestHandler = new PollsRestHandler();
                 $pollsRestHandler->getStudentsPolls();
                 break;
 
-                case "teachers":
+                case "teacher":
                     // to handle REST Url /mobile/list/
                     $pollsRestHandler = new PollsRestHandler();
                     $pollsRestHandler->getTeachersPolls();
                     break;
 
-                    case "parents":
+                    case "parent":
                         // to handle REST Url /mobile/list/
                         $pollsRestHandler = new PollsRestHandler();
                         $pollsRestHandler->getParentsPolls();

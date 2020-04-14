@@ -26,10 +26,83 @@ class AssignmentsRestHandler extends SimpleRest {
 			echo $response;
 		}
     }
+
+    function getClassAssignments($id) {	
+
+		$assignments = new Assignments();
+		$rawData = $assignments->getClassAssignments($id);
+        
+		if(empty($rawData)) {
+			$statusCode = 404;
+			$rawData = array('error' => 'No class assignments found!');		
+		} else {
+			$statusCode = 200;
+		}
+
+		$requestContentType = 'application/json';//$_POST['HTTP_ACCEPT'];
+		$this ->setHttpHeaders($requestContentType, $statusCode);
+		
+		$result["class assignments"] = $rawData;
+				
+		if(strpos($requestContentType,'application/json') !== false){
+			$response = $this->encodeJson($result);
+			echo $response;
+		}
+    }
+
+    function getSubjectAssignments($id) {	
+
+		$assignments = new Assignments();
+		$rawData = $assignments->getSubjectAssignments($id);
+        
+		if(empty($rawData)) {
+			$statusCode = 404;
+			$rawData = array('error' => 'No subject assignments found!');		
+		} else {
+			$statusCode = 200;
+		}
+
+		$requestContentType = 'application/json';//$_POST['HTTP_ACCEPT'];
+		$this ->setHttpHeaders($requestContentType, $statusCode);
+		
+		$result["subject assignments"] = $rawData;
+				
+		if(strpos($requestContentType,'application/json') !== false){
+			$response = $this->encodeJson($result);
+			echo $response;
+		}
+    }
+
+    function getTeacherAssignments($id) {	
+
+		$assignments = new Assignments();
+		$rawData = $assignments->getTeacherAssignments($id);
+        
+		if(empty($rawData)) {
+			$statusCode = 404;
+			$rawData = array('error' => 'No teacher assignments found!');		
+		} else {
+			$statusCode = 200;
+		}
+
+		$requestContentType = 'application/json';//$_POST['HTTP_ACCEPT'];
+		$this ->setHttpHeaders($requestContentType, $statusCode);
+		
+		$result["teacher assignments"] = $rawData;
+				
+		if(strpos($requestContentType,'application/json') !== false){
+			$response = $this->encodeJson($result);
+			echo $response;
+		}
+    }
+
     
-    function InsertAssignment($c_id,$s_id,$t_id,$a_t,$a_ds,$a_f,$a_dt){
+
+
+    
+    function InsertAssignment($classId,$subjectId,$teacherId,$assignmentTitle,$assignmentDescription,$assignmentFile,$assignmentDeadLine){
         $assignment = new Assignments();
-        $rawData = $assignment->InsertAssignment($c_id,$s_id,$t_id,$a_t,$a_ds,$a_f,$a_dt);
+        $rawData = $assignment->InsertAssignment($classId,$subjectId,$teacherId,$assignmentTitle,$assignmentDescription,$assignmentFile,$assignmentDeadLine);
         
         
         if(empty($rawData)) {

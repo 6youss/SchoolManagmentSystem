@@ -15,10 +15,31 @@ Class Assignments {
 		$this->assignments = $dbcontroller->executeSelectQuery($query);
 		return $this->assignments;
 	}	
+
+	public function getClassAssignments($id){
+		$query = "SELECT * FROM assignments where classId= ".$id;
+		$dbcontroller = new DBController();
+		$this->assignments = $dbcontroller->executeSelectQuery($query);
+		return $this->assignments;
+	}	
+
+	public function getSubjectAssignments($id){
+		$query = "SELECT * FROM assignments where subjectId= ".$id;
+		$dbcontroller = new DBController();
+		$this->assignments = $dbcontroller->executeSelectQuery($query);
+		return $this->assignments;
+	}
+
+	public function getTeacherAssignments($id){
+		$query = "SELECT * FROM assignments where teacherId= ".$id;
+		$dbcontroller = new DBController();
+		$this->assignments = $dbcontroller->executeSelectQuery($query);
+		return $this->assignments;
+	}
     
-    public function InsertAssignment($c_id,$s_id,$t_id,$a_t,$a_ds,$a_f,$a_dt){
+    public function InsertAssignment($classId,$subjectId,$teacherId,$assignmentTitle,$assignmentDescription,$assignmentFile,$assignmentDeadLine){
 		$query = "INSERT INTO `assignments`(`classId`, `subjectId`, `teacherId`, `AssignTitle`, `AssignDescription`, `AssignFile`, `AssignDeadLine`) 
-        VALUES (".$c_id.",".$s_id.",".$t_id.",'".$a_t."','".$a_ds."','".$a_f."','".$a_dt."')";echo $query;
+        VALUES (".$classId.",".$subjectId.",".$teacherId.",'".$assignmentTitle."','".$assignmentDescription."','".$assignmentFile."','".$assignmentDeadLine."')";echo $query;
 		$dbcontroller = new DBController();
 		$this->assignments = $dbcontroller->executeInsertQuery($query);
 		return $this->assignments;

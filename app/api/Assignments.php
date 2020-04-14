@@ -17,7 +17,7 @@ Class Assignments {
 	}	
 
 	public function getClassAssignments($id){
-		$query = "SELECT * FROM assignments where classId= '".$id."'";
+		$query = "SELECT * FROM assignments where '\"".$id."\"' in classId";
 		$dbcontroller = new DBController();
 		$this->assignments = $dbcontroller->executeSelectQuery($query);
 		return $this->assignments;

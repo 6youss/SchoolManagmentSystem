@@ -11,7 +11,8 @@ Class Messages {
     */
     
     public function getAllMessages($id){
-		$query = "SELECT * FROM messages where fromId=".$id." or toId=".$id;
+		//$query = "SELECT * FROM messages where fromId=".$id." or toId=".$id;
+		$query = "SELECT * FROM messages where userId=".$id;
 		$dbcontroller = new DBController();
 		$this->terms = $dbcontroller->executeSelectQuery($query);
 		return $this->terms;

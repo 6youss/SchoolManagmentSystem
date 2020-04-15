@@ -24,6 +24,7 @@ Class Assignments {
 		$classids = $dbcontroller->executeSelectQuery($query);//print_r($classids);echo "id : ".(substr($classids[0]["classId"],2,-2));
 		$str=substr($classids[0]["classId"],1,-1);
 		$classids=explode(",",$str);
+		$fids=array();
 		for($i=0;$i<sizeof($classids);$i++){
 			$classids[$i]=substr($classids[$i],1,-1);
 		}echo "classes ids : ";print_r($classids);

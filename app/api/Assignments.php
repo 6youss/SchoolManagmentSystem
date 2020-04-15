@@ -42,7 +42,7 @@ Class Assignments {
 				$query=$query.$fids[$k]." or id=";
 			}
 			}
-			}
+			}echo $query;
 		$this->assignments = $dbcontroller->executeSelectQuery($query);
 		return $this->assignments;
 	}	

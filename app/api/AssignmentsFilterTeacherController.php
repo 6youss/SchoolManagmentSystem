@@ -13,6 +13,12 @@ if(isset($_GET["view"]) ){
 if(isset($_GET["id"])){
 	$id = $_GET["id"];
     }}
+
+    {///////view
+	$uid="";
+    if(isset($_GET["uid"])){
+        $uid = $_GET["uid"];
+        }}
     switch($view){
 
        
@@ -20,16 +26,20 @@ if(isset($_GET["id"])){
             case "classid":
                 // to handle REST Url /mobile/list/
                 $assignmentsRestHandler = new AssignmentsRestHandler();
-                $assignmentsRestHandler->getClassAssignments($id);
+                $assignmentsRestHandler->getTeacherClassAssignments($uid,$id);
                 break;
 
                 case "subjectid":
                     // to handle REST Url /mobile/list/
                     $assignmentsRestHandler = new AssignmentsRestHandler();
-                    $assignmentsRestHandler->getSubjectAssignments($id);
+                    $assignmentsRestHandler->getTeacherSubjectAssignments($uid,$id);
                     break;
 
-                    
+                    case "teacherid":
+                        // to handle REST Url /mobile/list/
+                        $assignmentsRestHandler = new AssignmentsRestHandler();
+                        $assignmentsRestHandler->getTeacherAssignments($id);
+                        break;
 
 
         }

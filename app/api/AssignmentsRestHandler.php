@@ -71,7 +71,54 @@ class AssignmentsRestHandler extends SimpleRest {
 			$response = $this->encodeJson($result);
 			echo $response;
 		}
+	}
+	
+	function getTeacherClassAssignments($uid,$id) {	
+
+		$assignments = new Assignments();
+		$rawData = $assignments->getTeacherClassAssignments($uid,$id);
+        
+		if(empty($rawData)) {
+			$statusCode = 404;
+			$rawData = array('error' => 'No teacher class assignments found!');		
+		} else {
+			$statusCode = 200;
+		}
+
+		$requestContentType = 'application/json';//$_POST['HTTP_ACCEPT'];
+		$this ->setHttpHeaders($requestContentType, $statusCode);
+		
+		$result["teacher class assignments"] = $rawData;
+				
+		if(strpos($requestContentType,'application/json') !== false){
+			$response = $this->encodeJson($result);
+			echo $response;
+		}
     }
+
+    function getTeacherSubjectAssignments($uid,$id) {	
+
+		$assignments = new Assignments();
+		$rawData = $assignments->geTeachertSubjectAssignments($uid,$id);
+        
+		if(empty($rawData)) {
+			$statusCode = 404;
+			$rawData = array('error' => 'No teacher subject assignments found!');		
+		} else {
+			$statusCode = 200;
+		}
+
+		$requestContentType = 'application/json';//$_POST['HTTP_ACCEPT'];
+		$this ->setHttpHeaders($requestContentType, $statusCode);
+		
+		$result["teacher subject assignments"] = $rawData;
+				
+		if(strpos($requestContentType,'application/json') !== false){
+			$response = $this->encodeJson($result);
+			echo $response;
+		}
+    }
+
 
     function getTeacherAssignments($id) {	
 

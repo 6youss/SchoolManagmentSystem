@@ -26,11 +26,11 @@ Class Assignments {
 		$cida=array();
 		for($i=0;$i<sizeof($ids);$i++){
         
-			$cid=$classids[$i];
+			$cid=$classids[$i]["classId"];
 			$cida=explode(",",$cid);
 			for($j=0;$j<sizeof($cida);$j++){
 			if($cida[$j]==$id){
-				array_push($fids,$ids[$i]);
+				array_push($fids,$ids[$i]["id"]);
 			}
 			}
 			

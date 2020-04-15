@@ -35,11 +35,7 @@ if(isset($_GET["id"])){
                     $assignmentsRestHandler->getTeacherSubjectAssignments($uid,$id);
                     break;
 
-                    case "teacherid":
-                        // to handle REST Url /mobile/list/
-                        $assignmentsRestHandler = new AssignmentsRestHandler();
-                        $assignmentsRestHandler->getTeacherAssignments($id);
-                        break;
+                    
 
 
         }

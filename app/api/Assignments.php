@@ -19,9 +19,9 @@ Class Assignments {
 	public function getClassAssignments($id){
 		$query = "SELECT id FROM assignments ";
 		$dbcontroller = new DBController();
-		$ids = $dbcontroller->executeSelectQuery($query);print_r($ids);
-		$query = "SELECT classId FROM assignments ";
-		$classids = $dbcontroller->executeSelectQuery($query);print_r($classids);
+		$ids = $dbcontroller->executeSelectQuery($query);print_r($ids);echo "id : ".($ids[0]["id"]);
+				$query = "SELECT classId FROM assignments ";
+		$classids = $dbcontroller->executeSelectQuery($query);print_r($classids);echo "id : ".($classids[0]["classId"]);
 		$cid="";
 		$cida=array();
 		for($i=0;$i<sizeof($ids);$i++){

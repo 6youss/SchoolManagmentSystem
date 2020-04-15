@@ -21,15 +21,22 @@ Class Assignments {
 		$dbcontroller = new DBController();
 		$ids = $dbcontroller->executeSelectQuery($query);print_r($ids);echo "id : ".($ids[0]["id"]);
 				$query = "SELECT classId FROM assignments ";
-		$classids = $dbcontroller->executeSelectQuery($query);print_r($classids);echo "id : ".(susbtr($classids[0]["classId"],2,-2));
+		$classids = $dbcontroller->executeSelectQuery($query);print_r($classids);//echo "id : ".(substr($classids[0]["classId"],2,-2));
+		$str=substr($classids[0]["classId"],1,-1);
+		$classids=explode(",",$str);
+		for($i=0;$i<sizeof($classids);$i++){
+			$classids[$i]=substr($classids[$i],1,-1);
+		}
 		$cid="";
-		$cida=array();
+		//$cida=array();
 		for($i=0;$i<sizeof($ids);$i++){
         
-			$cid=$classids[$i]["classId"];
-			$cida=explode(",",$cid);
-			for($j=0;$j<sizeof($cida);$j++){
-			if($cida[$j]==$id){
+			//$cid=$classids[$i]["classId"];
+			//$cida=explode(",",$cid);
+			//for($j=0;$j<sizeof($cida);$j++){
+			//if($cida[$j]==$id){
+				for($j=0;$j<sizeof($classids);$j++){
+				if($classids[$j]==$id){
 				array_push($fids,$ids[$i]["id"]);
 			}
 			}

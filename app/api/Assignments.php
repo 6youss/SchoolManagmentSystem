@@ -36,7 +36,7 @@ Class Assignments {
 			//for($j=0;$j<sizeof($cida);$j++){
 			//if($cida[$j]==$id){
 				for($j=0;$j<sizeof($classids);$j++){
-				if($classids[$j]==$id){
+				if((int)$classids[$j]==$id){
 				array_push($fids,$ids[$i]["id"]);
 			}
 			}

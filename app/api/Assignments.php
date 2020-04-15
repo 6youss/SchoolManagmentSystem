@@ -23,11 +23,11 @@ Class Assignments {
 				$query = "SELECT classId FROM assignments ";
 		$classids = $dbcontroller->executeSelectQuery($query);//print_r($classids);echo "id : ".(substr($classids[0]["classId"],2,-2));
 		$str=substr($classids[0]["classId"],1,-1);
-		$classids=explode(",",$str);print_r($classids);
+		$classids=explode(",",$str);
 		for($i=0;$i<sizeof($classids);$i++){
 			$classids[$i]=substr($classids[$i],1,-1);
-		}
-		$cid="";
+		}print_r($classids);
+		//$cid="";
 		//$cida=array();
 		for($i=0;$i<sizeof($ids);$i++){
         

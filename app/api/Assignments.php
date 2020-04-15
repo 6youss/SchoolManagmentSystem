@@ -21,7 +21,7 @@ Class Assignments {
 		$dbcontroller = new DBController();
 		$ids = $dbcontroller->executeSelectQuery($query);print_r($ids);echo "id : ".($ids[0]["id"]);
 				$query = "SELECT classId FROM assignments ";
-		$classids = $dbcontroller->executeSelectQuery($query);print_r($classids);echo "id : ".($classids[0]["classId"][0]);
+		$classids = $dbcontroller->executeSelectQuery($query);print_r($classids);echo "id : ".(susbtr($classids[0]["classId"],2,-2));
 		$cid="";
 		$cida=array();
 		for($i=0;$i<sizeof($ids);$i++){

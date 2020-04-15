@@ -19,14 +19,14 @@ Class Assignments {
 	public function getClassAssignments($id){
 		$query = "SELECT id FROM assignments ";
 		$dbcontroller = new DBController();
-		$ids = $dbcontroller->executeSelectQuery($query);print_r($ids);echo "id : ".($ids[0]["id"]);
+		$ids = $dbcontroller->executeSelectQuery($query);print_r($ids);echo "ids : ".($ids[0]["id"]);
 				$query = "SELECT classId FROM assignments ";
 		$classids = $dbcontroller->executeSelectQuery($query);//print_r($classids);echo "id : ".(substr($classids[0]["classId"],2,-2));
 		$str=substr($classids[0]["classId"],1,-1);
 		$classids=explode(",",$str);
 		for($i=0;$i<sizeof($classids);$i++){
 			$classids[$i]=substr($classids[$i],1,-1);
-		}print_r($classids);
+		}echo "classes ids : ";print_r($classids);
 		//$cid="";
 		//$cida=array();
 		for($i=0;$i<sizeof($ids);$i++){
@@ -49,7 +49,9 @@ Class Assignments {
 				$query=$query.$fids[$k]." or id=";
 			}
 			}
-			}echo $query;
+			}
+			echo "final ids : ";print_r($fids);
+			echo $query;
 		$this->assignments = $dbcontroller->executeSelectQuery($query);print_r($this->assignments);
 		return $this->assignments;
 	}	

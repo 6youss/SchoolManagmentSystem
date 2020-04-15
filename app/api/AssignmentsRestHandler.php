@@ -99,7 +99,7 @@ class AssignmentsRestHandler extends SimpleRest {
     function getTeacherSubjectAssignments($uid,$id) {	
 
 		$assignments = new Assignments();
-		$rawData = $assignments->geTeachertSubjectAssignments($uid,$id);
+		$rawData = $assignments->geTeacherSubjectAssignments($uid,$id);
         
 		if(empty($rawData)) {
 			$statusCode = 404;

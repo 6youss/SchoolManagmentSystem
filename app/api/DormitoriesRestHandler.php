@@ -6,12 +6,12 @@ class DormitoriesRestHandler extends SimpleRest {
 
 	function getDormitorie($id) {	
 
-		$dormitorie = new Dormitories();
-		$rawData = $dormitorie->getDormitorie($id);
+		$dormitory = new Dormitories();
+		$rawData = $dormitory->getDormitorie($id);
         
 		if(empty($rawData)) {
 			$statusCode = 404;
-			$rawData = array('error' => 'No dormitorie found!');		
+			$rawData = array('error' => 'No dormitory found!');		
 		} else {
 			$statusCode = 200;
 		}
@@ -19,7 +19,7 @@ class DormitoriesRestHandler extends SimpleRest {
 		$requestContentType = 'application/json';//$_POST['HTTP_ACCEPT'];
 		$this ->setHttpHeaders($requestContentType, $statusCode);
 		
-		$result["dormitorie"] = $rawData;
+		$result["dormitory"] = $rawData;
 				
 		if(strpos($requestContentType,'application/json') !== false){
 			$response = $this->encodeJson($result);

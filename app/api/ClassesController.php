@@ -3,24 +3,24 @@ require_once("ClassesRestHandler.php");
 require_once("Classes.php");		
 
 
-$json = file_get_contents('php://input');
+/*$json = file_get_contents('php://input');
  
 	 // decoding the received JSON and store into $obj variable.
 	 $obj = json_decode($json,true);
 	 
 	 // name store into $name.
     $view = $obj['view'];
-    $id= $obj['id'];
-    /*$view = "";
+    $id= $obj['id'];*/
+    $view = "";
 if(isset($_GET["view"]) ){
 	$view = $_GET["view"];
-    }*/
+    }
     
-/*{///////teacher id
+{///////teacher id
 	$id = "";
 if(isset($_GET["id"]) ){
 	$id = $_GET["id"];
-    }}*/
+    }}
 
     switch($view){
 

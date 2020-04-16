@@ -108,7 +108,7 @@ Class Assignments {
 		}
 		}
 		
-		$query = "SELECT * FROM classes where id=";
+		$query = "SELECT * FROM assignments where id=";
 		for($k=0;$k<sizeof($fids);$k++){
 		if($k==(sizeof($fids)-1)){
 			$query=$query.$fids[$k];

@@ -36,6 +36,11 @@ if(isset($_GET["id"]) ){
                 $subjectsRestHandler->getClassSubjects($id);
             break;
 
+            case "teacher":
+                $subjectsRestHandler = new SubjectsRestHandler();
+                $subjectsRestHandler->getTeacherSubjects($id);
+            break;
+
 
         }
         ?>

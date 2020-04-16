@@ -50,6 +50,29 @@ class SubjectsRestHandler extends SimpleRest {
 		}
 	}
 
+	function getTeacherSubjects($id) {	
+
+		$subjects = new Subjects();
+		$rawData = $subjects->getTeacherSubjects($id);
+        
+		if(empty($rawData)) {
+			$statusCode = 404;
+			$rawData = array('error' => 'No subjects found!');		
+		} else {
+			$statusCode = 200;
+		}
+
+		$requestContentType = 'application/json';//$_POST['HTTP_ACCEPT'];
+		$this ->setHttpHeaders($requestContentType, $statusCode);
+		
+		$result["subjects"] = $rawData;
+				
+		if(strpos($requestContentType,'application/json') !== false){
+			$response = $this->encodeJson($result);
+			echo $response;
+		}
+	}
+
 	function getTeacherClassSubjects($teacherId,$classId) {	
 
 		$subjects = new Subjects();

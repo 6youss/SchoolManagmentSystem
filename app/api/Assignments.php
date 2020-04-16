@@ -61,6 +61,9 @@ Class Assignments {
 		$ids = $dbcontroller->executeSelectQuery($query);
 				$query = "SELECT classId FROM assignments where teacherId='".$uid."'";
 		$classids = $dbcontroller->executeSelectQuery($query);
+		//modification
+		print_r($classids);
+		////
 		$str=substr($classids[0]["classId"],1,-1);
 		$classids=explode(",",$str);
 		$fids=array();
@@ -74,7 +77,8 @@ Class Assignments {
 			}
 			}
 			
-			$query = "SELECT * FROM assignments where teacherId='".$uid."' and id=";
+			//$query = "SELECT * FROM assignments where teacherId='".$uid."' and id=";
+			$query = "SELECT * FROM assignments where id=";
 			for($k=0;$k<sizeof($fids);$k++){
 			if($k==(sizeof($fids)-1)){
 				$query=$query.$fids[$k];

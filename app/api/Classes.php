@@ -32,10 +32,6 @@ Class Classes {
     }	
     
     public function getTeacherClasses($id){
-		/*$query = "SELECT * FROM classes where classTeacher='".$id."'";
-		$dbcontroller = new DBController();
-		$this->classes = $dbcontroller->executeSelectQuery($query);
-		return $this->classes;*/
 
 		$dbcontroller = new DBController();
         $query = "SELECT id FROM classes ";
@@ -48,10 +44,9 @@ Class Classes {
 		$tida=explode(",",$str);
         for($j=0;$j<sizeof($tida);$j++){
         if(substr($tida[$j],1,-1)==$id){
-			array_push($fids,$ids[$i]);
+			array_push($fids,$ids[$i]["id"]);
 		}
 		}
-		
 		$query = "SELECT * FROM classes where id=";
 		for($k=0;$k<sizeof($fids);$k++){
 		if($k==(sizeof($fids)-1)){
@@ -65,8 +60,6 @@ Class Classes {
 		return $this->classes;
 	}	
 	
-	
-    
 }
 
 /*

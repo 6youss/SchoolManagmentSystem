@@ -56,48 +56,12 @@ Class Assignments {
 	}
 
 	public function getTeacherClassAssignments($uid,$id){
-		/*$query = "SELECT id FROM assignments where teacherId='".$uid."'";
-		$dbcontroller = new DBController();
-		$ids = $dbcontroller->executeSelectQuery($query);
-				$query = "SELECT classId FROM assignments where teacherId='".$uid."'";
-		$classids = $dbcontroller->executeSelectQuery($query);
-		//modification
-		print_r($classids);
-		////
-		$str=substr($classids[0]["classId"],1,-1);
-		$classids=explode(",",$str);
-		$fids=array();
-		for($i=0;$i<sizeof($classids);$i++){
-			$classids[$i]=substr($classids[$i],1,-1);
-		}
-		for($i=0;$i<sizeof($ids);$i++){
-				for($j=0;$j<sizeof($classids);$j++){
-				if((int)$classids[$j]==$id){
-				array_push($fids,$ids[$i]["id"]);
-			}
-			}
-			//$query = "SELECT * FROM assignments where teacherId='".$uid."' and id=";
-			$query = "SELECT * FROM assignments where id=";
-			for($k=0;$k<sizeof($fids);$k++){
-			if($k==(sizeof($fids)-1)){
-				$query=$query.$fids[$k];
-			}else{
-				$query=$query.$fids[$k]." or id=";
-			}
-			}
-			}
-		$this->assignments = $dbcontroller->executeSelectQuery($query);
-		return $this->assignments;*/
-		/*$query = "SELECT * FROM classes where classTeacher='".$id."'";
-		$dbcontroller = new DBController();
-		$this->classes = $dbcontroller->executeSelectQuery($query);
-		return $this->classes;*/
 
 		$dbcontroller = new DBController();
-        $query = "SELECT id FROM assignments where teacherId='".$uid."'";echo($query);
-		$ids=$dbcontroller->executeSelectQuery($query);print_r($ids);
-		$query = "SELECT classId FROM assignments where teacherId='".$uid."'";echo($query);
-		$classids=$dbcontroller->executeSelectQuery($query);print_r($classids);
+        $query = "SELECT id FROM assignments where teacherId='".$uid."'";
+		$ids=$dbcontroller->executeSelectQuery($query);
+		$query = "SELECT classId FROM assignments where teacherId='".$uid."'";
+		$classids=$dbcontroller->executeSelectQuery($query);
         $fids=array();
 		for($i=0;$i<sizeof($ids);$i++){
         $str=substr($classids[$i]["classId"],1,-1);
@@ -117,8 +81,7 @@ Class Assignments {
 		}
         }
 		}
-		echo($query);
-		$this->classes = $dbcontroller->executeSelectQuery($query);print_r($classes);
+		$this->classes = $dbcontroller->executeSelectQuery($query);
 		return $this->classes;
 	}	
 

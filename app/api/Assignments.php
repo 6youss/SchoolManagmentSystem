@@ -56,7 +56,7 @@ Class Assignments {
 	}
 
 	public function getTeacherClassAssignments($uid,$id){
-		$query = "SELECT id FROM assignments where teacherId='".$uid."'";
+		/*$query = "SELECT id FROM assignments where teacherId='".$uid."'";
 		$dbcontroller = new DBController();
 		$ids = $dbcontroller->executeSelectQuery($query);
 				$query = "SELECT classId FROM assignments where teacherId='".$uid."'";
@@ -76,7 +76,6 @@ Class Assignments {
 				array_push($fids,$ids[$i]["id"]);
 			}
 			}
-			
 			//$query = "SELECT * FROM assignments where teacherId='".$uid."' and id=";
 			$query = "SELECT * FROM assignments where id=";
 			for($k=0;$k<sizeof($fids);$k++){
@@ -88,7 +87,38 @@ Class Assignments {
 			}
 			}
 		$this->assignments = $dbcontroller->executeSelectQuery($query);
-		return $this->assignments;
+		return $this->assignments;*/
+		/*$query = "SELECT * FROM classes where classTeacher='".$id."'";
+		$dbcontroller = new DBController();
+		$this->classes = $dbcontroller->executeSelectQuery($query);
+		return $this->classes;*/
+
+		$dbcontroller = new DBController();
+        $query = "SELECT id FROM assignments where teacherId='".$uid."'";
+		$ids=$dbcontroller->executeSelectQuery($query);
+		$query = "SELECT classId FROM assignments where teacherId='".$uid."'";
+		$classids=$dbcontroller->executeSelectQuery($query);
+        $fids=array();
+		for($i=0;$i<sizeof($ids);$i++){
+        $str=substr($classids[$i]["classId"],1,-1);
+		$cida=explode(",",$str);
+        for($j=0;$j<sizeof($cida);$j++){
+        if(substr($cida[$j],1,-1)==$id){
+			array_push($fids,$ids[$i]);
+		}
+		}
+		
+		$query = "SELECT * FROM classes where id=";
+		for($k=0;$k<sizeof($fids);$k++){
+		if($k==(sizeof($fids)-1)){
+			$query=$query.$fids[$k];
+		}else{
+			$query=$query.$fids[$k]." or id=";
+		}
+        }
+		}
+		$this->classes = $dbcontroller->executeSelectQuery($query);
+		return $this->classes;
 	}	
 
 	public function getTeacherSubjectAssignments($uid,$id){
@@ -122,20 +152,18 @@ Class Assignments {
 		$ids=array(5,6);
 		$query = "SELECT classId FROM assignments ";
 		echo $query;
-		$classids=array("1,3","3,4");
+		$classesids=array("[\"1\",\"3\"]","[\"3\",\"4\"]");
         $fids=array();
-		$cida=array();
 		for($i=0;$i<sizeof($ids);$i++){
-        
-		$cid=$classids[$i];
-		$cida=explode(",",$cid);
+        $str=substr($classesids[$i],1,-1);
+		$cida=explode(",",$str);
         for($j=0;$j<sizeof($cida);$j++){
-        if($cida[$j]==$id){
+        if(substr($cida[$j],1,-1)==$id){
 			array_push($fids,$ids[$i]);
 		}
 		}
 		
-		$query = "SELECT * FROM assignments where id=";
+		$query = "SELECT * FROM classes where id=";
 		for($k=0;$k<sizeof($fids);$k++){
 		if($k==(sizeof($fids)-1)){
 			$query=$query.$fids[$k];

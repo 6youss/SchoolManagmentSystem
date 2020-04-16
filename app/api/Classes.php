@@ -36,19 +36,18 @@ Class Classes {
 		$dbcontroller = new DBController();
 		$this->classes = $dbcontroller->executeSelectQuery($query);
 		return $this->classes;*/
+
+		$dbcontroller = new DBController();
         $query = "SELECT id FROM classes ";
 		$ids=$dbcontroller->executeSelectQuery($query);
 		$query = "SELECT classTeacher FROM classes ";
 		$teacherids=$dbcontroller->executeSelectQuery($query);
-		$str=substr($teacherids[0]["classId"],1,-1);
-		$teacherids=explode(",",$str);
         $fids=array();
-		$tida=array();
 		for($i=0;$i<sizeof($ids);$i++){
-		$tid=$teacherids[$i];
-		$tida=explode(",",$tid);
+        $str=substr($teacherids[$i]["classTeacher"],1,-1);
+		$tida=explode(",",$str);
         for($j=0;$j<sizeof($tida);$j++){
-        if($tida[$j]==$id){
+        if(substr($tida[$j],1,-1)==$id){
 			array_push($fids,$ids[$i]);
 		}
 		}
@@ -62,6 +61,8 @@ Class Classes {
 		}
         }
 		}
+		$this->classes = $dbcontroller->executeSelectQuery($query);
+		return $this->classes;
 	}	
 	
 	
@@ -69,21 +70,19 @@ Class Classes {
 }
 
 /*
-$id=2;
+$id=3;
         $query = "SELECT id FROM classes ";
         echo $query;
 		$ids=array(5,6);
 		$query = "SELECT classTeacher FROM classes ";
 		echo $query;
-		$teacherids=array("1,3","3,4");
+		$teacherids=array("[\"1\",\"3\"]","[\"3\",\"4\"]");
         $fids=array();
-		$tida=array();
 		for($i=0;$i<sizeof($ids);$i++){
-        
-		$tid=$teacherids[$i];
-		$tida=explode(",",$tid);
+        $str=substr($teacherids[$i],1,-1);
+		$tida=explode(",",$str);
         for($j=0;$j<sizeof($tida);$j++){
-        if($tida[$j]==$id){
+        if(substr($tida[$j],1,-1)==$id){
 			array_push($fids,$ids[$i]);
 		}
 		}

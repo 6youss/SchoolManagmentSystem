@@ -94,9 +94,9 @@ Class Assignments {
 		return $this->classes;*/
 
 		$dbcontroller = new DBController();
-        $query = "SELECT id FROM assignments where teacherId='".$uid."'";
-		$ids=$dbcontroller->executeSelectQuery($query);
-		$query = "SELECT classId FROM assignments where teacherId='".$uid."'";
+        $query = "SELECT id FROM assignments where teacherId='".$uid."'";echo($query);
+		$ids=$dbcontroller->executeSelectQuery($query);print_r($ids);
+		$query = "SELECT classId FROM assignments where teacherId='".$uid."'";echo($query);
 		$classids=$dbcontroller->executeSelectQuery($query);print_r($classids);
         $fids=array();
 		for($i=0;$i<sizeof($ids);$i++){
@@ -117,7 +117,8 @@ Class Assignments {
 		}
         }
 		}
-		$this->classes = $dbcontroller->executeSelectQuery($query);
+		echo($query);
+		$this->classes = $dbcontroller->executeSelectQuery($query);print_r($classes);
 		return $this->classes;
 	}	
 

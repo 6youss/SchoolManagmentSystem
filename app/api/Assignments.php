@@ -97,7 +97,7 @@ Class Assignments {
         $query = "SELECT id FROM assignments where teacherId='".$uid."'";
 		$ids=$dbcontroller->executeSelectQuery($query);
 		$query = "SELECT classId FROM assignments where teacherId='".$uid."'";
-		$classids=$dbcontroller->executeSelectQuery($query);
+		$classids=$dbcontroller->executeSelectQuery($query);print_r($classids);
         $fids=array();
 		for($i=0;$i<sizeof($ids);$i++){
         $str=substr($classids[$i]["classId"],1,-1);

@@ -39,7 +39,7 @@ Class Classes {
 		$query = "SELECT id FROM classes ";
 		$dbcontroller = new DBController();
 		$ids = array();
-		$dbcontroller->executeSelectQuery($query);
+		$ids = $dbcontroller->executeSelectQuery($query);
 		$query = "SELECT classTeacher FROM classes ";
 		$teacherids = array();
 		$teacherids = $dbcontroller->executeSelectQuery($query);

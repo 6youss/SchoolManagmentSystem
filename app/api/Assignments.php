@@ -104,7 +104,7 @@ Class Assignments {
 		$cida=explode(",",$str);
         for($j=0;$j<sizeof($cida);$j++){
         if(substr($cida[$j],1,-1)==$id){
-			array_push($fids,$ids[$i]);
+			array_push($fids,$ids[$i]["id"]);
 		}
 		}
 		

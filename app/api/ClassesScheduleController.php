@@ -28,7 +28,7 @@ if(isset($_GET["id"]) ){
         case "get":
             // to handle REST Url /mobile/list/
             $classesscheduleRestHandler = new ClassesScheduleRestHandler();
-            $classesscheduleRestHandler->getClassSchedule($id);
+            $classesscheduleRestHandler->getClassSchedule($classId);
             break;
 
 

@@ -22,6 +22,13 @@ Class Subjects {
 		$this->subject = $dbcontroller->executeSelectQuery($query);
 		return $this->subject;
 	}	
+
+	public function getTeacherClassSubjects($teacherId,$classId){
+		$query = "SELECT * FROM subject where teacherId=".$teacherId." and classId=".$classId;
+		$dbcontroller = new DBController();
+		$this->subject = $dbcontroller->executeSelectQuery($query);
+		return $this->subject;
+	}
 	
 	
     

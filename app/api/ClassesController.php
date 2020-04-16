@@ -10,6 +10,7 @@ $json = file_get_contents('php://input');
 	 
 	 // name store into $name.
     $view = $obj['view'];
+    $id=$obj['id'];
     /*$view = "";
 if(isset($_GET["view"]) ){
 	$view = $_GET["view"];

@@ -16,40 +16,12 @@ Class Attendance {
 		return $this->attendance;
 	}
 
-	public function getClassAttendance($id,$date){
-		$query = "SELECT * FROM attendance where classId=".$id." and date='".$date."'";
-		$dbcontroller = new DBController();
-		$this->attendance = $dbcontroller->executeSelectQuery($query);
-		return $this->attendance;
-	}
-	
-	public function getSubjectAttendance($id,$date){
-		$query = "SELECT * FROM attendance where subjectId=".$id." and date='".$date."'";
-		$dbcontroller = new DBController();
-		$this->attendance = $dbcontroller->executeSelectQuery($query);
-		return $this->attendance;
-	}	
-	
-	public function getStudentAttendance($id,$date){
-		$query = "SELECT * FROM attendance where studentId=".$id." and date='".$date."'";
-		$dbcontroller = new DBController();
-		$this->attendance = $dbcontroller->executeSelectQuery($query);
-		return $this->attendance;
-	}	
-	
 	public function getClassSubjectAttendance($id,$id2,$date){
 		$query = "SELECT * FROM attendance where classId=".$id." and subjectId=".$id2." and date='".$date."'";
 		$dbcontroller = new DBController();
 		$this->attendance = $dbcontroller->executeSelectQuery($query);
 		return $this->attendance;
 	}	
-	
-	public function getClassStudentAttendance($id,$id2,$date){
-		$query = "SELECT * FROM attendance where classId=".$id." and studentId=".$id2." and date='".$date."'";
-		$dbcontroller = new DBController();
-		$this->attendance = $dbcontroller->executeSelectQuery($query);
-		return $this->attendance;
-	}
 	
 	public function getSubjectStudentAttendance($id,$id2,$date){
 		$query = "SELECT * FROM attendance where subjectId=".$id." and studentId=".$id2." and date='".$date."'";
@@ -72,15 +44,6 @@ Class Attendance {
 		$this->attendance = $dbcontroller->executeInsertQuery($query);
 		return $this->attendance;
     }
-    
-    /*public function getAttendanceByDate($id,$date){
-		$query = "SELECT * FROM attendance where studentId=".$id." and date='".$date."'";
-		$dbcontroller = new DBController();
-		$this->attendance = $dbcontroller->executeSelectQuery($query);
-		return $this->attendance;
-	}*/
-	
-	
     
 }
 ?>

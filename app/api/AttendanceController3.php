@@ -10,45 +10,33 @@ if(isset($_GET["view"]) ){
     }}
     
 {///////student id
-	$id = "";
-if(isset($_GET["id"]) ){
-	$id = $_GET["id"];
+	$classId = "";
+if(isset($_GET["classId"]) ){
+	$classId = $_GET["classId"];
     }}
-
-    {///////student id
-	$id2 = "";
-    if(isset($_GET["id2"]) ){
-        $id2 = $_GET["id2"];
-        }}
-
 {///////student id
-	$date = "";
-if(isset($_GET["date"]) ){
-	$date = $_GET["date"];
+	$subjectId = "";
+if(isset($_GET["subjectId"]) ){
+	$subjectId = $_GET["subjectId"];
     }}
+    {///////student id
+	$studentId = "";
+    if(isset($_GET["studentId"]) ){
+        $studentId = $_GET["studentId"];
+        }}
+        {///////student id
+	$date = "";
+    if(isset($_GET["date"]) ){
+        $date = $_GET["date"];
+        }}
 
     switch($view){
 
-        case "class-subject":
+        case "get":
             // to handle REST Url /mobile/list/
             $attendanceRestHandler = new AttendanceRestHandler();
-            $attendanceRestHandler->getClassSubjectAttendance($id,$id2,$date);
+            $attendanceRestHandler->getFilteredAttendance($classId,$subjectId,$studentId,$date);
             break;
-
-            case "class-student":
-                // to handle REST Url /mobile/list/
-                $attendanceRestHandler = new AttendanceRestHandler();
-                $attendanceRestHandler->getClassStudentAttendance($id,$id2,$date);
-                break;
-
-                case "subject-student":
-                    // to handle REST Url /mobile/list/
-                    $attendanceRestHandler = new AttendanceRestHandler();
-                    $attendanceRestHandler->getSubjectStudentAttendance($id,$id2,$date);
-                    break;
-
-           
-
 
         }
         ?>

@@ -27,102 +27,12 @@ class AttendanceRestHandler extends SimpleRest {
 		}
     }
 
-	function getClassAttendance($id,$date) {	
-
-		$attendance = new Attendance();
-		$rawData = $attendance->getClassAttendance($id,$date);
-        
-		if(empty($rawData)) {
-			$statusCode = 404;
-			$rawData = array('error' => 'No attendance found!');		
-		} else {
-			$statusCode = 200;
-		}
-
-		$requestContentType = 'application/json';//$_POST['HTTP_ACCEPT'];
-		$this ->setHttpHeaders($requestContentType, $statusCode);
-		
-		$result["attendance"] = $rawData;
-				
-		if(strpos($requestContentType,'application/json') !== false){
-			$response = $this->encodeJson($result);
-			echo $response;
-		}
-    }
 	
-	function getSubjectAttendance($id,$date) {	
-
-		$attendance = new Attendance();
-		$rawData = $attendance->getSubjectAttendance($id,$date);
-        
-		if(empty($rawData)) {
-			$statusCode = 404;
-			$rawData = array('error' => 'No attendance found!');		
-		} else {
-			$statusCode = 200;
-		}
-
-		$requestContentType = 'application/json';//$_POST['HTTP_ACCEPT'];
-		$this ->setHttpHeaders($requestContentType, $statusCode);
-		
-		$result["attendance"] = $rawData;
-				
-		if(strpos($requestContentType,'application/json') !== false){
-			$response = $this->encodeJson($result);
-			echo $response;
-		}
-	}
-	
-	function getStudentAttendance($id,$date) {	
-
-		$attendance = new Attendance();
-		$rawData = $attendance->getStudentAttendance($id,$date);
-        
-		if(empty($rawData)) {
-			$statusCode = 404;
-			$rawData = array('error' => 'No attendance found!');		
-		} else {
-			$statusCode = 200;
-		}
-
-		$requestContentType = 'application/json';//$_POST['HTTP_ACCEPT'];
-		$this ->setHttpHeaders($requestContentType, $statusCode);
-		
-		$result["attendance"] = $rawData;
-				
-		if(strpos($requestContentType,'application/json') !== false){
-			$response = $this->encodeJson($result);
-			echo $response;
-		}
-	}
 	
 	function getClassSubjectAttendance($id,$id2,$date) {	
 
 		$attendance = new Attendance();
 		$rawData = $attendance->getClassSubjectAttendance($id,$id2,$date);
-        
-		if(empty($rawData)) {
-			$statusCode = 404;
-			$rawData = array('error' => 'No attendance found!');		
-		} else {
-			$statusCode = 200;
-		}
-
-		$requestContentType = 'application/json';//$_POST['HTTP_ACCEPT'];
-		$this ->setHttpHeaders($requestContentType, $statusCode);
-		
-		$result["attendance"] = $rawData;
-				
-		if(strpos($requestContentType,'application/json') !== false){
-			$response = $this->encodeJson($result);
-			echo $response;
-		}
-	}
-	
-	function getClassStudentAttendance($id,$id2,$date) {	
-
-		$attendance = new Attendance();
-		$rawData = $attendance->getClassStudentAttendance($id,$id2,$date);
         
 		if(empty($rawData)) {
 			$statusCode = 404;
@@ -210,31 +120,6 @@ class AttendanceRestHandler extends SimpleRest {
 			echo $response;
 		}
     }
-
-    /*function getAttendanceByDate($id,$date) {	
-
-		$attendance = new Attendance();
-		$rawData = $attendance->getAttendanceByDate($id,$date);
-        
-		if(empty($rawData)) {
-			$statusCode = 404;
-			$rawData = array('error' => 'No attendance found!');		
-		} else {
-			$statusCode = 200;
-		}
-
-		$requestContentType = 'application/json';//$_POST['HTTP_ACCEPT'];
-		$this ->setHttpHeaders($requestContentType, $statusCode);
-		
-		$result["attendance"] = $rawData;
-				
-		if(strpos($requestContentType,'application/json') !== false){
-			$response = $this->encodeJson($result);
-			echo $response;
-		}
-	}*/
-	
-	
     
     public function encodeJson($responseData) {
 		$jsonResponse = json_encode($responseData);

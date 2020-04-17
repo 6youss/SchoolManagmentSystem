@@ -15,6 +15,12 @@ if(isset($_GET["id"]) ){
 	$id = $_GET["id"];
     }}
 
+    {///////student id
+	$id2 = "";
+    if(isset($_GET["id2"]) ){
+        $id2 = $_GET["id2"];
+        }}
+
 {///////student id
 	$date = "";
 if(isset($_GET["date"]) ){
@@ -23,22 +29,18 @@ if(isset($_GET["date"]) ){
 
     switch($view){
 
-        case "class":
+        case "class-subject":
             // to handle REST Url /mobile/list/
             $attendanceRestHandler = new AttendanceRestHandler();
-            $attendanceRestHandler->getClassAttendance($id,$date);
+            $attendanceRestHandler->getClassSubjectAttendance($id,$id2,$date);
             break;
 
-            case "subject":
-                // to handle REST Url /mobile/list/
-                $attendanceRestHandler = new AttendanceRestHandler();
-                $attendanceRestHandler->getSubjectAttendance($id,$date);
-                break;
+           
 
-                case "student":
+                case "subject-student":
                     // to handle REST Url /mobile/list/
                     $attendanceRestHandler = new AttendanceRestHandler();
-                    $attendanceRestHandler->getStudentAttendance($id,$date);
+                    $attendanceRestHandler->getSubjectStudentAttendance($id,$id2,$date);
                     break;
 
            

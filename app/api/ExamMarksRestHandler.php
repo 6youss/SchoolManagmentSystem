@@ -26,6 +26,100 @@ class ExamMarksRestHandler extends SimpleRest {
 			echo $response;
 		}
 	}
+
+	function getSubjectStudentExamMarks($subjectId,$studentId) {	
+
+		$exammarks = new ExamMarks();
+		$rawData = $exammarks->getSubjectStudentExamMarks($subjectId,$studentId);
+        
+		if(empty($rawData)) {
+			$statusCode = 404;
+			$rawData = array('error' => 'No exam marks found!');		
+		} else {
+			$statusCode = 200;
+		}
+
+		$requestContentType = 'application/json';//$_POST['HTTP_ACCEPT'];
+		$this ->setHttpHeaders($requestContentType, $statusCode);
+		
+		$result["exam marks"] = $rawData;
+				
+		if(strpos($requestContentType,'application/json') !== false){
+			$response = $this->encodeJson($result);
+			echo $response;
+		}
+	}
+
+	function getClassSubjectExamMarks($classId,$subjectId) {	
+
+		$exammarks = new ExamMarks();
+		$rawData = $exammarks->getClassSubjectExamMarks($classId,$subjectId);
+        
+		if(empty($rawData)) {
+			$statusCode = 404;
+			$rawData = array('error' => 'No exam marks found!');		
+		} else {
+			$statusCode = 200;
+		}
+
+		$requestContentType = 'application/json';//$_POST['HTTP_ACCEPT'];
+		$this ->setHttpHeaders($requestContentType, $statusCode);
+		
+		$result["exam marks"] = $rawData;
+				
+		if(strpos($requestContentType,'application/json') !== false){
+			$response = $this->encodeJson($result);
+			echo $response;
+		}
+	}
+
+	function getClassSubjectStudentExamMarks($classId,$subjectId,$studentId) {	
+
+		$exammarks = new ExamMarks();
+		$rawData = $exammarks->getClassSubjectStudentExamMarks($classId,$subjectId,$studentId);
+        
+		if(empty($rawData)) {
+			$statusCode = 404;
+			$rawData = array('error' => 'No exam marks found!');		
+		} else {
+			$statusCode = 200;
+		}
+
+		$requestContentType = 'application/json';//$_POST['HTTP_ACCEPT'];
+		$this ->setHttpHeaders($requestContentType, $statusCode);
+		
+		$result["exam marks"] = $rawData;
+				
+		if(strpos($requestContentType,'application/json') !== false){
+			$response = $this->encodeJson($result);
+			echo $response;
+		}
+	}
+
+	function insertExamMarks($examId,$classId,$subjectId,$studentId,$examMark,$attendanceMark,$markComments) {	
+
+		$exammarks = new ExamMarks();
+		$rawData = $exammarks->insertExamMarks($examId,$classId,$subjectId,$studentId,$examMark,$attendanceMark,$markComments);
+        
+		if(empty($rawData)) {
+			$statusCode = 404;
+			$rawData = array('error' => 'ERROR!');		
+		} else {
+			$statusCode = 200;
+		}
+
+		$requestContentType = 'application/json';//$_POST['HTTP_ACCEPT'];
+		$this ->setHttpHeaders($requestContentType, $statusCode);
+		
+		$result["insert status"] = $rawData;
+				
+		if(strpos($requestContentType,'application/json') !== false){
+			$response = $this->encodeJson($result);
+			echo $response;
+		}
+	}
+
+
 	
 	
     

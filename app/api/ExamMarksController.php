@@ -22,7 +22,5 @@ if(isset($_GET["id"]) ){
             $exammarksRestHandler = new ExamMarksRestHandler();
             $exammarksRestHandler->getExamMarks($id);
             break;
-
-
         }
         ?>

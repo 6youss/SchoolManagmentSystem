@@ -15,26 +15,14 @@ if(isset($_GET["id"]) ){
 	$id = $_GET["id"];
     }}
 
-{///////date
-	$date = "";
-if(isset($_GET["date"]) ){
-	$date = $_GET["date"];
-    }}
 
     switch($view){
 
-        case "all":
+        case "get":
             // to handle REST Url /mobile/list/
             $attendanceRestHandler = new AttendanceRestHandler();
-            $attendanceRestHandler->getAllAttendances($id);
+            $attendanceRestHandler->getAttendance($id);
             break;
-
-            case "get":
-                // to handle REST Url /mobile/list/
-                $attendanceRestHandler = new AttendanceRestHandler();
-                $attendanceRestHandler->getAttendanceByDate($id,$date);
-                break;
-
 
         }
         ?>

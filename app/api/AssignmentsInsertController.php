@@ -2,8 +2,21 @@
 require_once("AssignmentsRestHandler.php");
 require_once("Assignments.php");		
 
-
-{///////view
+$json = file_get_contents('php://input');
+ 
+	 // decoding the received JSON and store into $obj variable.
+	 $obj = json_decode($json,true);
+	 
+	 // name store into $name.
+	$view = $obj['view'];
+    $classId=$obj['classId'];
+     $subjectId=$obj['subjectId'];
+     $teacherId=$obj['teacherId'];
+     $assignmentTitle=$obj['assignmentTitle'];
+     $assignmentDescription=$obj['assignmentDescription'];
+     $assignmentDeadLine=$obj['assignmentDeadLine'];
+     $asignmentFile=$obj['asignmentFile'];
+/*{///////view
 	$view = "";
 if(isset($_GET["view"]) ){
 	$view = $_GET["view"];
@@ -25,7 +38,7 @@ if(isset($_GET["view"]) ){
         $assignmentTitle=$_GET["assignmentTitle"];
         $assignmentDescription=$_GET["assignmentDescription"];
         $asignmentFile=$_GET["asignmentFile"];
-        $assignmentDeadLine=$_GET["assignmentDeadLine"];
+        $assignmentDeadLine=$_GET["assignmentDeadLine"];*/
         
      
     

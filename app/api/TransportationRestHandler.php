@@ -11,7 +11,7 @@ class TransportationRestHandler extends SimpleRest {
         
 		if(empty($rawData)) {
 			$statusCode = 404;
-			$rawData = array('error' => 'No transportation found!');		
+			$rawData = array('error' => 'No transportations found!');		
 		} else {
 			$statusCode = 200;
 		}
@@ -27,7 +27,28 @@ class TransportationRestHandler extends SimpleRest {
 		}
 	}
 	
-	
+	function getTransportation($id) {	
+
+		$transportation = new Transportation();
+		$rawData = $transportation->getTransportation($id);
+        
+		if(empty($rawData)) {
+			$statusCode = 404;
+			$rawData = array('error' => 'No transportation found!');		
+		} else {
+			$statusCode = 200;
+		}
+
+		$requestContentType = 'application/json';//$_POST['HTTP_ACCEPT'];
+		$this ->setHttpHeaders($requestContentType, $statusCode);
+		
+		$result["transportation"] = $rawData;
+				
+		if(strpos($requestContentType,'application/json') !== false){
+			$response = $this->encodeJson($result);
+			echo $response;
+		}
+	}
     
     public function encodeJson($responseData) {
 		$jsonResponse = json_encode($responseData);

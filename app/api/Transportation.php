@@ -16,7 +16,12 @@ Class Transportation {
 		return $this->transportation;
 	}	
 	
-	
+	public function getTransportation($id){
+		$query = "SELECT * FROM transportation where id=".$id;
+		$dbcontroller = new DBController();
+		$this->transportation = $dbcontroller->executeSelectQuery($query);
+		return $this->transportation;
+	}
     
 }
 ?>

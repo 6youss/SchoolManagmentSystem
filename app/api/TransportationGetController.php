@@ -26,6 +26,12 @@ if(isset($_GET["view"]) ){
             $transportaionRestHandler->getTransportation($id);
             break;
 
+            case "user":
+                // to handle REST Url /mobile/list/
+                $transportaionRestHandler = new TransportationRestHandler();
+                $transportaionRestHandler->getUserTransportation($id);
+                break;
+
 
         }
         ?>

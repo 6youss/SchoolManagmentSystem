@@ -22,6 +22,13 @@ Class Transportation {
 		$this->transportation = $dbcontroller->executeSelectQuery($query);
 		return $this->transportation;
 	}
+
+	public function getUserTransportation($id){
+		$query = "SELECT transport FROM users where id=".$id;
+		$dbcontroller = new DBController();
+		$this->transportation = $dbcontroller->executeSelectQuery($query);
+		return $this->transportation;
+	}
     
 }
 ?>

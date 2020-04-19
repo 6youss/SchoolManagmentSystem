@@ -25,9 +25,9 @@ class BooksRestHandler extends SimpleRest {
 			$response = $this->encodeJson($result);
 			echo $response;
 		}
-	}
-	
-	function getTraditionalBooks() {	
+    }
+
+	/*function getTraditionalBooks() {	
 
 		$books = new Books();
 		$rawData = $books->getTraditionalBooks();
@@ -49,8 +49,6 @@ class BooksRestHandler extends SimpleRest {
 			echo $response;
 		}
     }
-
-	/*
 
     function getEBooks() {	
 

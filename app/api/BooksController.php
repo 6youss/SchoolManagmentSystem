@@ -28,8 +28,8 @@ if(isset($_GET["view"]) ){
         case "traditional":
             // to handle REST Url /mobile/list/
             $booksRestHandler = new BooksRestHandler();
-            //$booksRestHandler->getTraditionalBooks();
-            $booksRestHandler->getTypeBooks("traditional");
+            $booksRestHandler->getTraditionalBooks();
+            //$booksRestHandler->getTypeBooks("traditional");
             break;
         case "electronic":
             $booksRestHandler = new BooksRestHandler();

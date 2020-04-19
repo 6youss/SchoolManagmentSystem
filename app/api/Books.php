@@ -15,14 +15,16 @@ Class Books {
 		$dbcontroller = new DBController();
 		$this->books = $dbcontroller->executeSelectQuery($query);
 		return $this->books;
-    }
-     
-    /*public function getTraditionalBooks(){
+	}
+	
+	public function getTraditionalBooks(){
 		$query = "SELECT * FROM booklibrary where bookType='traditional'";
 		$dbcontroller = new DBController();
 		$this->books = $dbcontroller->executeSelectQuery($query);
 		return $this->books;
     }
+     
+    /*
 
     public function getEBooks(){
 		$query = "SELECT * FROM booklibrary where bookType='electronic'";

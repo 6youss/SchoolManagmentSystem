@@ -17,7 +17,7 @@ Class Books {
 		return $this->books;
     }
      
-    public function getTraditionalBooks(){
+    /*public function getTraditionalBooks(){
 		$query = "SELECT * FROM booklibrary where bookType='traditional'";
 		$dbcontroller = new DBController();
 		$this->books = $dbcontroller->executeSelectQuery($query);
@@ -26,6 +26,13 @@ Class Books {
 
     public function getEBooks(){
 		$query = "SELECT * FROM booklibrary where bookType='electronic'";
+		$dbcontroller = new DBController();
+		$this->books = $dbcontroller->executeSelectQuery($query);
+		return $this->books;
+	}*/
+	
+	public function getTypeBooks($type){
+		$query = "SELECT * FROM booklibrary where bookType='".$type."'";
 		$dbcontroller = new DBController();
 		$this->books = $dbcontroller->executeSelectQuery($query);
 		return $this->books;

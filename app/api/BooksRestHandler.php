@@ -27,7 +27,7 @@ class BooksRestHandler extends SimpleRest {
 		}
     }
 
-	function getTraditionalBooks() {	
+	/*function getTraditionalBooks() {	
 
 		$books = new Books();
 		$rawData = $books->getTraditionalBooks();
@@ -66,6 +66,29 @@ class BooksRestHandler extends SimpleRest {
 		$this ->setHttpHeaders($requestContentType, $statusCode);
 		
 		$result["Ebooks"] = $rawData;
+				
+		if(strpos($requestContentType,'application/json') !== false){
+			$response = $this->encodeJson($result);
+			echo $response;
+		}
+	}*/
+	
+	function getTypeBooks($type) {	
+
+		$books = new Books();
+		$rawData = $books->getTypeBooks($type);
+        
+		if(empty($rawData)) {
+			$statusCode = 404;
+			$rawData = array('error' => 'No '.$type.' books found!');		
+		} else {
+			$statusCode = 200;
+		}
+
+		$requestContentType = 'application/json';//$_POST['HTTP_ACCEPT'];
+		$this ->setHttpHeaders($requestContentType, $statusCode);
+		
+		$result[$type." books"] = $rawData;
 				
 		if(strpos($requestContentType,'application/json') !== false){
 			$response = $this->encodeJson($result);

@@ -10,7 +10,7 @@ Class Exams {
 		you should hookup the DAO here
 	*/
 	public function getAllExams(){
-		$query = "SELECT * FROM examslist";
+		$query = "SELECT * FROM examslist order by id desc";
 		$dbcontroller = new DBController();
 		$this->exams = $dbcontroller->executeSelectQuery($query);
 		return $this->exams;

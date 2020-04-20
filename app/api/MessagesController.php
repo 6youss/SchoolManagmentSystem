@@ -41,5 +41,10 @@ if(isset($_GET["userId"]) ){
             $messagesRestHandler->getReceivedMessages($userId);
         break;
 
+        case "sender":
+            $messagesRestHandler = new MessagesRestHandler();
+            $messagesRestHandler->getMessageSender($userId);
+        break;
+
         }
         ?>

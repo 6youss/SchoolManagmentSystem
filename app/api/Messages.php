@@ -14,25 +14,30 @@ Class Messages {
 		//$query = "SELECT * FROM messages where fromId=".$id." or toId=".$id;
 		$query = "SELECT * FROM messages where userId=".$id." order by id desc";
 		$dbcontroller = new DBController();
-		$this->terms = $dbcontroller->executeSelectQuery($query);
-		return $this->terms;
+		$this->messages = $dbcontroller->executeSelectQuery($query);
+		return $this->messages;
     }
 
 	public function getSentMessages($id){
 		$query = "SELECT * FROM messages where userId=".$id." and fromId=".$id." order by id desc";
 		$dbcontroller = new DBController();
-		$this->terms = $dbcontroller->executeSelectQuery($query);
-		return $this->terms;
+		$this->messages = $dbcontroller->executeSelectQuery($query);
+		return $this->messages;
     }	
     
     public function getReceivedMessages($id){
 		$query = "SELECT * FROM messages where userId=".$id." and toId=".$id." order by id desc";
 		$dbcontroller = new DBController();
-		$this->terms = $dbcontroller->executeSelectQuery($query);
-		return $this->terms;
+		$this->messages = $dbcontroller->executeSelectQuery($query);
+		return $this->messages;
 	}
 	
-	
+	public function getMessageSender($id){
+		$query = "SELECT username,photo FROM users where id=".$id;
+		$dbcontroller = new DBController();
+		$this->messages = $dbcontroller->executeSelectQuery($query);
+		return $this->messages;
+	}
     
 }
 ?>

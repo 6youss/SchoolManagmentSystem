@@ -33,7 +33,9 @@ class MessagesRestHandler extends SimpleRest {
 
 		$messages = new Messages();
 		$rawData = $messages->getSentMessages($id);
-        
+        for($i=0;$i<sizeof($rawData);$i++){
+			$rawData[$i]['dateSent']=date('m/d/Y',$rawData[$i]['dateSent']);
+		}
 		if(empty($rawData)) {
 			$statusCode = 404;
 			$rawData = array('error' => 'No sent messages found!');		
@@ -56,7 +58,9 @@ class MessagesRestHandler extends SimpleRest {
 
 		$messages = new Messages();
 		$rawData = $messages->getReceivedMessages($id);
-        
+        for($i=0;$i<sizeof($rawData);$i++){
+			$rawData[$i]['dateSent']=date('m/d/Y',$rawData[$i]['dateSent']);
+		}
 		if(empty($rawData)) {
 			$statusCode = 404;
 			$rawData = array('error' => 'No recieved messages found!');		

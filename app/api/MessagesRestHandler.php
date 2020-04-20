@@ -9,7 +9,7 @@ class MessagesRestHandler extends SimpleRest {
 		$messages = new Messages();
 		$rawData = $messages->getAllMessages($id);
 		for($i=0;$i<sizeof($rawData);$i++){
-			$rawData[0]['dateSent']=date('m/d/Y',$rawData[$i]['dateSent']);
+			$rawData[$i]['dateSent']=date('m/d/Y',$rawData[$i]['dateSent']);
 		}
 		if(empty($rawData)) {
 			$statusCode = 404;

@@ -8,7 +8,7 @@ class MessagesRestHandler extends SimpleRest {
 
 		$messages = new Messages();
 		$rawData = $messages->getAllMessages($id);
-        
+        $rawData[0]['dateSent']=date('m/d/Y',$rawData[0]['dateSent']);
 		if(empty($rawData)) {
 			$statusCode = 404;
 			$rawData = array('error' => 'No messages found!');		

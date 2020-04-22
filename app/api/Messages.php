@@ -51,10 +51,10 @@ Class Messages {
 		$query = "INSERT INTO `messages`( `messageId`, `userId`, `fromId`, `toId`, `messageText`, `dateSent`) 
 		VALUES (1,".$fromId.",".$fromId.",".$toId.",'".$messageText."','".$dateSent."')";echo $query;
 		$dbcontroller = new DBController();
-		$this->messages = $dbcontroller->executeInsertQuery($query);echo($messages);
+		$this->messages = $dbcontroller->executeInsertQuery($query);print_r($this->messages);
 		$query = "INSERT INTO `messages`( `messageId`, `userId`, `fromId`, `toId`, `messageText`, `dateSent`) 
 		VALUES (2,".$toId.",".$fromId.",".$toId.",'".$messageText."','".$dateSent."')";echo $query;
-		$this->messages = $dbcontroller->executeInsertQuery($query);echo($messages);
+		$this->messages = $dbcontroller->executeInsertQuery($query);print_r($this->messages);
 		return $this->messages;
 	}
     

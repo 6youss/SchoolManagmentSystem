@@ -49,11 +49,11 @@ Class Messages {
 	public function sendMessage($fromId,$toId,$messageText,$dateSent){
 		echo $fromId;echo $toId;echo $messageText;echo $dateSent;
 		$query = "INSERT INTO `messages`( `messageId`, `userId`, `fromId`, `toId`, `messageText`, `dateSent`) 
-		VALUES (1,".$fromId.",".$fromId.",".$toId.",'".$messageText."','".$dateSent."'";echo $query;
+		VALUES (1,".$fromId.",".$fromId.",".$toId.",'".$messageText."','".$dateSent."')";echo $query;
 		$dbcontroller = new DBController();
 		$this->messages = $dbcontroller->executeInsertQuery($query);print_r($messages);
 		$query = "INSERT INTO `messages`( `messageId`, `userId`, `fromId`, `toId`, `messageText`, `dateSent`) 
-		VALUES (2,".$toId.",".$fromId.",".$toId.",'".$messageText."','".$dateSent."'";echo $query;
+		VALUES (2,".$toId.",".$fromId.",".$toId.",'".$messageText."','".$dateSent."')";echo $query;
 		$this->messages = $dbcontroller->executeInsertQuery($query);print_r($messages);
 		return $this->messages;
 	}

@@ -102,6 +102,29 @@ class MessagesRestHandler extends SimpleRest {
 		}
 	}
 
+	function getMessageReciever($user) {	
+
+		$messages = new Messages();
+		$rawData = $messages->getMessageReciever($user);
+        
+		if(empty($rawData)) {
+			$statusCode = 404;
+			$rawData = array('error' => 'No user found!');		
+		} else {
+			$statusCode = 200;
+		}
+
+		$requestContentType = 'application/json';//$_POST['HTTP_ACCEPT'];
+		$this ->setHttpHeaders($requestContentType, $statusCode);
+		
+		$result["user"] = $rawData;
+				
+		if(strpos($requestContentType,'application/json') !== false){
+			$response = $this->encodeJson($result);
+			echo $response;
+		}
+	}
+
 	function sendMessage($fromId,$toId,$messageText,$dateSent) {	
 
 		$messages = new Messages();

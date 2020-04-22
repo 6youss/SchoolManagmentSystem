@@ -39,6 +39,13 @@ Class Messages {
 		return $this->messages;
 	}
 
+	public function getMessageReciever($user){
+		$query = "SELECT id FROM users where username='".$user."' or email='".$user."'";
+		$dbcontroller = new DBController();
+		$this->messages = $dbcontroller->executeSelectQuery($query);
+		return $this->messages;
+	}
+
 	public function sendMessage($fromId,$toId,$messageText,$dateSent){
 		$query = "INSERT INTO `messages`( `messageId`, `userId`, `fromId`, `toId`, `messageText`, `dateSent`) 
 		VALUES (1,".$fromId.",".$fromId.",".$toId.",'".$messageText."','".$dateSent."'";

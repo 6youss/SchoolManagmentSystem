@@ -50,7 +50,7 @@ Class Messages {
 		$query = "INSERT INTO `messages`( `messageId`, `userId`, `fromId`, `toId`, `messageText`, `dateSent`) 
 		VALUES (1,".$fromId.",".$fromId.",".$toId.",'".$messageText."','".$dateSent."'";
 		$dbcontroller = new DBController();
-		/*$this->messages = */$dbcontroller->executeSelectQuery($query);
+		$this->messages = $dbcontroller->executeSelectQuery($query);
 		$query = "INSERT INTO `messages`( `messageId`, `userId`, `fromId`, `toId`, `messageText`, `dateSent`) 
 		VALUES (2,".$toId.",".$fromId.",".$toId.",'".$messageText."','".$dateSent."'";
 		$this->messages = $dbcontroller->executeSelectQuery($query);

@@ -30,7 +30,12 @@ Class UserInfo {
 		return $this->user;
 	}
 	
-	
+	public function getStudentClass($studentId){
+		$query = "SELECT studentClass FROM users where id= ".$studentId;
+		$dbcontroller = new DBController();
+		$this->user = $dbcontroller->executeSelectQuery($query);
+		return $this->user;
+	}
 
 	public function getUserrole($id){
 		$query = "SELECT role FROM users where username = '".$id."'";

@@ -73,6 +73,30 @@ class UserInfoRestHandler extends SimpleRest {
 			echo $response;
 		}
 		
+	}
+	
+	function getStudentClass($studentId) {	
+
+		$user = new UserInfo();
+		$rawData = $user->getStudentClass($studentId);
+        
+		if(empty($rawData)) {
+			$statusCode = 404;
+			$rawData = array('error' => 'No user info found!');		
+		} else {
+			$statusCode = 200;
+		}
+
+		$requestContentType = 'application/json';//$_POST['HTTP_ACCEPT'];
+		$this ->setHttpHeaders($requestContentType, $statusCode);
+		
+		$result["class"] = $rawData;
+				
+		if(strpos($requestContentType,'application/json') !== false){
+			$response = $this->encodeJson($result);
+			echo $response;
+		}
+		
     }
     
     public function encodeJson($responseData) {

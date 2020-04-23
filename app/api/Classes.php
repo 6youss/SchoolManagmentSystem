@@ -61,7 +61,15 @@ Class Classes {
 	}	
 
 	public function getClassTeacher($teacherId){
-		$query = "SELECT username,fullName,email,photo FROM users where id=".$teacherId;
+		$str=substr($teacherId,1,-1);
+		$ids=explode(",",$str);
+		for($i=0;$i<sizeof($ids);$i++){
+		$ids[$i]=substr($ids[$i],1,-1);
+		}
+		$query = "SELECT username,fullName,email,photo FROM users where id=";
+		for($i=0;$i<sizeof($ids);$i++){
+			if($i==0){$query=$query.$ids[$i];}else{$query=$query." or id=".$ids[$i];}
+	    }
 		$dbcontroller = new DBController();
 		$this->classes = $dbcontroller->executeSelectQuery($query);
 		return $this->classes;

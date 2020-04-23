@@ -59,6 +59,13 @@ Class Classes {
 		$this->classes = $dbcontroller->executeSelectQuery($query);
 		return $this->classes;
 	}	
+
+	public function getClassTeacher($teacherId){
+		$query = "SELECT username,fullName,photo FROM users where id=".$teacherId;
+		$dbcontroller = new DBController();
+		$this->classes = $dbcontroller->executeSelectQuery($query);
+		return $this->classes;
+    }
 	
 }
 

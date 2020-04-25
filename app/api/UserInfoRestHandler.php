@@ -102,7 +102,7 @@ class UserInfoRestHandler extends SimpleRest {
 	function getStudentParents($studentId) {	
 
 		$user = new UserInfo();
-		$rawData = $user->getStudentClass($studentId);
+		$rawData = $user->getStudentParents($studentId);
         
 		if(empty($rawData)) {
 			$statusCode = 404;

@@ -60,7 +60,7 @@ Class UserInfo {
 				if($d==$studentId){$bool=1;}
 			}
 			if($bool==1){
-				array_push($parentIds,array("id"=>$parents[$i]['id'],$e));
+				array_push($parentIds,array("id"=>$parents[$i]['id'],"relation"=>$e));
 			}
 		}
 		$query = "SELECT username,fullName,email,parentProfession,phoneNo,mobileNo FROM users where ";
@@ -75,7 +75,7 @@ Class UserInfo {
 		$this->user = $dbcontroller->executeSelectQuery($query);
 		$finalParents=array();
 		for($i=0;$i<sizeof($parentIds);$i++){
-			array_push($finalParents,array("parent"=>$this->user[$i],"relation"=>$parentIds[$i]["relation"]));
+			array_push($finalParents,array("parent"=>$this->user[$i],$parentIds[$i]["relation"]));
 		}
 		return $finalParents;
 	}

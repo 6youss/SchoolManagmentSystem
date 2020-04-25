@@ -51,16 +51,15 @@ Class UserInfo {
 			for($j=0;$j<sizeof($b);$j++){
 				if($j==0){$b[$j]=substr($b[$j],1);}else{if($j==sizeof($b)-1){$b[$j]=substr($b[$j],0,-1);}else{$b[$j]=substr($b[$j],1,-1);}}
 			}
-            print_r($b);
 			for($j=0;$j<sizeof($b);$j++){
 				$c=array();
 				$c=explode(',',$b[$j]);
-				$d=substr($c[2],5);echo $d;
+				$d=substr($c[2],5);
 				$e=substr($c[1],10);
                 $e=substr($e,1,-1);
-				if($d==$studentId){$bool=1;}//echo $bool;
+				if($d==$studentId){$bool=1;}
 			}
-			if($bool==1){echo $parents[$i]['id'];
+			if($bool==1){
 				array_push($parentIds,array("id"=>$parents[$i]['id'],"relation"=>$e));
 			}
 		}
@@ -72,15 +71,13 @@ Class UserInfo {
 			$query=$query." or id=".$parentIds[$i]["id"];
 		}
 		}
-        echo $query;
 		
 		$this->user = $dbcontroller->executeSelectQuery($query);
-		$fp=array();
+		$finalParents=array();
 		for($i=0;$i<sizeof($parentIds);$i++){
-			array_push($fp,array("parent"=>$this->user[$i],"relation"=>$parentIds[$i]["relation"]));
+			array_push($finalParents,array("parent"=>$this->user[$i],"relation"=>$parentIds[$i]["relation"]));
 		}
-		//return $this->user;
-		return $fp;
+		return $finalParents;
 	}
 
 	public function getUserrole($id){

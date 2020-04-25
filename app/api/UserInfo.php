@@ -60,7 +60,7 @@ Class UserInfo {
 				if($d==$studentId){$bool=1;}
 			}
 			if($bool==1){
-				array_push($parentIds,array("id"=>$parents[$i]['id'],"relation"=>$e));
+				array_push($parentIds,array("id"=>$parents[$i]['id'],$e));
 			}
 		}
 		$query = "SELECT username,fullName,email,parentProfession,phoneNo,mobileNo FROM users where ";

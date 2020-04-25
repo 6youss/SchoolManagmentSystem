@@ -55,7 +55,7 @@ Class UserInfo {
 				$c=array();
 				$c=explode(',',$b[$j]);
 				$d=substr($c[2],5);
-				$e=substr($c[1],10);
+				$e=substr($c[1],11);
                 $e=substr($e,1,-1);
 				if($d==$studentId){$bool=1;}
 			}

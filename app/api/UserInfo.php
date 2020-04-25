@@ -40,6 +40,7 @@ Class UserInfo {
 	public function getStudentParents($studentId){
 		echo $studentId;
 		$query="SELECT id,parentOf FROM users";echo $query;
+		$parents=array();
 		$parents=$dbcontroller->executeSelectQuery($query);print_r($parents);
 		$parentIds=array();
 		for($i=0;$i<sizeof($parents);$i++){

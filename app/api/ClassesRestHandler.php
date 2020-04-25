@@ -72,6 +72,29 @@ class ClassesRestHandler extends SimpleRest {
 			echo $response;
 		}
 	}
+
+	function getClassStudents($id) {	
+
+		$class = new Classes();
+		$rawData = $class->getClassStudents($id);
+        
+		if(empty($rawData)) {
+			$statusCode = 404;
+			$rawData = array('error' => 'No students found!');		
+		} else {
+			$statusCode = 200;
+		}
+
+		$requestContentType = 'application/json';//$_POST['HTTP_ACCEPT'];
+		$this ->setHttpHeaders($requestContentType, $statusCode);
+		
+		$result["students"] = $rawData;
+				
+		if(strpos($requestContentType,'application/json') !== false){
+			$response = $this->encodeJson($result);
+			echo $response;
+		}
+	}
 	
 	function getClassTeacher($teacherId) {	
 

@@ -38,17 +38,16 @@ Class UserInfo {
 	}
 
 	public function getStudentParents($studentId){
-		echo $studentId;
-		$query="SELECT id,parentOf FROM users";echo $query;
+		$query="SELECT id,parentOf FROM users";
 		$parents=array();
 		$dbcontroller = new DBController();
-		$parents=$dbcontroller->executeSelectQuery($query);print_r($parents);
+		$parents=$dbcontroller->executeSelectQuery($query);
 		$parentIds=array();
 		for($i=0;$i<sizeof($parents);$i++){
 			$a="";$b=array();$bool=0;
 			$a=$parents[$i]['parentOf'];
 			$a=substr($a,1,-1);
-			$b=explode('},{',$a);//print_r($b);
+			$b=explode('},{',$a);
 			for($j=0;$j<sizeof($b);$j++){
 				if($j==0){$b[$j]=substr($b[$j],1);}else{if($j==sizeof($b)-1){$b[$j]=substr($b[$j],0,-1);}else{$b[$j]=substr($b[$j],1,-1);}}
 			}
@@ -57,24 +56,31 @@ Class UserInfo {
 				$c=array();
 				$c=explode(',',$b[$j]);
 				$d=substr($c[2],5);echo $d;
+				$e=substr($c[1],10);
+                $e=substr($e,1,-1);
 				if($d==$studentId){$bool=1;}//echo $bool;
 			}
 			if($bool==1){echo $parents[$i]['id'];
-				array_push($parentIds,$parents[$i]['id']);
+				array_push($parentIds,array("id"=>$parents[$i]['id'],"relation"=>$e));
 			}
 		}
 		$query = "SELECT username,fullName,email,parentProfession,phoneNo,mobileNo FROM users where ";
 		for($i=0;$i<sizeof($parentIds);$i++){
         if($i==0){
-			$query=$query."id=".$parentIds[$i];
+			$query=$query."id=".$parentIds[$i]["id"];
 		}else{
-			$query=$query." or id=".$parentIds[$i];
+			$query=$query." or id=".$parentIds[$i]["id"];
 		}
 		}
         echo $query;
 		
 		$this->user = $dbcontroller->executeSelectQuery($query);
-		return $this->user;
+		$fp=array();
+		for($i=0;$i<sizeof($parentIds);$i++){
+			array_push($fp,array("parent"=>$this->user[$i],"relation"=>$parentIds[$i]["relation"]));
+		}
+		//return $this->user;
+		return fp;
 	}
 
 	public function getUserrole($id){
@@ -104,18 +110,20 @@ $query="SELECT id,parentOf FROM users";
 				$c=array();
 				$c=explode(',',$b[$j]);
 				$d=substr($c[2],5);echo $d;
+				$e=substr($c[1],10);
+                $e=substr($e,1,-1);
 				if($d==$studentId){$bool=1;}//echo $bool;
 			}
 			if($bool==1){echo $parents[$i]['id'];
-				array_push($parentIds,$parents[$i]['id']);
+				array_push($parentIds,array("id"=>$parents[$i]['id'],"relation"=>$e));
 			}
 		}
 		$query = "SELECT username,fullName,email,parentProfession,phoneNo,mobileNo FROM users where ";
 		for($i=0;$i<sizeof($parentIds);$i++){
         if($i==0){
-			$query=$query."id=".$parentIds[$i];
+			$query=$query."id=".$parentIds[$i]["id"];
 		}else{
-			$query=$query." or id=".$parentIds[$i];
+			$query=$query." or id=".$parentIds[$i]["id"];
 		}
 		}
         echo $query;

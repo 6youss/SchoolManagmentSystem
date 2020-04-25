@@ -37,7 +37,12 @@ Class Subjects {
 		return $this->subject;
 	}
 	
-	
+	public function getSubjectTeacher($id){
+		$query = "SELECT username,fullName,email,photo FROM users where id=".$id;
+		$dbcontroller = new DBController();
+		$this->subject = $dbcontroller->executeSelectQuery($query);
+		return $this->subject;
+	}
     
 }
 ?>

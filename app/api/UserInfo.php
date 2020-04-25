@@ -38,7 +38,8 @@ Class UserInfo {
 	}
 
 	public function getStudentParents($studentId){
-		$query="SELECT id,parentOf FROM users";
+		echo $studentId;
+		$query="SELECT id,parentOf FROM users";echo $query;
 		$parents=$dbcontroller->executeSelectQuery($query);print_r($parents);
 		$parentIds=array();
 		for($i=0;$i<sizeof($parents);$i++){
@@ -49,7 +50,7 @@ Class UserInfo {
 			for($j=0;$j<sizeof($b);$j++){
 				if($j==0){$b[$j]=substr($b[$j],1);}else{if($j==sizeof($b)-1){$b[$j]=substr($b[$j],0,-1);}else{$b[$j]=substr($b[$j],1,-1);}}
 			}
-            //print_r($b);
+            print_r($b);
 			for($j=0;$j<sizeof($b);$j++){
 				$c=array();
 				$c=explode(',',$b[$j]);

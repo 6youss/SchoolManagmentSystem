@@ -80,7 +80,7 @@ Class UserInfo {
 			array_push($fp,array("parent"=>$this->user[$i],"relation"=>$parentIds[$i]["relation"]));
 		}
 		//return $this->user;
-		return fp;
+		return $fp;
 	}
 
 	public function getUserrole($id){

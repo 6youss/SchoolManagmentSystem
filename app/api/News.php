@@ -9,7 +9,14 @@ Class News {
 	/*
 		you should hookup the DAO here
 	*/
-	public function getAllNews(){
+	public function getNews($role){
+		$query = "SELECT * FROM newsboard where newsFor = 'all' or newsFor='".$role."'";
+		$dbcontroller = new DBController();
+		$this->news = $dbcontroller->executeSelectQuery($query);
+		return $this->news;
+	}	
+
+	/*public function getAllNews(){
 		$query = "SELECT * FROM newsboard where newsFor = 'all' ";
 		$dbcontroller = new DBController();
 		$this->news = $dbcontroller->executeSelectQuery($query);
@@ -35,7 +42,7 @@ Class News {
 		$dbcontroller = new DBController();
 		$this->news = $dbcontroller->executeSelectQuery($query);
 		return $this->news;
-	}
+	}*/
     
 }
 ?>

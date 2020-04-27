@@ -17,7 +17,7 @@ Class Polls {
 		return $this->polls;
 	}	
 
-	public function getAllPolls(){
+	/*public function getAllPolls(){
 		$query = "SELECT * FROM polls where pollTarget = 'all' ";
 		$dbcontroller = new DBController();
 		$this->polls = $dbcontroller->executeSelectQuery($query);
@@ -43,7 +43,7 @@ Class Polls {
 		$dbcontroller = new DBController();
 		$this->polls = $dbcontroller->executeSelectQuery($query);
 		return $this->polls;
-	}
+	}*/
     
 }
 ?>

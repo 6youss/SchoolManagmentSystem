@@ -14,11 +14,17 @@ $json = file_get_contents('php://input');
 	 $obj = json_decode($json,true);
 	 
 	 // name store into $name.
-	$view = $obj['view'];
+    $view = $obj['view'];
+    $role=$obj['role'];
     
     switch($view){
+        case "get":
+            // to handle REST Url /mobile/list/
+            $newsRestHandler = new NewsRestHandler();
+            $newsRestHandler->getNews($role);
+            break;
 
-        case "all":
+       /* case "all":
             // to handle REST Url /mobile/list/
             $newsRestHandler = new NewsRestHandler();
             $newsRestHandler->getAllNews();
@@ -40,7 +46,7 @@ $json = file_get_contents('php://input');
                         // to handle REST Url /mobile/list/
                         $newsRestHandler = new NewsRestHandler();
                         $newsRestHandler->getParentsNews();
-                        break;
+                        break;*/
 
 
         }

@@ -27,7 +27,7 @@ class PollsRestHandler extends SimpleRest {
 		}
     }
 
-	function getAllPolls() {	
+	/*function getAllPolls() {	
 
 		$polls = new Polls();
 		$rawData = $polls->getAllPolls();
@@ -119,7 +119,7 @@ class PollsRestHandler extends SimpleRest {
 			echo $response;
 		}
     }
-    
+    */
     
     public function encodeJson($responseData) {
 		$jsonResponse = json_encode($responseData);

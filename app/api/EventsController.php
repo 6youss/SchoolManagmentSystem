@@ -15,11 +15,17 @@ if(isset($_GET["view"]) ){
 	 $obj = json_decode($json,true);
 	 
 	 // name store into $name.
-	$view = $obj['view'];
+    $view = $obj['view'];
+    $role=$obj['role'];
     
     switch($view){
+        case "get":
+            // to handle REST Url /mobile/list/
+            $NewsRestHandler = new EventsRestHandler();
+            $NewsRestHandler->getEvents($role);
+            break;
 
-        case "all":
+       /* case "all":
             // to handle REST Url /mobile/list/
             $NewsRestHandler = new EventsRestHandler();
             $NewsRestHandler->getAllEvents();
@@ -41,7 +47,7 @@ if(isset($_GET["view"]) ){
                         // to handle REST Url /mobile/list/
                         $NewsRestHandler = new EventsRestHandler();
                         $NewsRestHandler->getParentsEvents();
-                        break;
+                        break;*/
 
 
         }

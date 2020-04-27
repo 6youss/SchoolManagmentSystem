@@ -9,7 +9,14 @@ Class Events {
 	/*
 		you should hookup the DAO here
 	*/
-	public function getAllEvents(){
+	public function getEvents($role){
+		$query = "SELECT * FROM events where eventFor = 'all' or eventFor='".$role."'";
+		$dbcontroller = new DBController();
+		$this->events = $dbcontroller->executeSelectQuery($query);
+		return $this->events;
+	}
+
+	/*public function getAllEvents(){
 		$query = "SELECT * FROM events where eventFor = 'all' ";
 		$dbcontroller = new DBController();
 		$this->events = $dbcontroller->executeSelectQuery($query);
@@ -36,6 +43,6 @@ Class Events {
 		$this->events = $dbcontroller->executeSelectQuery($query);
 		return $this->events;
 	}
-    
+    */
 }
 ?>

@@ -27,7 +27,7 @@ class NewsRestHandler extends SimpleRest {
 		}
     }
 
-	function getAllNews() {	
+	/*function getAllNews() {	
 
 		$news = new News();
 		$rawData = $news->getAllNews();
@@ -119,7 +119,7 @@ class NewsRestHandler extends SimpleRest {
 			echo $response;
 		}
     }
-    
+    */
     
     public function encodeJson($responseData) {
 		$jsonResponse = json_encode($responseData);

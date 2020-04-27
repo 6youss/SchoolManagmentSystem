@@ -17,7 +17,7 @@ Class Subjects {
     }	
     
     public function getClassSubjects($id){
-		$query = "SELECT s.id, s.subjectTitle, s.teacherId, u.username, u.email, u.fullName,u.photo
+		$query = "SELECT s.id, s.subjectTitle, s.teacherId, u.username, u.email, u.fullName,u.photo,u.mobileNo,u.phoneNo 
 		 FROM subject s,users u where s.classId=".$id." and s.teacherId=u.id";
 		$dbcontroller = new DBController();
 		$this->subject = $dbcontroller->executeSelectQuery($query);

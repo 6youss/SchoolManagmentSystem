@@ -4,6 +4,29 @@ require_once("Polls.php");
 		
 class PollsRestHandler extends SimpleRest {
 
+	function getPolls($role) {	
+
+		$polls = new Polls();
+		$rawData = $polls->getPolls($role);
+        
+		if(empty($rawData)) {
+			$statusCode = 404;
+			$rawData = array('error' => 'No polls found!');		
+		} else {
+			$statusCode = 200;
+		}
+
+		$requestContentType = 'application/json';//$_POST['HTTP_ACCEPT'];
+		$this ->setHttpHeaders($requestContentType, $statusCode);
+		
+		$result["polls"] = $rawData;
+				
+		if(strpos($requestContentType,'application/json') !== false){
+			$response = $this->encodeJson($result);
+			echo $response;
+		}
+    }
+
 	function getAllPolls() {	
 
 		$polls = new Polls();

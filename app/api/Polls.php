@@ -9,6 +9,14 @@ Class Polls {
 	/*
 		you should hookup the DAO here
 	*/
+
+	public function getPolls($role){
+		$query = "SELECT * FROM polls where pollTarget = 'all' or pollTarget = '".$role."s'";
+		$dbcontroller = new DBController();
+		$this->polls = $dbcontroller->executeSelectQuery($query);
+		return $this->polls;
+	}	
+
 	public function getAllPolls(){
 		$query = "SELECT * FROM polls where pollTarget = 'all' ";
 		$dbcontroller = new DBController();

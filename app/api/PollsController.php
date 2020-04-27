@@ -16,10 +16,14 @@ if(isset($_GET["view"]) ){
 	 
 	 // name store into $name.
 	$view = $obj['view'];
-    
+    $role=$obj['role'];
     switch($view){
-
-        case "all":
+        case "get":
+            // to handle REST Url /mobile/list/
+            $pollsRestHandler = new PollsRestHandler();
+            $pollsRestHandler->getPolls($role);
+            break;
+        /*case "all":
             // to handle REST Url /mobile/list/
             $pollsRestHandler = new PollsRestHandler();
             $pollsRestHandler->getAllPolls();
@@ -41,7 +45,7 @@ if(isset($_GET["view"]) ){
                         // to handle REST Url /mobile/list/
                         $pollsRestHandler = new PollsRestHandler();
                         $pollsRestHandler->getParentsPolls();
-                        break;
+                        break;*/
 
 
         }

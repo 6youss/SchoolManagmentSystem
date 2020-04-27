@@ -32,7 +32,7 @@ Class Classes {
 	}	
 	
 	public function getClassStudents($id){
-		$query = "SELECT id,username,fullName,email,photo FROM users where studentClass=".$id;
+		$query = "SELECT id,username,fullName,birthday,gender,email,photo,adress FROM users where studentClass=".$id;
 		$dbcontroller = new DBController();
 		$this->classes = $dbcontroller->executeSelectQuery($query);
 		return $this->classes;

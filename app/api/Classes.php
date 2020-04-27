@@ -73,7 +73,7 @@ Class Classes {
 		for($i=0;$i<sizeof($ids);$i++){
 		$ids[$i]=substr($ids[$i],1,-1);
 		}
-		$query = "SELECT username,fullName,email,photo FROM users where id=";
+		$query = "SELECT username,fullName,email,photo,phoneNo,mobileNo FROM users where id=";
 		for($i=0;$i<sizeof($ids);$i++){
 			if($i==0){$query=$query.$ids[$i];}else{$query=$query." or id=".$ids[$i];}
 	    }

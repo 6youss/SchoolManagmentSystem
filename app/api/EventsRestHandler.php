@@ -4,7 +4,7 @@ require_once("News.php");
 		
 class EventsRestHandler extends SimpleRest {
 
-	function getEvents() {	
+	function getEvents($role) {	
 
 		$events = new Events();
 		$rawData = $events->getEvents($role);

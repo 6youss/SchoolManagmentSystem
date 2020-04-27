@@ -63,7 +63,7 @@ Class UserInfo {
 				array_push($parentIds,array("id"=>$parents[$i]['id'],"relation"=>$e));
 			}
 		}
-		$query = "SELECT username,fullName,email,parentProfession,phoneNo,mobileNo FROM users where ";
+		$query = "SELECT username,fullName,email,photo,parentProfession,phoneNo,mobileNo FROM users where ";
 		for($i=0;$i<sizeof($parentIds);$i++){
         if($i==0){
 			$query=$query."id=".$parentIds[$i]["id"];

@@ -28,11 +28,11 @@ $studentId=$obj['studentId'];*/
             case "class":
                 $userinfoRestHandler = new UserInfoRestHandler();
                 $userinfoRestHandler->getStudentClass($studentId);
-
+            break;
                 case "parents":
                     $userinfoRestHandler = new UserInfoRestHandler();
                     $userinfoRestHandler->getStudentParents($studentId);
-            
+                break;
 }
     
     ?>

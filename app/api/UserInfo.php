@@ -87,6 +87,12 @@ Class UserInfo {
 		return $this->user;
 	}
 	
+	public function getTeacher($teacherId){
+		$query = "SELECT username,email,fullName,photo,phoneNo,mobileNo FROM users where id='".$teacherId."'";
+		$dbcontroller = new DBController();
+		$this->user = $dbcontroller->executeSelectQuery($query);
+		return $this->user;
+	}
 }
 /*
 $studentId="5";

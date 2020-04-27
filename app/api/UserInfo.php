@@ -31,7 +31,7 @@ Class UserInfo {
 	}
 	
 	public function getStudentClass($studentId){
-		$query = "SELECT studentClass FROM users where id= ".$studentId;
+		$query = "SELECT studentClass FROM users where id=".$studentId;
 		$dbcontroller = new DBController();
 		$this->user = $dbcontroller->executeSelectQuery($query);
 		return $this->user;

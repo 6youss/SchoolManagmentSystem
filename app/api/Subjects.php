@@ -32,7 +32,7 @@ Class Subjects {
 	}
 
 	public function getTeacherClassSubjects($teacherId,$classId){
-		$query = "SELECT * FROM subject where teacherId=".$teacherId." and classId=".$classId;
+		$query = "SELECT s.id,s.subjectTitle,s.classId,c.className FROM subject s,classes c where teacherId=".$teacherId." and classId=".$classId;
 		$dbcontroller = new DBController();
 		$this->subject = $dbcontroller->executeSelectQuery($query);
 		return $this->subject;

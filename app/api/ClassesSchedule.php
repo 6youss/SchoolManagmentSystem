@@ -11,7 +11,7 @@ Class ClassesSchedule {
 	*/
 	public function getClassSchedule($id){
 		$query = "SELECT c.dayOfWeek,c.startTime,c.endTime,c.subjectId,s.subjectTitle FROM classschedule c,subject s 
-		where classId=".$id." and s.id=c.subjectId";
+		where c.classId=".$id." and s.id=c.subjectId";
 		$dbcontroller = new DBController();
 		$this->classSchedule = $dbcontroller->executeSelectQuery($query);
 		return $this->classSchedule;

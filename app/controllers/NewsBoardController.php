@@ -50,7 +50,7 @@ class NewsBoardController extends \BaseController {
 
         //WebView
 		//$newsboard->newsText = htmlspecialchars(Input::get('newsText'),ENT_QUOTES);
-		$newsboard->newsText = htmlspecialchars_decode(Input::get('newsText'),ENT_QUOTES);
+		$newsboard->newsText = Input::get('newsText');
 		//component
 		//$newsboard->newsText = strip_tags(htmlspecialchars_decode(Input::get('newsText'),ENT_QUOTES));
 		
@@ -79,7 +79,7 @@ class NewsBoardController extends \BaseController {
 
 		//WebView
 		//$newsboard->newsText = htmlspecialchars(Input::get('newsText'),ENT_QUOTES);
-		$newsboard->newsText = htmlspecialchars_decode(Input::get('newsText'),ENT_QUOTES);
+		$newsboard->newsText = Input::get('newsText');
 
 		//component
 		//$newsboard->newsText = strip_tags(htmlspecialchars_decode(Input::get('newsText'),ENT_QUOTES));

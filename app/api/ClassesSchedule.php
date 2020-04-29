@@ -10,7 +10,8 @@ Class ClassesSchedule {
 		you should hookup the DAO here
 	*/
 	public function getClassSchedule($id){
-		$query = "SELECT * FROM classschedule where classId=".$id;
+		$query = "SELECT c.dayOfWeek,c.startTime,c.endTime,c.subjectId,s.subjectTitle FROM classschedule c,subject s 
+		where classId=".$id." and s.id=c.subjectId";
 		$dbcontroller = new DBController();
 		$this->classSchedule = $dbcontroller->executeSelectQuery($query);
 		return $this->classSchedule;

@@ -49,10 +49,10 @@ class NewsBoardController extends \BaseController {
 		$newsboard->newsTitle = Input::get('newsTitle'); 
 
         //WebView
-		//$newsboard->newsText = htmlspecialchars(Input::get('newsText'),ENT_QUOTES);
+		$newsboard->newsText = htmlspecialchars(Input::get('newsText'),ENT_QUOTES);
 
 		//component
-		$newsboard->newsText = strip_tags(htmlspecialchars_decode(Input::get('newsText'),ENT_QUOTES));
+		//$newsboard->newsText = strip_tags(htmlspecialchars_decode(Input::get('newsText'),ENT_QUOTES));
 		
 		$newsboard->newsFor = Input::get('newsFor');
 		if(Input::get('newsDate') != ""){
@@ -78,10 +78,10 @@ class NewsBoardController extends \BaseController {
 		$newsboard->newsTitle = Input::get('newsTitle');
 
 		//WebView
-		//$newsboard->newsText = htmlspecialchars(Input::get('newsText'),ENT_QUOTES);
+		$newsboard->newsText = htmlspecialchars(Input::get('newsText'),ENT_QUOTES);
 
 		//component
-		$newsboard->newsText = strip_tags(htmlspecialchars_decode(Input::get('newsText'),ENT_QUOTES));
+		//$newsboard->newsText = strip_tags(htmlspecialchars_decode(Input::get('newsText'),ENT_QUOTES));
 
 		$newsboard->newsFor = Input::get('newsFor');
 		if(Input::get('newsDate') != ""){

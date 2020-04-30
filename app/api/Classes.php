@@ -35,6 +35,9 @@ Class Classes {
 		$query = "SELECT id,username,fullName,birthday,gender,email,photo,address FROM users where studentClass=".$id;
 		$dbcontroller = new DBController();
 		$this->classes = $dbcontroller->executeSelectQuery($query);
+		for($i=0;$i<sizeof($this->classes);$i++){
+			$this->classes[$i]['birthday']=date('m/d/Y',$this->classes[$i]['birthday']);
+		}
 		return $this->classes;
     }	
     

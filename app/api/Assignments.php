@@ -103,12 +103,13 @@ Class Assignments {
 			array_push($fids,$ids[$i]["id"]);
 		}
 		}
-		$query = "SELECT * FROM assignments where id=";
+		$query = "SELECT a.AssignTitle,a.AssignDescription,a.AssignFile,a.AssignDeadLine,s.subjectTitle 
+		FROM assignments a,subject s where a.subjectId=s.id and (a.id=";
 		for($k=0;$k<sizeof($fids);$k++){
 		if($k==(sizeof($fids)-1)){
-			$query=$query.$fids[$k];
+			$query=$query.$fids[$k].")";
 		}else{
-			$query=$query.$fids[$k]." or id=";
+			$query=$query.$fids[$k]." or a.id=";
 		}
         }
 		}

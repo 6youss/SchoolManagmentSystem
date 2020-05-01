@@ -89,10 +89,10 @@ Class Assignments {
 	}
 
 	public function getTeacherClassAssignments($uid,$id){
-		$query = "SELECT id FROM assignments where teacherId=".$uid;
+		$query = "SELECT a.id FROM assignments a,subject s where s.id=a.subjectId and s.teacherId=".$uid;
 		$dbcontroller = new DBController();
 		$ids = $dbcontroller->executeSelectQuery($query);
-		$query = "SELECT classId FROM assignments where teacherId=".$uid;
+		$query = "SELECT a.classId FROM assignments a,subject s where s.id=a.subjectId and s.teacherId=".$uid;
 		$classids = $dbcontroller->executeSelectQuery($query);
         $fids=array();
 		for($i=0;$i<sizeof($ids);$i++){

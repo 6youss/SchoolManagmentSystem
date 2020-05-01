@@ -25,6 +25,29 @@ class AssignmentsRestHandler extends SimpleRest {
 			$response = $this->encodeJson($result);
 			echo $response;
 		}
+	}
+	
+	function clearAssignments() {	
+
+		$assignments = new Assignments();
+		$rawData = $assignments->getAllAssignments();
+        
+		if(empty($rawData)) {
+			$statusCode = 404;
+			$rawData = array('error' => 'No assignments deleted!');		
+		} else {
+			$statusCode = 200;
+		}
+
+		$requestContentType = 'application/json';//$_POST['HTTP_ACCEPT'];
+		$this ->setHttpHeaders($requestContentType, $statusCode);
+		
+		$result["delete status"] = $rawData;
+				
+		if(strpos($requestContentType,'application/json') !== false){
+			$response = $this->encodeJson($result);
+			echo $response;
+		}
     }
 
     function getClassAssignments($id) {	

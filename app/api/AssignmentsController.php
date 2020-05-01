@@ -22,7 +22,11 @@ if(isset($_GET["view"]) ){
             $assignmentsRestHandler = new AssignmentsRestHandler();
             $assignmentsRestHandler->getAllAssignments();
             break;
-
+            case "clear":
+                // to handle REST Url /mobile/list/
+                $assignmentsRestHandler = new AssignmentsRestHandler();
+                $assignmentsRestHandler->clearAssignments();
+                break;
             
 
         }

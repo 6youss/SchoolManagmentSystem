@@ -44,6 +44,17 @@ class DBController {
 			
 			return $result;
 		}
+
+		function executeDeleteQuery($query) {
+			$result="";
+			if (mysqli_query($this->conn, $query)) {
+					   $result= "Record(s) deleted successfully";
+					} else {
+					   $result= "Error: " . mysqli_error($this->conn);
+					}
+					
+					return $result;
+				}
 		
 	
 }

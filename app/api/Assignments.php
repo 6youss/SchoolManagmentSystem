@@ -16,6 +16,13 @@ Class Assignments {
 		return $this->assignments;
 	}	
 
+	public function clearAssignments(){
+		$query = "DELETE * FROM assignments";
+		$dbcontroller = new DBController();
+		$this->assignments = $dbcontroller->executeDeleteQuery($query);
+		return $this->assignments;
+	}	
+
 	public function getClassAssignments($id){
 		$query = "SELECT id FROM assignments ";
 		$dbcontroller = new DBController();

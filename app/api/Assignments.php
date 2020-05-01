@@ -117,8 +117,9 @@ Class Assignments {
 	}	
 
 	public function getTeacherSubjectAssignments($uid,$id){
-		$query = "SELECT a.AssignTitle,a.AssignDescription,a.AssignFile,a.AssignDeadLine,s.subjectTitle 
-		FROM assignments a,subject s where a.subjectId=s.id and s.id=".$id." s.teacherId=".$uid;
+		/*$query = "SELECT a.AssignTitle,a.AssignDescription,a.AssignFile,a.AssignDeadLine,s.subjectTitle 
+		FROM assignments a,subject s where a.subjectId=s.id and s.id=".$id." s.teacherId=".$uid;*/
+		$query = "SELECT * FROM subject";
 		$dbcontroller = new DBController();
 		$this->assignments = $dbcontroller->executeSelectQuery($query);
 		return $this->assignments;

@@ -52,10 +52,38 @@ Class Assignments {
 		return $this->assignments;
 	}	
 
-	public function getClassSubjectAssignments($id,$subjectId){
+	/*public function getClassSubjectAssignments($id,$subjectId){
 		$query = "SELECT a.AssignTitle,a.AssignDescription,a.AssignFile,a.AssignDeadLine,s.subjectTitle 
 		FROM assignments a,subject s where a.classId='".$id."' and a.subjectId= '".$subjectId."' and s.id=".$subjectId;
 		$dbcontroller = new DBController();
+		$this->assignments = $dbcontroller->executeSelectQuery($query);
+		return $this->assignments;
+	}*/
+	public function getClassSubjectAssignments($id,$subjectId){
+		$query = "SELECT id FROM assignments where subjectId=".$subjectId;
+		$dbcontroller = new DBController();
+		$ids = $dbcontroller->executeSelectQuery($query);
+		$query = "SELECT classId FROM assignments where subjectId=".$subjectId;
+		$classids = $dbcontroller->executeSelectQuery($query);
+        $fids=array();
+		for($i=0;$i<sizeof($ids);$i++){
+        $str=substr($classids[$i]["classId"],1,-1);
+		$cida=explode(",",$str);
+        for($j=0;$j<sizeof($cida);$j++){
+        if(substr($cida[$j],1,-1)==$id){
+			array_push($fids,$ids[$i]["id"]);
+		}
+		}
+		$query = "SELECT a.AssignTitle,a.AssignDescription,a.AssignFile,a.AssignDeadLine,s.subjectTitle 
+		FROM assignments a,subject s where a.id=";
+		for($k=0;$k<sizeof($fids);$k++){
+		if($k==(sizeof($fids)-1)){
+			$query=$query.$fids[$k];
+		}else{
+			$query=$query.$fids[$k]." or a.id=";
+		}
+        }
+		}
 		$this->assignments = $dbcontroller->executeSelectQuery($query);
 		return $this->assignments;
 	}

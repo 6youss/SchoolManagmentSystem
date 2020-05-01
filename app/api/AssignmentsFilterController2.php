@@ -10,6 +10,7 @@ $json = file_get_contents('php://input');
 	 // name store into $name.
     $view = $obj['view'];
     $id=$obj['id'];
+    $subjectId=$obj['subjectId'];
     
 /*{///////view
 	$view = "";$id="";
@@ -26,23 +27,19 @@ if(isset($_GET["id"])){
 
        
 
-            case "classid":
-                // to handle REST Url /mobile/list/
-                $assignmentsRestHandler = new AssignmentsRestHandler();
-                $assignmentsRestHandler->getClassAssignments($id);
-                break;
+            
 
-                /*case "subjectid":
+                case "subjectid":
                     // to handle REST Url /mobile/list/
                     $assignmentsRestHandler = new AssignmentsRestHandler();
-                    $assignmentsRestHandler->getSubjectAssignments($id);
-                    break;*/
+                    $assignmentsRestHandler->getClassSubjectAssignments($id,$subjectId);
+                    break;
 
-                    case "teacherid":
+                   /* case "teacherid":
                         // to handle REST Url /mobile/list/
                         $assignmentsRestHandler = new AssignmentsRestHandler();
-                        $assignmentsRestHandler->getTeacherAssignments($id);
-                        break;
+                        $assignmentsRestHandler->getClassTeacherAssignments($id,$subjectId);
+                        break;*/
 
 
         }

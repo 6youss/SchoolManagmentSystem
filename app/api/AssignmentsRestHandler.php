@@ -73,10 +73,10 @@ class AssignmentsRestHandler extends SimpleRest {
 		}
     }
 
-    function getSubjectAssignments($id) {	
+    function getClassSubjectAssignments($id,$subjectId) {	
 
 		$assignments = new Assignments();
-		$rawData = $assignments->getSubjectAssignments($id);
+		$rawData = $assignments->getClassSubjectAssignments($id,$subjectId);
         
 		if(empty($rawData)) {
 			$statusCode = 404;
@@ -88,7 +88,7 @@ class AssignmentsRestHandler extends SimpleRest {
 		$requestContentType = 'application/json';//$_POST['HTTP_ACCEPT'];
 		$this ->setHttpHeaders($requestContentType, $statusCode);
 		
-		$result["subject assignments"] = $rawData;
+		$result["class subject assignments"] = $rawData;
 				
 		if(strpos($requestContentType,'application/json') !== false){
 			$response = $this->encodeJson($result);

@@ -124,7 +124,8 @@ Class Assignments {
 	}
 
 	public function getTeacherAssignments($id){
-		$query = "SELECT * FROM assignments where teacherId= '".$id."'";
+		$query = "SELECT a.AssignTitle,a.AssignDescription,a.AssignFile,a.AssignDeadLine,s.subjectTitle 
+		FROM assignments a,subject s where a.teacherId= ".$id;
 		$dbcontroller = new DBController();
 		$this->assignments = $dbcontroller->executeSelectQuery($query);
 		return $this->assignments;

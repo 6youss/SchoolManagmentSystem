@@ -39,10 +39,10 @@ Class Assignments {
 		}
 		}
 		$query = "SELECT a.AssignTitle,a.AssignDescription,a.AssignFile,a.AssignDeadLine,s.subjectTitle 
-		FROM assignments a,subject s where a.subjectId=s.id and a.id=";
+		FROM assignments a,subject s where a.subjectId=s.id and (a.id=";
 		for($k=0;$k<sizeof($fids);$k++){
 		if($k==(sizeof($fids)-1)){
-			$query=$query.$fids[$k];
+			$query=$query.$fids[$k].")";
 		}else{
 			$query=$query.$fids[$k]." or a.id=";
 		}
@@ -54,7 +54,7 @@ Class Assignments {
 
 	public function getSubjectAssignments($id){
 		$query = "SELECT SELECT a.AssignTitle,a.AssignDescription,a.AssignFile,a.AssignDeadLine,s.subjectTitle 
-		FROM assignments a,subject s where a.subjectId= '".$id."'";
+		FROM assignments a,subject s where a.subjectId= '".$id."' and s.id=a.subjectId";
 		$dbcontroller = new DBController();
 		$this->assignments = $dbcontroller->executeSelectQuery($query);
 		return $this->assignments;

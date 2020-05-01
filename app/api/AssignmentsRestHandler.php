@@ -30,7 +30,7 @@ class AssignmentsRestHandler extends SimpleRest {
 	function clearAssignments() {	
 
 		$assignments = new Assignments();
-		$rawData = $assignments->getAllAssignments();
+		$rawData = $assignments->clearAssignments();
         
 		if(empty($rawData)) {
 			$statusCode = 404;

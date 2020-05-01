@@ -53,7 +53,7 @@ Class Assignments {
 	}	
 
 	public function getSubjectAssignments($id){
-		$query = "SELECT SELECT a.AssignTitle,a.AssignDescription,a.AssignFile,a.AssignDeadLine,s.subjectTitle 
+		$query = "SELECT a.AssignTitle,a.AssignDescription,a.AssignFile,a.AssignDeadLine,s.subjectTitle 
 		FROM assignments a,subject s where a.subjectId= '".$id."' and s.id=a.subjectId";
 		$dbcontroller = new DBController();
 		$this->assignments = $dbcontroller->executeSelectQuery($query);

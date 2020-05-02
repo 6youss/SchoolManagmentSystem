@@ -17,6 +17,13 @@ Class SchoolInfo {
 		return $this->schoolinfo;
 	}	
 	
+	public function getSchoolPaymentInfo(){
+		$query = "SELECT fieldName, fieldValue FROM settings WHERE id=1 or id=7
+        or id=22 or id=23 ";
+		$dbcontroller = new DBController();
+		$this->schoolinfo = $dbcontroller->executeSelectQuery($query);
+		return $this->schoolinfo;
+	}	
 	
     
 }

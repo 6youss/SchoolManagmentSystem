@@ -26,6 +26,29 @@ class SchoolInfoRestHandler extends SimpleRest {
 			echo $response;
 		}
 	}
+
+	function getSchoolPaymentInfo() {	
+
+		$schoolinfo = new SchoolInfo();
+		$rawData = $schoolinfo->getSchoolPaymentInfo();
+        
+		if(empty($rawData)) {
+			$statusCode = 404;
+			$rawData = array('error' => 'No school payment info found!');		
+		} else {
+			$statusCode = 200;
+		}
+
+		$requestContentType = 'application/json';//$_POST['HTTP_ACCEPT'];
+		$this ->setHttpHeaders($requestContentType, $statusCode);
+		
+		$result["school payment info"] = $rawData;
+				
+		if(strpos($requestContentType,'application/json') !== false){
+			$response = $this->encodeJson($result);
+			echo $response;
+		}
+	}
 	
 	
     

@@ -25,6 +25,12 @@ if(isset($_GET["view"]) ){
             $schoolinfoRestHandler->getAllSchoolInfo();
             break;
 
+            case "payment":
+                // to handle REST Url /mobile/list/
+                $schoolinfoRestHandler = new SchoolInfoRestHandler();
+                $schoolinfoRestHandler->getSchoolPaymentInfo();
+                break;
+
 
         }
         ?>

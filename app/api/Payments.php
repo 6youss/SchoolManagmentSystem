@@ -12,7 +12,7 @@ Class Payments {
     
     public function getAllPayments($studentId){
 		$query = "SELECT SELECT p.paymentTitle, p.paymentDescription, p.paymentStudent, p.paymentAmount, p.paymentStatus, p.paymentDate,
-		u.fullName,u.phoneNo,u.email,u.address FROM payments p,users u where s.id=p.paymentStudent and p.paymentStudent=".$studentId;
+		u.fullName,u.phoneNo,u.email,u.address FROM payments p,users u where u.id=p.paymentStudent and p.paymentStudent=".$studentId;
 		$dbcontroller = new DBController();
 		$this->payments = $dbcontroller->executeSelectQuery($query);
 		return $this->payments;

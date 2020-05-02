@@ -21,7 +21,7 @@ if(isset($_GET["studentId"]) ){
 	 // name store into $name.
 	$view = $obj['view'];
     $studentId = $obj['studentId'];
-    
+
     switch($view){
 
         case "all":
@@ -30,14 +30,14 @@ if(isset($_GET["studentId"]) ){
             $paymentsRestHandler->getAllPayments($studentId);
             break;
 
-        case "unpastudentId":
+        case "paid":
             // to handle REST Url /mobile/list/
             $paymentsRestHandler = new PaymentsRestHandler();
-            $paymentsRestHandler->getUnpastudentIdPayments($studentId);
+            $paymentsRestHandler->getPaidPayments($studentId);
             break;
-        case "pastudentId":
+        case "unpaid":
             $paymentsRestHandler = new PaymentsRestHandler();
-            $paymentsRestHandler->getPastudentIdPayments($studentId);
+            $paymentsRestHandler->getUnpaidPayments($studentId);
         break;
 
         }

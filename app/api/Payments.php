@@ -11,7 +11,7 @@ Class Payments {
     */
     
     public function getAllPayments($studentId){
-		$query = "SELECT p.paymentTitle, p.paymentDescription, p.paymentStudent, p.paymentAmount, p.paymentStatus, p.paymentDate,
+		$query = "SELECT p.paymentTitle, p.paymentDescription, p.paymentAmount, p.paymentStatus, p.paymentDate,
 		u.fullName,u.phoneNo,u.email,u.address FROM payments p,users u where p.paymentStudent=".$studentId." and u.id=".$studentId;
 		$dbcontroller = new DBController();
 		$this->payments = $dbcontroller->executeSelectQuery($query);
@@ -19,14 +19,16 @@ Class Payments {
     }
 
 	public function getUnpaidPayments($studentId){
-		$query = "SELECT * FROM payments where paymentStudent=".$studentId." and paymentStatus=0";
+		$query = "SELECT p.paymentTitle, p.paymentDescription, p.paymentAmount, p.paymentStatus, p.paymentDate,
+		u.fullName,u.phoneNo,u.email,u.address FROM payments p,users u where p.paymentStudent=".$studentId." and u.id=".$studentId." and paymentStatus=0";
 		$dbcontroller = new DBController();
 		$this->payments = $dbcontroller->executeSelectQuery($query);
 		return $this->payments;
     }	
     
     public function getPaidPayments($studentId){
-		$query = "SELECT * FROM payments where paymentStudent=".$studentId." and paymentStatus=1";
+		$query = "SELECT p.paymentTitle, p.paymentDescription, p.paymentAmount, p.paymentStatus, p.paymentDate,
+		u.fullName,u.phoneNo,u.email,u.address FROM payments p,users u where p.paymentStudent=".$studentId." and u.id=".$studentId." and paymentStatus=1";
 		$dbcontroller = new DBController();
 		$this->payments = $dbcontroller->executeSelectQuery($query);
 		return $this->payments;

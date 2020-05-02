@@ -10,7 +10,7 @@ Class SchoolInfo {
 		you should hookup the DAO here
 	*/
 	public function getAllSchoolInfo(){
-		$query = "SELECT `id`, `fieldName`, `fieldValue` FROM `settings` WHERE id=1 or id=6 or id=7 or id=9 
+		$query = "SELECT fieldName, fieldValue FROM settings WHERE id=1 or id=6 or id=7 or id=9 
         or id=14 or id=21 or id=22 or id=23 ";
 		$dbcontroller = new DBController();
 		$this->schoolinfo = $dbcontroller->executeSelectQuery($query);

@@ -4,14 +4,14 @@ require_once("Payments.php");
 		
 class PaymentsRestHandler extends SimpleRest {
 
-    function getAllPayments($id) {	
+    function getAllPayments($studentId) {	
 
 		$payments = new Payments();
-		$rawData = $payments->getAllPayments($id);
+		$rawData = $payments->getAllPayments($studentId);
         
 		if(empty($rawData)) {
 			$statusCode = 404;
-			$rawData = array('error' => 'No messages found!');		
+			$rawData = array('error' => 'No payments found!');		
 		} else {
 			$statusCode = 200;
 		}
@@ -27,10 +27,10 @@ class PaymentsRestHandler extends SimpleRest {
 		}
     }
 
-	function getUnpaidPayments($id) {	
+	function getUnpaidPayments($studentId) {	
 
 		$payments = new Payments();
-		$rawData = $payments->getUnpaidPayments($id);
+		$rawData = $payments->getUnpaidPayments($studentId);
         
 		if(empty($rawData)) {
 			$statusCode = 404;
@@ -50,10 +50,10 @@ class PaymentsRestHandler extends SimpleRest {
 		}
     }
     
-    function getPaidPayments($id) {	
+    function getPaidPayments($studentId) {	
 
 		$payments = new Payments();
-		$rawData = $payments->getPaidPayments($id);
+		$rawData = $payments->getPaidPayments($studentId);
         
 		if(empty($rawData)) {
 			$statusCode = 404;

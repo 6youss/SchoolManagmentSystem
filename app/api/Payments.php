@@ -10,22 +10,22 @@ Class Payments {
 		you should hookup the DAO here
     */
     
-    public function getAllPayments($id){
-		$query = "SELECT * FROM payments where paymentStudent=".$id;
+    public function getAllPayments($studentId){
+		$query = "SELECT * FROM payments where paymentStudent=".$studentId;
 		$dbcontroller = new DBController();
 		$this->payments = $dbcontroller->executeSelectQuery($query);
 		return $this->payments;
     }
 
-	public function getUnpaidPayments($id){
-		$query = "SELECT * FROM payments where paymentStudent=".$id." and paymentStatus=0";
+	public function getUnpaidPayments($studentId){
+		$query = "SELECT * FROM payments where paymentStudent=".$studentId." and paymentStatus=0";
 		$dbcontroller = new DBController();
 		$this->payments = $dbcontroller->executeSelectQuery($query);
 		return $this->payments;
     }	
     
-    public function getPaidPayments($id){
-		$query = "SELECT * FROM payments where paymentStudent=".$id." and paymentStatus=1";
+    public function getPaidPayments($studentId){
+		$query = "SELECT * FROM payments where paymentStudent=".$studentId." and paymentStatus=1";
 		$dbcontroller = new DBController();
 		$this->payments = $dbcontroller->executeSelectQuery($query);
 		return $this->payments;

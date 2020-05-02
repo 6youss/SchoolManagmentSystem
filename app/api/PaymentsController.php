@@ -3,33 +3,41 @@ require_once("PaymentsRestHandler.php");
 require_once("Payments.php");		
 
 
-{///////view
+/*{///////view
 	$view = "";
 if(isset($_GET["view"]) ){
 	$view = $_GET["view"];
     }}
 
-   { $id = "";
-if(isset($_GET["id"]) ){
-	$id = $_GET["id"];
-    }}
+   { $studentId = "";
+if(isset($_GET["studentId"]) ){
+	$studentId = $_GET["studentId"];
+    }}*/
+    $json = file_get_contents('php://input');
+ 
+	 // decoding the received JSON and store into $obj variable.
+	 $obj = json_decode($json,true);
+	 
+	 // name store into $name.
+	$view = $obj['view'];
+    $studentId = $obj['studentId'];
     
     switch($view){
 
         case "all":
             // to handle REST Url /mobile/list/
             $paymentsRestHandler = new PaymentsRestHandler();
-            $paymentsRestHandler->getAllPayments($id);
+            $paymentsRestHandler->getAllPayments($studentId);
             break;
 
-        case "unpaid":
+        case "unpastudentId":
             // to handle REST Url /mobile/list/
             $paymentsRestHandler = new PaymentsRestHandler();
-            $paymentsRestHandler->getUnpaidPayments($id);
+            $paymentsRestHandler->getUnpastudentIdPayments($studentId);
             break;
-        case "paid":
+        case "pastudentId":
             $paymentsRestHandler = new PaymentsRestHandler();
-            $paymentsRestHandler->getPaidPayments($id);
+            $paymentsRestHandler->getPastudentIdPayments($studentId);
         break;
 
         }

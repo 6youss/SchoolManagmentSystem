@@ -3,7 +3,7 @@ require_once("AttendanceRestHandler.php");
 require_once("Attendance.php");		
 
 
-{///////view
+/*{///////view
 	$view = "";
 if(isset($_GET["view"]) ){
 	$view = $_GET["view"];
@@ -28,7 +28,19 @@ if(isset($_GET["subjectId"]) ){
 	$date = "";
     if(isset($_GET["date"]) ){
         $date = $_GET["date"];
-        }}
+        }}*/
+
+        $json = file_get_contents('php://input');
+ 
+	 // decoding the received JSON and store into $obj variable.
+	 $obj = json_decode($json,true);
+	 
+	 // name store into $name.
+    $view = $obj['view'];
+    $classId = $obj['classId'];
+    $subjectId = $obj['subjectId'];
+    $studentId = $obj['view'];
+    $date = $obj['date'];
 
     switch($view){
 

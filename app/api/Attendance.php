@@ -31,7 +31,9 @@ Class Attendance {
 	}
 	
 	public function getFilteredAttendance($classId,$subjectId,$studentId,$date){
-		$query = "SELECT * FROM attendance where classId=".$classId." and subjectId=".$subjectId." and studentId=".$studentId." and date='".$date."'";
+		$query = "SELECT * 
+		FROM attendance 
+		where classId=".$classId." and subjectId=".$subjectId." and studentId=".$studentId." and date='".$date."'";
 		$dbcontroller = new DBController();
 		$this->attendance = $dbcontroller->executeSelectQuery($query);
 		return $this->attendance;

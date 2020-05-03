@@ -32,7 +32,7 @@ Class Attendance {
 	
 	public function getFilteredAttendance($classId,$subjectId,$studentId,$date){
 		$query = "SELECT a.date,a.status,cl.className,su.subjectTitle,st.fullName,st.studentRollId 
-		FROM attendance 
+		FROM attendance a,classes c,subject su,users st
 		where a.classId=".$classId." and c.id=".$classId." and a.subjectId=".$subjectId." and su.id=".$subjectId
 		." and a.studentId=".$studentId." and st.id=".$studentId." and a.date='".$date."'";
 		$dbcontroller = new DBController();

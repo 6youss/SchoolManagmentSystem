@@ -39,7 +39,7 @@ if(isset($_GET["subjectId"]) ){
     $view = $obj['view'];
     $classId = $obj['classId'];
     $subjectId = $obj['subjectId'];
-    $studentId = $obj['view'];
+    $studentId = $obj['studentId'];
     $date = $obj['date'];
 
     switch($view){

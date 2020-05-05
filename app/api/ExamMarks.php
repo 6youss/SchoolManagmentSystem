@@ -38,7 +38,7 @@ Class ExamMarks {
 		st.fullName,st.studentRollId,st.photo
 		 FROM exammarks em,examslist e,classes cl,subject su,users st 
 		 where em.classId=".$classId." and cl.id=".$classId." and em.subjectId=".$subjectId." and su.id=".$subjectId
-		 ." and em.studentId=".$studentId." and su.id=".$studentId;
+		 ." and em.studentId=".$studentId." and st.id=".$studentId;
 		$dbcontroller = new DBController();
 		$this->exammarks = $dbcontroller->executeSelectQuery($query);
 		return $this->exammarks;

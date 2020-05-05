@@ -40,7 +40,7 @@ if(isset($_GET["classId"]) ){
 
     switch($view){
 
-            case "class-subject-student":
+            case "get":
                 // to handle REST Url /mobile/list/
                 $exammarksRestHandler = new ExamMarksRestHandler();
                 $exammarksRestHandler->getClassSubjectStudentExamMarks($classId,$subjectId,$studentId);

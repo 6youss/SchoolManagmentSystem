@@ -16,15 +16,21 @@ Class Attendance {
 		return $this->attendance;
 	}
 
-	public function getClassSubjectAttendance($id,$id2,$date){
-		$query = "SELECT * FROM attendance where classId=".$id." and subjectId=".$id2." and date='".$date."'";
+	public function getSubjectsAttendance($classId,$date,$value){
+		$query = "SELECT a.date,a.status,cl.className,su.subjectTitle,st.fullName,st.studentRollId,st.photo 
+		FROM attendance a,classes cl,subject su,users st
+		where a.classId=".$classId." and cl.id=".$classId." and a.studentId=".$studentId." and st.id=".$studentId
+		." and a.date='".$date."'";
 		$dbcontroller = new DBController();
 		$this->attendance = $dbcontroller->executeSelectQuery($query);
 		return $this->attendance;
 	}	
 	
-	public function getSubjectStudentAttendance($id,$id2,$date){
-		$query = "SELECT * FROM attendance where subjectId=".$id." and studentId=".$id2." and date='".$date."'";
+	public function getStudentsAttendance($classId,$date,$value){
+		$query = "SELECT a.date,a.status,cl.className,su.subjectTitle,st.fullName,st.studentRollId,st.photo 
+		FROM attendance a,classes cl,subject su,users st
+		where a.classId=".$classId." and cl.id=".$classId." and a.subjectId=".$subjectId." and su.id=".$subjectId
+		." and a.studentId=st.id and a.date='".$date."'";
 		$dbcontroller = new DBController();
 		$this->attendance = $dbcontroller->executeSelectQuery($query);
 		return $this->attendance;

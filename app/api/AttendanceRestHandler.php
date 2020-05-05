@@ -29,10 +29,10 @@ class AttendanceRestHandler extends SimpleRest {
 
 	
 	
-	function getClassSubjectAttendance($id,$id2,$date) {	
+	function getSubjectsAttendance($classId,$date,$value) {	
 
 		$attendance = new Attendance();
-		$rawData = $attendance->getClassSubjectAttendance($id,$id2,$date);
+		$rawData = $attendance->getSubjectsAttendance($classId,$date,$value);
         
 		if(empty($rawData)) {
 			$statusCode = 404;
@@ -52,10 +52,10 @@ class AttendanceRestHandler extends SimpleRest {
 		}
 	}
 	
-	function getSubjectStudentAttendance($id,$id2,$date) {	
+	function getStudentsAttendance($classId,$date,$value) {	
 
 		$attendance = new Attendance();
-		$rawData = $attendance->getSubjectStudentAttendance($id,$id2,$date);
+		$rawData = $attendance->getStudentsAttendance($classId,$date,$value);
         
 		if(empty($rawData)) {
 			$statusCode = 404;

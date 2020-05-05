@@ -19,7 +19,7 @@ Class Attendance {
 	public function getSubjectsAttendance($classId,$date,$value){
 		$query = "SELECT a.date,a.status,cl.className,su.subjectTitle,st.fullName,st.studentRollId,st.photo 
 		FROM attendance a,classes cl,subject su,users st
-		where a.classId=".$classId." and cl.id=".$classId." and su.id=a.subjectId and a.studentId=".$studentId." and st.id=".$studentId
+		where a.classId=".$classId." and cl.id=".$classId." and su.id=a.subjectId and a.studentId=".$value." and st.id=".$value
 		." and a.date='".$date."'";
 		$dbcontroller = new DBController();
 		$this->attendance = $dbcontroller->executeSelectQuery($query);
@@ -29,7 +29,7 @@ Class Attendance {
 	public function getStudentsAttendance($classId,$date,$value){
 		$query = "SELECT a.date,a.status,cl.className,su.subjectTitle,st.fullName,st.studentRollId,st.photo 
 		FROM attendance a,classes cl,subject su,users st
-		where a.classId=".$classId." and cl.id=".$classId." and a.subjectId=".$subjectId." and su.id=".$subjectId
+		where a.classId=".$classId." and cl.id=".$classId." and a.subjectId=".$value." and su.id=".$value
 		." and a.studentId=st.id and a.date='".$date."'";
 		$dbcontroller = new DBController();
 		$this->attendance = $dbcontroller->executeSelectQuery($query);

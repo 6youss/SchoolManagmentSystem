@@ -31,7 +31,14 @@ Class ExamMarks {
 	}	
 	
 	public function getClassSubjectStudentExamMarks($classId,$subjectId,$studentId){
-		$query = "SELECT * FROM exammarks where classId=".$classId." and subjectId=".$subjectId." and studentId=".$studentId;
+		$query = "SELECT em.examMark,em.attendanceMark,em.markComments,
+		e.examTitle,e.examDescription,e.examDate,
+		cl.className,
+		su.subjectTitle,
+		st.fullName,st.studentRollId,st.photo
+		 FROM exammarks em,examslist e,classes cl,subject su,users st 
+		 where em.classId=".$classId." and cl.id=".$classId." and em.subjectId=".$subjectId." and su.id=".$subjectId
+		 ." and em.studentId=".$studentId." and su.id=".$studentId;
 		$dbcontroller = new DBController();
 		$this->exammarks = $dbcontroller->executeSelectQuery($query);
 		return $this->exammarks;

@@ -27,7 +27,7 @@ Class Attendance {
 	}	
 	
 	public function getStudentsAttendance($classId,$date,$subjectId){
-		$query = "SELECT a.id,a.date,a.status,cl.className,su.subjectTitle,st.fullName,st.studentRollId,st.photo 
+		$query = "SELECT a.id,a.date,a.status,cl.className,su.subjectTitle,st.id,st.fullName,st.studentRollId,st.photo 
 		FROM attendance a,classes cl,subject su,users st
 		where a.classId=".$classId." and cl.id=".$classId." and a.subjectId=".$subjectId." and su.id=".$subjectId
 		." and a.studentId=st.id and a.date='".$date."'";

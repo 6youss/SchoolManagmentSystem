@@ -27,7 +27,7 @@ Class Attendance {
 	}	
 	
 	public function getStudentsAttendance($classId,$date,$subjectId){
-		$query = "SELECT a.date,a.status,cl.className,su.subjectTitle,st.fullName,st.studentRollId,st.photo 
+		$query = "SELECT a.id,a.date,a.status,cl.className,su.subjectTitle,st.fullName,st.studentRollId,st.photo 
 		FROM attendance a,classes cl,subject su,users st
 		where a.classId=".$classId." and cl.id=".$classId." and a.subjectId=".$subjectId." and su.id=".$subjectId
 		." and a.studentId=st.id and a.date='".$date."'";
@@ -46,11 +46,19 @@ Class Attendance {
 		return $this->attendance;
 	}
 	
-	public function controlAttendance($classId,$subjectId,$studentId,$date,$status){
+	public function insertAttendance($classId,$subjectId,$studentId,$date,$status){
 		$query = "INSERT INTO `attendance`( `classId`, `subjectId`, `date`, `studentId`, `status`) 
 		VALUES (".$classId.",".$subjectId.",'".$date."',".$studentId.",".$status.")";
 		$dbcontroller = new DBController();
 		$this->attendance = $dbcontroller->executeInsertQuery($query);
+		return $this->attendance;
+	}
+	
+	public function updateAttendance($classId,$subjectId,$studentId,$date,$status){
+		$query="UPDATE `attendance` SET 
+		`classId`=".$classId.",`subjectId`=".$subjectId.",`date`='".$date."',`studentId`=".$studentId.",`status`=".$status;
+		$dbcontroller = new DBController();
+		$this->attendance = $dbcontroller->executeUpdateQuery($query);
 		return $this->attendance;
     }
     

@@ -98,10 +98,10 @@ class AttendanceRestHandler extends SimpleRest {
 		}
 	}
 	
-	function controlAttendance($classId,$subjectId,$studentId,$date,$status) {	
+	function insertAttendance($classId,$subjectId,$studentId,$date,$status) {	
 
 		$attendance = new Attendance();
-		$rawData = $attendance->controlAttendance($classId,$subjectId,$studentId,$date,$status);
+		$rawData = $attendance->insertAttendance($classId,$subjectId,$studentId,$date,$status);
         
 		if(empty($rawData)) {
 			$statusCode = 404;
@@ -114,6 +114,29 @@ class AttendanceRestHandler extends SimpleRest {
 		$this ->setHttpHeaders($requestContentType, $statusCode);
 		
 		$result["insert status"] = $rawData;
+				
+		if(strpos($requestContentType,'application/json') !== false){
+			$response = $this->encodeJson($result);
+			echo $response;
+		}
+	}
+	
+	function updateAttendance($classId,$subjectId,$studentId,$date,$status) {	
+
+		$attendance = new Attendance();
+		$rawData = $attendance->updateAttendance($classId,$subjectId,$studentId,$date,$status);
+        
+		if(empty($rawData)) {
+			$statusCode = 404;
+			$rawData = array('error' => 'ERROR!');		
+		} else {
+			$statusCode = 200;
+		}
+
+		$requestContentType = 'application/json';//$_POST['HTTP_ACCEPT'];
+		$this ->setHttpHeaders($requestContentType, $statusCode);
+		
+		$result["update status"] = $rawData;
 				
 		if(strpos($requestContentType,'application/json') !== false){
 			$response = $this->encodeJson($result);

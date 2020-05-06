@@ -45,6 +45,17 @@ class DBController {
 			return $result;
 		}
 
+		function executeUpdateQuery($query) {
+			$result="";
+			if (mysqli_query($this->conn, $query)) {
+					   $result= "Record(s) updated successfully";
+					} else {
+					   $result= "Error: " . mysqli_error($this->conn);
+					}
+					
+					return $result;
+				}
+
 		function executeDeleteQuery($query) {
 			$result="";
 			if (mysqli_query($this->conn, $query)) {

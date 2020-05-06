@@ -23,7 +23,8 @@ Class ExamMarks {
 		su.subjectTitle,
 		st.fullName,st.studentRollId,st.photo
 		 FROM exammarks em,examslist e,classes cl,subject su,users st 
-		 where em.examId=e.id and em.classId=".$classId." and cl.id=".$classId
+		 where em.examId=e.id and em.classId=".$classId." and su.id=em.subjectId"
+		 ." and cl.id=".$classId
 		 ." and em.studentId=".$studentId." and st.id=".$studentId;
 		$dbcontroller = new DBController();
 		$this->exammarks = $dbcontroller->executeSelectQuery($query);
@@ -38,7 +39,7 @@ Class ExamMarks {
 		st.fullName,st.studentRollId,st.photo
 		 FROM exammarks em,examslist e,classes cl,subject su,users st 
 		 where em.examId=e.id and em.classId=".$classId." and cl.id=".$classId." and em.subjectId=".$subjectId
-		 ." and su.id=".$subjectId;
+		 ." and su.id=".$subjectId." and em.studentId=st.id";
 		$dbcontroller = new DBController();
 		$this->exammarks = $dbcontroller->executeSelectQuery($query);
 		return $this->exammarks;

@@ -16,15 +16,29 @@ Class ExamMarks {
 		return $this->exammarks;
 	}	
 	
-	public function getSubjectStudentExamMarks($subjectId,$studentId){
-		$query = "SELECT * FROM exammarks where subjectId=".$subjectId." and studentId=".$studentId;
+	public function getSubjectsExamMarks($classId,$studentId){
+		$query = "SELECT em.examMark,em.attendanceMark,em.markComments,
+		e.examTitle,e.examDescription,e.examDate,
+		cl.className,
+		su.subjectTitle,
+		st.fullName,st.studentRollId,st.photo
+		 FROM exammarks em,examslist e,classes cl,subject su,users st 
+		 where em.examId=e.id and em.classId=".$classId." and cl.id=".$classId
+		 ." and em.studentId=".$studentId." and st.id=".$studentId;
 		$dbcontroller = new DBController();
 		$this->exammarks = $dbcontroller->executeSelectQuery($query);
 		return $this->exammarks;
 	}	
 
-	public function getClassSubjectExamMarks($classId,$subjectId){
-		$query = "SELECT * FROM exammarks where classId=".$classId." and subjectId=".$studentId;
+	public function getStudentsExamMarks($classId,$subjectId){
+		$query = "SELECT em.examMark,em.attendanceMark,em.markComments,
+		e.examTitle,e.examDescription,e.examDate,
+		cl.className,
+		su.subjectTitle,
+		st.fullName,st.studentRollId,st.photo
+		 FROM exammarks em,examslist e,classes cl,subject su,users st 
+		 where em.examId=e.id and em.classId=".$classId." and cl.id=".$classId." and em.subjectId=".$subjectId
+		 ." and su.id=".$subjectId;
 		$dbcontroller = new DBController();
 		$this->exammarks = $dbcontroller->executeSelectQuery($query);
 		return $this->exammarks;

@@ -27,10 +27,10 @@ class ExamMarksRestHandler extends SimpleRest {
 		}
 	}
 
-	function getSubjectStudentExamMarks($subjectId,$studentId) {	
+	function getSubjectsExamMarks($classId,$studentId) {	
 
 		$exammarks = new ExamMarks();
-		$rawData = $exammarks->getSubjectStudentExamMarks($subjectId,$studentId);
+		$rawData = $exammarks->getSubjectsExamMarks($classId,$studentId);
         
 		if(empty($rawData)) {
 			$statusCode = 404;
@@ -50,10 +50,10 @@ class ExamMarksRestHandler extends SimpleRest {
 		}
 	}
 
-	function getClassSubjectExamMarks($classId,$subjectId) {	
+	function getStudentsExamMarks($classId,$subjectId) {	
 
 		$exammarks = new ExamMarks();
-		$rawData = $exammarks->getClassSubjectExamMarks($classId,$subjectId);
+		$rawData = $exammarks->getStudentsExamMarks($classId,$subjectId);
         
 		if(empty($rawData)) {
 			$statusCode = 404;

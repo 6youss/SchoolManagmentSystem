@@ -3,7 +3,7 @@ require_once("ExamMarksRestHandler.php");
 require_once("ExamMarks.php");		
 
 
-{///////view
+/*{///////view
 	$view = "";
 if(isset($_GET["view"]) ){
 	$view = $_GET["view"];
@@ -19,22 +19,32 @@ if(isset($_GET["id"]) ){
 	$studentId = "";
     if(isset($_GET["id2"]) ){
         $id2 = $_GET["id2"];
-        }}
+        }}*/
+
+        $json = file_get_contents('php://input');
+ 
+	 // decoding the received JSON and store into $obj variable.
+	 $obj = json_decode($json,true);
+	 
+	 // name store into $name.
+    $view = $obj['view'];
+    $classId = $obj['classId'];
+    $value = $obj['value'];
 
     switch($view){
 
                 
 
-                    case "subject-student":
+                    case "subjects":
                         // to handle REST Url /mobile/list/
                         $exammarksRestHandler = new ExamMarksRestHandler();
-                        $exammarksRestHandler->getSubjectStudentExamMarks($id,$id2);
+                        $exammarksRestHandler->getSubjectsExamMarks($classId,$value);
                         break;
 
-                        case "class-subject":
+                        case "students":
                             // to handle REST Url /mobile/list/
                             $exammarksRestHandler = new ExamMarksRestHandler();
-                            $exammarksRestHandler->getClassSubjectExamMarks($id,$id2);
+                            $exammarksRestHandler->getStudentsExamMarks($classId,$value);
                             break;
 
 

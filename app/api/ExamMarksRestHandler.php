@@ -120,7 +120,28 @@ class ExamMarksRestHandler extends SimpleRest {
 	}
 
 
-	
+	function updateExamMarks($id,$examMark,$attendanceMark,$markComments) {	
+
+		$exammarks = new ExamMarks();
+		$rawData = $exammarks->updateExamMarks($id,$examMark,$attendanceMark,$markComments);
+        
+		if(empty($rawData)) {
+			$statusCode = 404;
+			$rawData = array('error' => 'ERROR!');		
+		} else {
+			$statusCode = 200;
+		}
+
+		$requestContentType = 'application/json';//$_POST['HTTP_ACCEPT'];
+		$this ->setHttpHeaders($requestContentType, $statusCode);
+		
+		$result["update status"] = $rawData;
+				
+		if(strpos($requestContentType,'application/json') !== false){
+			$response = $this->encodeJson($result);
+			echo $response;
+		}
+	}
 	
     
     public function encodeJson($responseData) {

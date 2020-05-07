@@ -42,10 +42,6 @@ if(isset($_GET["subjectId"]) ){
 	 // name store into $name.
     $view = $obj['view'];
     $id=$obj['id'];
-    $classId = $obj['classId'];
-    $subjectId = $obj['subjectId'];
-    $studentId = $obj['studentId'];
-    $date = $obj['date'];
     $status=$obj['status'];
 
     switch($view){
@@ -53,7 +49,7 @@ if(isset($_GET["subjectId"]) ){
                 case "update":
                     // to handle REST Url /mobile/list/
                     $attendanceRestHandler = new AttendanceRestHandler();
-                    $attendanceRestHandler->updateAttendance($id,$classId,$subjectId,$studentId,$date,$status);
+                    $attendanceRestHandler->updateAttendance($id,$status);
                     break;
 
         }

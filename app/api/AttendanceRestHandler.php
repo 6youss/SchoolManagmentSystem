@@ -121,10 +121,10 @@ class AttendanceRestHandler extends SimpleRest {
 		}
 	}
 	
-	function updateAttendance($id,$classId,$subjectId,$studentId,$date,$status) {	
+	function updateAttendance($id,$status) {	
 
 		$attendance = new Attendance();
-		$rawData = $attendance->updateAttendance($id,$classId,$subjectId,$studentId,$date,$status);
+		$rawData = $attendance->updateAttendance($id,$status);
         
 		if(empty($rawData)) {
 			$statusCode = 404;

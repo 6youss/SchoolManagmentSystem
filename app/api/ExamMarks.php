@@ -32,11 +32,11 @@ Class ExamMarks {
 	}	
 
 	public function getStudentsExamMarks($classId,$subjectId){
-		$query = "SELECT em.examMark,em.attendanceMark,em.markComments,
+		$query = "SELECT em.id,em.examMark,em.attendanceMark,em.markComments,
 		e.examTitle,e.examDescription,e.examDate,
 		cl.className,
 		su.subjectTitle,
-		st.fullName,st.studentRollId,st.photo
+		st.id studentId,st.fullName,st.studentRollId,st.photo
 		 FROM exammarks em,examslist e,classes cl,subject su,users st 
 		 where em.examId=e.id and em.classId=".$classId." and cl.id=".$classId." and em.subjectId=".$subjectId
 		 ." and su.id=".$subjectId." and em.studentId=st.id";
@@ -67,6 +67,14 @@ Class ExamMarks {
 		return $this->exammarks;
 	}	
 
+
+	public function updateExamMarks($examId,$classId,$subjectId,$studentId,$examMark,$attendanceMark,$markComments){
+		$query = "UPDATE `exammarks` 
+		SET `examMark`='".$examMark."',`attendanceMark`='".$attendanceMark."',`markComments`='".$markComments."' where id=".$id;
+		$dbcontroller = new DBController();
+		$this->exammarks = $dbcontroller->executeUpdateQuery($query);
+		return $this->exammarks;
+	}
 
     
 }

@@ -58,10 +58,7 @@ if(isset($_GET["examMark"]) ){
 	 
 	 // name store into $name.
     $view = $obj['view'];
-    $examId = $obj['examId'];
-    $classId = $obj['classId'];
-    $subjectId = $obj['subjectId'];
-    $studentId = $obj['studentId'];
+    $id=$obj['id'];
     $examMark = $obj['examMark'];
     $attendanceMark=$obj['attendanceMark'];
     $markComments=$obj['markComments'];
@@ -71,7 +68,7 @@ if(isset($_GET["examMark"]) ){
             case "insert":
                 // to handle REST Url /mobile/list/
                 $exammarksRestHandler = new ExamMarksRestHandler();
-                $exammarksRestHandler->insertExamMarks($examId,$classId,$subjectId,$studentId,$examMark,$attendanceMark,$markComments);
+                $exammarksRestHandler->updateExamMarks($id,$examMark,$attendanceMark,$markComments);
 
         }
         ?>

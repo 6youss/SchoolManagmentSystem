@@ -65,7 +65,7 @@ if(isset($_GET["examMark"]) ){
 
     switch($view){
 
-            case "insert":
+            case "update":
                 // to handle REST Url /mobile/list/
                 $exammarksRestHandler = new ExamMarksRestHandler();
                 $exammarksRestHandler->updateExamMarks($id,$examMark,$attendanceMark,$markComments);

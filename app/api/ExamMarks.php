@@ -32,7 +32,7 @@ Class ExamMarks {
 	}	
 
 	public function getStudentsExamMarks($classId,$subjectId){
-		$query = "SELECT em.id,em.examMark,em.attendanceMark,em.markComments,
+		$query = "SELECT em.id,em.examId,em.examMark,em.attendanceMark,em.markComments,
 		e.examTitle,e.examDescription,e.examDate,
 		cl.className,
 		su.subjectTitle,

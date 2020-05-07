@@ -68,7 +68,7 @@ Class ExamMarks {
 	}	
 
 
-	public function updateExamMarks($examId,$classId,$subjectId,$studentId,$examMark,$attendanceMark,$markComments){
+	public function updateExamMarks($id,$examMark,$attendanceMark,$markComments){
 		$query = "UPDATE `exammarks` 
 		SET `examMark`='".$examMark."',`attendanceMark`='".$attendanceMark."',`markComments`='".$markComments."' where id=".$id;
 		$dbcontroller = new DBController();

@@ -54,7 +54,7 @@ Class Attendance {
 		return $this->attendance;
 	}
 	
-	public function updateAttendance($id,$classId,$subjectId,$studentId,$date,$status){
+	public function updateAttendance($id,$status){
 		$query="UPDATE `attendance` SET `status`=".$status." where id=".$id;
 		$dbcontroller = new DBController();
 		$this->attendance = $dbcontroller->executeUpdateQuery($query);

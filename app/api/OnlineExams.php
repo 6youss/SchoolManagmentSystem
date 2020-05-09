@@ -16,9 +16,9 @@ Class OnlineExams {
         $exams=array();
         $exams=$dbcontroller->executeSelectQuery($query);
         for($i=0;$i<sizeof($exams);$i++){
-            $day=explode("/",$exams[$i]['ExamEndDate'] );
-            $day = mktime(0,0,0,$day['0'],$day['1'],$day['2']);
-            if((int) $date <= (int) $day){
+            /*$day=explode("/", );
+            $day = mktime(0,0,0,$day['0'],$day['1'],$day['2']);*/
+            if((int) $exams[$i]['ExamEndDate'] <= (int) $day){
                 array_push($this->onlineExams,$exams[$i]);
             }
         }

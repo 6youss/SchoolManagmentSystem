@@ -25,8 +25,8 @@ Class OnlineExams {
             }
             }
             $query = "SELECT oe.id,oe.examTitle,oe.examDescription,oe.examQuestion,oe.examDate,oe.examEndDate,
-            t.id,t.userName,t.email,t.photo,
-            s.id,s.subjectTitle
+            t.id techerId,t.userName,t.email,t.photo,
+            s.id subjectId,s.subjectTitle
             FROM onlineexams oe,users t,subject s where oe.examTeacher=t.id and oe.examSubject=s.id and (oe.id=";
             for($k=0;$k<sizeof($fids);$k++){
             if($k==(sizeof($fids)-1)){
@@ -41,12 +41,12 @@ Class OnlineExams {
             if(intval($exams[$i]['ExamEndDate']) <= intval($date) == 1){
                 $exams[$i]['ExamEndDate']=date('m/d/Y',$exams[$i]['ExamEndDate']);
                 $exams[$i]['examDate']=date('m/d/Y',$exams[$i]['examDate']);
-                $exams[$i]['available']=0;
+                $exams[$i]['available']=1;
                 array_push($this->onlineExams,$exams[$i]);
             }else{
                 $exams[$i]['ExamEndDate']=date('m/d/Y',$exams[$i]['ExamEndDate']);
                 $exams[$i]['examDate']=date('m/d/Y',$exams[$i]['examDate']);
-                $exams[$i]['available']=1;
+                $exams[$i]['available']=0;
                 array_push($this->onlineExams,$exams[$i]);  
             }
         }

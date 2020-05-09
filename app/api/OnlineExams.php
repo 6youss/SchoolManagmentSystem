@@ -10,7 +10,7 @@ Class OnlineExams {
 		you should hookup the DAO here
 	*/
 	public function getOnlineExams($classId,$studentId){
-		$query = "SELECT * FROM onlineexamslist 
+		$query = "SELECT * FROM onlineexams 
          order by id desc";
 		$dbcontroller = new DBController();
 		$this->onlineExams = $dbcontroller->executeSelectQuery($query);

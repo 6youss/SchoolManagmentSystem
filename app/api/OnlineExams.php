@@ -19,6 +19,7 @@ Class OnlineExams {
             if(intval($exams[$i]['ExamEndDate']) <= intval($date) == 1){
                 $exams[$i]['ExamEndDate']=date('m/d/Y',$exams[$i]['ExamEndDate']);
                 $exams[$i]['examDate']=date('m/d/Y',$exams[$i]['examDate']);
+                $exams[$i]['ended']=0;
                 array_push($this->onlineExams,$exams[$i]);
             }
         }

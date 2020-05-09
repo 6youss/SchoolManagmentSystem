@@ -25,7 +25,7 @@ Class OnlineExams {
             }
             }
             $query = "SELECT oe.id,oe.examTitle,oe.examDescription,oe.examQuestion,oe.examDate,oe.examEndDate,
-            t.id,t.userName,t.email.t.photo,
+            t.id,t.userName,t.email,t.photo,
             s.id,s.subjectTitle
             FROM onlineexams oe,users t,subject s where oe.examTeacher=t.id and oe.examSubject=s.id and (oe.id=";
             for($k=0;$k<sizeof($fids);$k++){

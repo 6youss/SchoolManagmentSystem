@@ -38,15 +38,19 @@ Class OnlineExams {
         $exams=$dbcontroller->executeSelectQuery($query);
         for($i=0;$i<sizeof($exams);$i++){
             if(intval($exams[$i]['ExamEndDate']) <= intval($date) == 1){
-                $exams[$i]['ExamEndDate']=date('m/d/Y',$exams[$i]['ExamEndDate']);
-                $exams[$i]['examDate']=date('m/d/Y',$exams[$i]['examDate']);
-                $exams[$i]['available']=0;
+                $exams[$i]['available']=1;
+                $startDate=date('m/d/Y',$exams[$i]['examDate']);
+                $exams[$i]['examDate']=$startDate;
+                $endDate=date('m/d/Y',$exams[$i]['ExamEndDate']);
+                $exams[$i]['ExamEndDate']=$endDate;
                 array_push($this->onlineExams,$exams[$i]);
             }else{
-                $exams[$i]['ExamEndDate']=date('m/d/Y',$exams[$i]['ExamEndDate']);
-                $exams[$i]['examDate']=date('m/d/Y',$exams[$i]['examDate']);
-                $exams[$i]['available']=1;
-                array_push($this->onlineExams,$exams[$i]);  
+                $exams[$i]['available']=0;
+                $startDate=date('m/d/Y',$exams[$i]['examDate']);
+                $exams[$i]['examDate']=$startDate;
+                $endDate=date('m/d/Y',$exams[$i]['ExamEndDate']);
+                $exams[$i]['ExamEndDate']=$endDate;
+                array_push($this->onlineExams,$exams[$i]);
             }
         }
 		//$this->onlineExams = $dbcontroller->executeSelectQuery($query);

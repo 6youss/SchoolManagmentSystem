@@ -15,15 +15,17 @@ Class OnlineExams {
         $dbcontroller = new DBController();
         $exams=array();
         $exams=$dbcontroller->executeSelectQuery($query);
+        $finalExams=array();
         for($i=0;$i<sizeof($exams);$i++){
             /*$day=explode("/", );
             $day = mktime(0,0,0,$day['0'],$day['1'],$day['2']);*/
             if((int) $exams[$i]['ExamEndDate'] <= (int) $day){
-                array_push($this->onlineExams,$exams[$i]);
+                array_push($finalExams,$exams[$i]);
             }
         }
 		//$this->onlineExams = $dbcontroller->executeSelectQuery($query);
-		return $this->onlineExams;
+        //return $this->onlineExams;
+        return $finalExams;
 	}	
 	
 	

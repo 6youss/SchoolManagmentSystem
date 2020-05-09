@@ -16,9 +16,14 @@ Class OnlineExams {
         $exams=array();
         $exams=$dbcontroller->executeSelectQuery($query);
         for($i=0;$i<sizeof($exams);$i++){
-            /*$day=explode("/", );
-            $day = mktime(0,0,0,$day['0'],$day['1'],$day['2']);*/
             if(intval($exams[$i]['ExamEndDate']) <= intval($date) == 1){
+                $day=explode("/", $exams[$i]['ExamEndDate']);
+            $day = mktime(0,0,0,$day['0'],$day['1'],$day['2']);
+            $exams[$i]['ExamEndDate']=$day;
+            $day=explode("/", $exams[$i]['examDate']);
+            $day = mktime(0,0,0,$day['0'],$day['1'],$day['2']);
+            $exams[$i]['examDate']=$day;
+            
                 array_push($this->onlineExams,$exams[$i]);
             }
         }

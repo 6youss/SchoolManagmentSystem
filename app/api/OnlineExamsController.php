@@ -18,13 +18,14 @@ if(isset($_GET["view"]) ){
    $view = $obj['view'];
    $classId = $obj['classId'];
    $studentId = $obj['studentId'];
+   $date = $obj['date'];
 
     switch($view){
 
         case "get":
             // to handle REST Url /mobile/list/
             $examsRestHandler = new ExamsRestHandler();
-            $examsRestHandler->getOnlineExams($classId,$studentId);
+            $examsRestHandler->getOnlineExams($classId,$studentId,$date);
             break;
 
 

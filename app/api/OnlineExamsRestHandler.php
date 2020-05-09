@@ -4,10 +4,12 @@ require_once("OnlineExams.php");
 		
 class ExamsRestHandler extends SimpleRest {
 
-	function getOnlineExams($classId,$studentId) {	
+	function getOnlineExams($classId,$studentId,$date) {	
 
-		$onlineExams = new OnlineExams();
-		$rawData = $onlineExams->getOnlineExams($classId,$studentId);
+        $onlineExams = new OnlineExams();
+        $day = explode("/", $date);
+	    $day = mktime(0,0,0,$day['0'],$day['1'],$day['2']);		
+		$rawData = $onlineExams->getOnlineExams($classId,$studentId,$day);
         
 		if(empty($rawData)) {
 			$statusCode = 404;

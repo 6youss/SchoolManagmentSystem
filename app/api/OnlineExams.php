@@ -9,11 +9,20 @@ Class OnlineExams {
 	/*
 		you should hookup the DAO here
 	*/
-	public function getOnlineExams($classId,$studentId){
+	public function getOnlineExams($classId,$studentId,$date){
 		$query = "SELECT * FROM onlineexams 
          order by id desc";
-		$dbcontroller = new DBController();
-		$this->onlineExams = $dbcontroller->executeSelectQuery($query);
+        $dbcontroller = new DBController();
+        $exams=array();
+        $exams=$dbcontroller->executeSelectQuery($query);
+        for($i=0;$i<sizeof($exams);$i++){
+            $day=explode("/",$exams[$i]['ExamEndDate'] );
+            $day = mktime(0,0,0,$day['0'],$day['1'],$day['2']);
+            if($date<=$day){
+                array_push($this->onlineExams,$exams[$i]);
+            }
+        }
+		//$this->onlineExams = $dbcontroller->executeSelectQuery($query);
 		return $this->onlineExams;
 	}	
 	

@@ -39,16 +39,16 @@ Class OnlineExams {
         for($i=0;$i<sizeof($exams);$i++){
             if(intval($exams[$i]['ExamEndDate']) <= intval($date) == 1){
                 $exams[$i]['available']=1;
-                $startDate=date('m/d/Y',$exams[$i]['examDate']);
+                $startDate=date('m/d/Y',intval($exams[$i]['examDate']));
                 $exams[$i]['examDate']=$startDate;
-                $endDate=date('m/d/Y',$exams[$i]['ExamEndDate']);
+                $endDate=date('m/d/Y',intval($exams[$i]['ExamEndDate']));
                 $exams[$i]['ExamEndDate']=$endDate;
                 array_push($this->onlineExams,$exams[$i]);
             }else{
                 $exams[$i]['available']=0;
-                $startDate=date('m/d/Y',$exams[$i]['examDate']);
+                $startDate=date('m/d/Y',intval($exams[$i]['examDate']));
                 $exams[$i]['examDate']=$startDate;
-                $endDate=date('m/d/Y',$exams[$i]['ExamEndDate']);
+                $endDate=date('m/d/Y',intval($exams[$i]['ExamEndDate']));
                 $exams[$i]['ExamEndDate']=$endDate;
                 array_push($this->onlineExams,$exams[$i]);
             }

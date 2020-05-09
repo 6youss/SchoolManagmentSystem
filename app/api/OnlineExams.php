@@ -21,6 +21,11 @@ Class OnlineExams {
                 $exams[$i]['examDate']=date('m/d/Y',$exams[$i]['examDate']);
                 $exams[$i]['ended']=0;
                 array_push($this->onlineExams,$exams[$i]);
+            }else{
+                $exams[$i]['ExamEndDate']=date('m/d/Y',$exams[$i]['ExamEndDate']);
+                $exams[$i]['examDate']=date('m/d/Y',$exams[$i]['examDate']);
+                $exams[$i]['ended']=1;
+                array_push($this->onlineExams,$exams[$i]);  
             }
         }
 		//$this->onlineExams = $dbcontroller->executeSelectQuery($query);

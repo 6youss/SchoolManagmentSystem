@@ -10,7 +10,7 @@ Class OnlineExams {
 		you should hookup the DAO here
 	*/
 	public function getOnlineExams($classId,$studentId,$date){
-		$query = "SELECT * FROM onlineexams 
+		$query = "SELECT * FROM onlineexams where id not in (select examId from onlineexamsgrades where studentId=".$studentId.")
          order by id desc";
         $dbcontroller = new DBController();
         $exams=array();
@@ -35,7 +35,4 @@ Class OnlineExams {
 	
     
 }
-/*
-where id not in (select examId from onlineexamsgrades where studentId=".$studentId.")
- */
 ?>

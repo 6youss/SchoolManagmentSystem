@@ -38,14 +38,14 @@ Class OnlineExams {
         $exams=$dbcontroller->executeSelectQuery($query);
         for($i=0;$i<sizeof($exams);$i++){
             if(intval($exams[$i]['ExamEndDate']) <= intval($date) == 1){
-                $exams[$i]['available']=1;
+                $exams[$i]['status']=0;
                 $startDate=date('m/d/Y',intval($exams[$i]['examDate']));
                 $exams[$i]['examDate']=$startDate;
                 $endDate=date('m/d/Y',intval($exams[$i]['ExamEndDate']));
                 $exams[$i]['ExamEndDate']=$endDate;
                 array_push($this->onlineExams,$exams[$i]);
             }else{
-                $exams[$i]['available']=0;
+                $exams[$i]['status']=1;
                 $startDate=date('m/d/Y',intval($exams[$i]['examDate']));
                 $exams[$i]['examDate']=$startDate;
                 $endDate=date('m/d/Y',intval($exams[$i]['ExamEndDate']));
@@ -53,7 +53,18 @@ Class OnlineExams {
                 array_push($this->onlineExams,$exams[$i]);
             }
         }
-		//$this->onlineExams = $dbcontroller->executeSelectQuery($query);
+        $query = "SELECT oe.id,oe.examTitle,oe.examDescription,oe.examQuestion,oe.examDate,oe.ExamEndDate,
+        s.id subjectId,s.subjectTitle
+        FROM onlineexams oe,subject s where oe.examSubject=s.id and oe.id not in (select examId from onlineexamsgrades where studentId=".$studentId.")";
+        $exams=$dbcontroller->executeSelectQuery($query);
+        for($i=0;$i<sizeof($exams);$i++){
+        $exams[$i]['status']=2;
+        $startDate=date('m/d/Y',intval($exams[$i]['examDate']));
+        $exams[$i]['examDate']=$startDate;
+        $endDate=date('m/d/Y',intval($exams[$i]['ExamEndDate']));
+        $exams[$i]['ExamEndDate']=$endDate;
+        array_push($this->onlineExams,$exams[$i]);
+        }
 		return $this->onlineExams;
 	}	
 	

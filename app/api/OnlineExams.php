@@ -18,7 +18,7 @@ Class OnlineExams {
         for($i=0;$i<sizeof($exams);$i++){
             $day=explode("/",$exams[$i]['ExamEndDate'] );
             $day = mktime(0,0,0,$day['0'],$day['1'],$day['2']);
-            if($date<=$day){
+            if((int)v$date <= (int) $day){
                 array_push($this->onlineExams,$exams[$i]);
             }
         }

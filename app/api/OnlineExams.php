@@ -36,8 +36,7 @@ Class OnlineExams {
             }
             }
             }
-        $exams=array();
-        
+        $exams=$dbcontroller->executeSelectQuery($query);
         for($i=0;$i<sizeof($exams);$i++){
             if(intval($exams[$i]['ExamEndDate']) <= intval($date) == 1){
                 $exams[$i]['ExamEndDate']=date('m/d/Y',$exams[$i]['ExamEndDate']);

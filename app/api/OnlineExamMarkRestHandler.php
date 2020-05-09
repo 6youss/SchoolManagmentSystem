@@ -6,10 +6,10 @@ class ExamsRestHandler extends SimpleRest {
 
 	function getOnlineExamMark($examId,$studentId) {	
 
-        $onlineExams = new OnlineExams();
+        $examMark = new OnlineExamMark();
         $day = explode("/", $date);
 	    $day = mktime(0,0,0,$day['0'],$day['1'],$day['2']);		
-		$rawData = $onlineExams->getOnlineExamMark($examId,$studentId);
+		$rawData = $examMark->getOnlineExamMark($examId,$studentId);
         
 		if(empty($rawData)) {
 			$statusCode = 404;

@@ -129,11 +129,11 @@ Class OnlineExams {
 	}	
     
     
-    public function getTeacherOnlineExams($classId,$teacherId,$date){
+    public function getTeacherOnlineExams($classId,$date){
         $dbcontroller = new DBController();
-		$query = "SELECT id FROM onlineexams where examTeacher=".$teacherId;
+		$query = "SELECT id FROM onlineexams";
         $ids=$dbcontroller->executeSelectQuery($query);
-        $query = "SELECT examClass FROM onlineexams where examTeacher=".$teacherId;
+        $query = "SELECT examClass FROM onlineexams";
         $classes=$dbcontroller->executeSelectQuery($query);
         $fids=array();
         for($i=0;$i<sizeof($ids);$i++){
@@ -177,11 +177,11 @@ Class OnlineExams {
     }	
     
 
-    public function getTeacherSubjectOnlineExams($classId,$teacherId,$subjectId,$date){
+    public function getTeacherSubjectOnlineExams($classId,$subjectId,$date){
         $dbcontroller = new DBController();
-		$query = "SELECT id FROM onlineexams where examSubject= ".$subjectId." and examTeacher=".$teacherId;
+		$query = "SELECT id FROM onlineexams where examSubject= ".$subjectId;
         $ids=$dbcontroller->executeSelectQuery($query);
-        $query = "SELECT examClass FROM onlineexams where examSubject= ".$subjectId." and examTeacher=".$teacherId;
+        $query = "SELECT examClass FROM onlineexams where examSubject= ".$subjectId;
         $classes=$dbcontroller->executeSelectQuery($query);
         $fids=array();
         for($i=0;$i<sizeof($ids);$i++){

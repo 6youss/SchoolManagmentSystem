@@ -115,7 +115,7 @@ Class OnlineExams {
         }
         $query = "SELECT oe.id,oe.examTitle,oe.examDescription,oe.examQuestion,oe.examDate,oe.ExamEndDate,
         s.id subjectId,s.subjectTitle
-        FROM onlineexams oe,subject s where oe.examSubject=s.id and oe.id in (select examId from onlineexamsgrades where studentId=".$studentId.")";
+        FROM onlineexams oe,subject s where oe.examSubject= ".$subjectId." and oe.examSubject=s.id and oe.id in (select examId from onlineexamsgrades where studentId=".$studentId.")";
         $exams=$dbcontroller->executeSelectQuery($query);
         for($i=0;$i<sizeof($exams);$i++){
         $exams[$i]['status']=2;

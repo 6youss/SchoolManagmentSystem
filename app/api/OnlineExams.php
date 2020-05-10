@@ -26,7 +26,7 @@ Class OnlineExams {
             }
             $query = "SELECT oe.id,oe.examTitle,oe.examDescription,oe.examQuestion,oe.examDate,oe.ExamEndDate,
             s.id subjectId,s.subjectTitle,u.fullName,u.photo
-            FROM onlineexams oe,subject s,users u where ui.id=".$studentId." and oe.examSubject=s.id and (oe.id=";
+            FROM onlineexams oe,subject s,users u where u.id=".$studentId." and oe.examSubject=s.id and (oe.id=";
             for($k=0;$k<sizeof($fids);$k++){
             if($k==(sizeof($fids)-1)){
                 $query=$query.$fids[$k].")";
@@ -55,7 +55,7 @@ Class OnlineExams {
         }
         $query = "SELECT oe.id,oe.examTitle,oe.examDescription,oe.examQuestion,oe.examDate,oe.ExamEndDate,
         s.id subjectId,s.subjectTitle,u.fullName,u.photo
-        FROM onlineexams oe,subject s,users u where ui.id=".$studentId." and  oe.examSubject=s.id and oe.id in (select examId from onlineexamsgrades where studentId=".$studentId.")";
+        FROM onlineexams oe,subject s,users u where u.id=".$studentId." and  oe.examSubject=s.id and oe.id in (select examId from onlineexamsgrades where studentId=".$studentId.")";
         $exams=$dbcontroller->executeSelectQuery($query);
         for($i=0;$i<sizeof($exams);$i++){
         $exams[$i]['status']=2;
@@ -86,7 +86,7 @@ Class OnlineExams {
             }
             $query = "SELECT oe.id,oe.examTitle,oe.examDescription,oe.examQuestion,oe.examDate,oe.ExamEndDate,
             s.id subjectId,s.subjectTitle,u.fullName,u.photo
-            FROM onlineexams oe,subject s,users u where ui.id=".$studentId." and  oe.examSubject=s.id and (oe.id=";
+            FROM onlineexams oe,subject s,users u where u.id=".$studentId." and  oe.examSubject=s.id and (oe.id=";
             for($k=0;$k<sizeof($fids);$k++){
             if($k==(sizeof($fids)-1)){
                 $query=$query.$fids[$k].")";
@@ -115,7 +115,7 @@ Class OnlineExams {
         }
         $query = "SELECT oe.id,oe.examTitle,oe.examDescription,oe.examQuestion,oe.examDate,oe.ExamEndDate,
         s.id subjectId,s.subjectTitle,u.fullName,u.photo
-        FROM onlineexams oe,subject,users u s where ui.id=".$studentId." and  oe.examSubject= ".$subjectId." and oe.examSubject=s.id and oe.id in (select examId from onlineexamsgrades where studentId=".$studentId.")";
+        FROM onlineexams oe,subject,users u s where u.id=".$studentId." and  oe.examSubject= ".$subjectId." and oe.examSubject=s.id and oe.id in (select examId from onlineexamsgrades where studentId=".$studentId.")";
         $exams=$dbcontroller->executeSelectQuery($query);
         for($i=0;$i<sizeof($exams);$i++){
         $exams[$i]['status']=2;

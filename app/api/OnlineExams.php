@@ -37,7 +37,7 @@ Class OnlineExams {
             }
         $exams=$dbcontroller->executeSelectQuery($query);
         for($i=0;$i<sizeof($exams);$i++){
-            if(intval($exams[$i]['ExamEndDate']) <= intval($date) == 1){
+            if(intval($exams[$i]['ExamEndDate']) < intval($date) == 1){
                 $exams[$i]['status']=0;
                 $startDate=date('m/d/Y',intval($exams[$i]['examDate']));
                 $exams[$i]['examDate']=$startDate;
@@ -97,7 +97,7 @@ Class OnlineExams {
             }
         $exams=$dbcontroller->executeSelectQuery($query);
         for($i=0;$i<sizeof($exams);$i++){
-            if(intval($exams[$i]['ExamEndDate']) <= intval($date) == 1){
+            if(intval($exams[$i]['ExamEndDate']) < intval($date) == 1){
                 $exams[$i]['status']=0;
                 $startDate=date('m/d/Y',intval($exams[$i]['examDate']));
                 $exams[$i]['examDate']=$startDate;

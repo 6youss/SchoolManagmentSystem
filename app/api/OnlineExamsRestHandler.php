@@ -28,6 +28,31 @@ class ExamsRestHandler extends SimpleRest {
 			echo $response;
 		}
 	}
+
+	function getSubjectOnlineExams($classId,$studentId,$subjectId,$date) {	
+
+        $onlineExams = new OnlineExams();
+        $day = explode("/", $date);
+	    $day = mktime(0,0,0,$day['0'],$day['1'],$day['2']);		
+		$rawData = $onlineExams->getSubjectOnlineExams($classId,$studentId,$subjectId,$date);
+        
+		if(empty($rawData)) {
+			$statusCode = 404;
+			$rawData = array('error' => 'No online exams found!');		
+		} else {
+			$statusCode = 200;
+		}
+
+		$requestContentType = 'application/json';//$_POST['HTTP_ACCEPT'];
+		$this ->setHttpHeaders($requestContentType, $statusCode);
+		
+		$result["online exams"] = $rawData;
+				
+		if(strpos($requestContentType,'application/json') !== false){
+			$response = $this->encodeJson($result);
+			echo $response;
+		}
+	}
 	
 	
     

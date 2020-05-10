@@ -105,7 +105,7 @@ Class OnlineExams {
                 $exams[$i]['ExamEndDate']=$endDate;
                 array_push($this->onlineExams,$exams[$i]);
             }else{
-                $exams[$i]['status']=0;
+                $exams[$i]['status']=1;
                 $startDate=date('m/d/Y',intval($exams[$i]['examDate']));
                 $exams[$i]['examDate']=$startDate;
                 $endDate=date('m/d/Y',intval($exams[$i]['ExamEndDate']));

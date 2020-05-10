@@ -34,7 +34,7 @@ class ExamsRestHandler extends SimpleRest {
         $onlineExams = new OnlineExams();
         $day = explode("/", $date);
 	    $day = mktime(0,0,0,$day['0'],$day['1'],$day['2']);		
-		$rawData = $onlineExams->getSubjectOnlineExams($classId,$studentId,$subjectId,$date);
+		$rawData = $onlineExams->getSubjectOnlineExams($classId,$studentId,$subjectId,$day);
         
 		if(empty($rawData)) {
 			$statusCode = 404;

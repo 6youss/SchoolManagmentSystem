@@ -224,6 +224,14 @@ Class OnlineExams {
 		return $this->onlineExams;
 	}	
 	
+    public function takeOnlineExams($examId,$studentId,$examQuestionsAnswers,$examGrade,$examDate){
+        
+		$query = "INSERT INTO `onlineexamsgrades`( `examId`, `studentId`, `examQuestionsAnswers`, `examGrade`, `examDate`) 
+        VALUES (".$examId.",".$studentId.",'".$examQuestionsAnswers."',".$examGrade.",'".$examDate."')";
+        $dbcontroller = new DBController();
+        $this->examMark=$dbcontroller->executeInsertQuery($query);
+		return $this->examMark;
+    }	
     
 }
 ?>

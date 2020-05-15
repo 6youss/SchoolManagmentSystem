@@ -4,7 +4,19 @@ require_once("OnlineExams.php");
 
 $view = "";
 if(isset($_GET["view"]))
-	$view = $_GET["view"];
+    {$view = $_GET["view"];}
+    
+    $classId = "";
+if(isset($_GET["classId"]))
+    {$classId = $_GET["classId"];}
+    
+    $studentId = "";
+if(isset($_GET["studentId"]))
+    {$studentId = $_GET["studentId"];}
+    
+    $date = "";
+if(isset($_GET["date"]))
+    {$date = $_GET["date"];}
 
 /*{///////view
 	$view = "";
@@ -28,8 +40,8 @@ if(isset($_GET["view"]) ){
         case "get":
             // to handle REST Url /mobile/list/
             $examsRestHandler = new ExamsRestHandler();
-            //$examsRestHandler->getOnlineExams($classId,$studentId,$date);
-            $examsRestHandler->getOnlineExams($_GET["classId"],$_GET["studentId"],$_GET["date"]);
+            $examsRestHandler->getOnlineExams($classId,$studentId,$date);
+            //$examsRestHandler->getOnlineExams($_GET["classId"],$_GET["studentId"],$_GET["date"]);
             break;
 
 

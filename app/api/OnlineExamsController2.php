@@ -27,7 +27,8 @@ if(isset($_POST["view"]) ){
             // to handle REST Url /mobile/list/
             $examsRestHandler = new ExamsRestHandler();
            // $examsRestHandler->getSubjectOnlineExams($classId,$studentId,$subjectId,$date);
-           $examsRestHandler->getSubjectOnlineExams($_POST["classId"],$_POST["studentId"],$_POST["subjectId"],$_POST["date"]);
+           //$examsRestHandler->getSubjectOnlineExams($_POST["classId"],$_POST["studentId"],$_POST["subjectId"],$_POST["date"]);
+           $examsRestHandler->getSubjectOnlineExams($obj['classId'],$obj['studentId'],$obj['subjectId'],$obj['date']);
             break;
 
 

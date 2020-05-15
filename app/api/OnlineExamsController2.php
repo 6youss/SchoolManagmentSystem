@@ -1,13 +1,15 @@
 <?php
 require_once("OnlineExamsRestHandler.php");
-require_once("OnlineExams.php");		
+require_once("OnlineExams.php");	
+/*
+//$view = $_POST["view"];
 
 $view = "";
 if(isset($_POST["view"]))
     {$view = $_POST["view"];}
     
     $classId = "";
-/*if(isset($_POST["classId"]))
+if(isset($_POST["classId"]))
     {$classId = $_POST["classId"];}
 
     $subjectId = "";
@@ -27,14 +29,14 @@ if(isset($_POST["view"]) ){
 	$view = $_POST["view"];
     }*/
     
-    /*$json = file_POST_contents('php://input');
+    $json = file_get_contents('php://input');
  
     // decoding the received JSON and store into $obj variable.
     $obj = json_decode($json,true);
     
     // name store into $name.
    $view = $obj['view'];
-   $classId = $obj['classId'];
+   /*$classId = $obj['classId'];
    $studentId = $obj['studentId'];
    $subjectId = $obj['subjectId'];
    $date = $obj['date'];*/
@@ -45,8 +47,8 @@ if(isset($_POST["view"]) ){
             // to handle REST Url /mobile/list/
             $examsRestHandler = new ExamsRestHandler();
            // $examsRestHandler->POStSubjectOnlineExams($classId,$studentId,$subjectId,$date);
-           $examsRestHandler->POStSubjectOnlineExams($_POST["classId"],$_POST["studentId"],$_POST["subjectId"],$_POST["date"]);
-           //$examsRestHandler->POStSubjectOnlineExams($obj['classId'],$obj['studentId'],$obj['subjectId'],$obj['date']);
+          // $examsRestHandler->POStSubjectOnlineExams($_POST["classId"],$_POST["studentId"],$_POST["subjectId"],$_POST["date"]);
+           $examsRestHandler->POStSubjectOnlineExams($obj['classId'],$obj['studentId'],$obj['subjectId'],$obj['date']);
             break;
 
 

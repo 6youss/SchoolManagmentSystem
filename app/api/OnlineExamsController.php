@@ -3,10 +3,17 @@ require_once("OnlineExamsRestHandler.php");
 require_once("OnlineExams.php");		
 
 $view = "";
-if(isset($_GET["view"]))
-    {$view = $_GET["view"];}
+$classId = "";
+$studentId = "";
+$date = "";
+if(isset($_GET["view"]) && isset($_GET["classId"]) && isset($_GET["studentId"]) && isset($_GET["date"]))
+    {$view = $_GET["view"];
+        $classId = $_GET["classId"];
+        $studentId = $_GET["studentId"];
+        $date = $_GET["date"];
+    }
     
-    $classId = "";
+    /*$classId = "";
 if(isset($_GET["classId"]))
     {$classId = $_GET["classId"];}
     
@@ -16,7 +23,7 @@ if(isset($_GET["studentId"]))
     
     $date = "";
 if(isset($_GET["date"]))
-    {$date = $_GET["date"];}
+    {$date = $_GET["date"];}*/
 
 /*{///////view
 	$view = "";

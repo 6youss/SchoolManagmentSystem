@@ -18,8 +18,8 @@ class ExamsRestHandler extends SimpleRest {
 			$statusCode = 200;
 		}
 
-		//$requestContentType = 'application/json';//$_POST['HTTP_ACCEPT'];
-		$requestContentType = $_SERVER['HTTP_ACCEPT'];
+		$requestContentType = 'application/json';//$_POST['HTTP_ACCEPT'];
+		//$requestContentType = $_SERVER['HTTP_ACCEPT'];
 		$this ->setHttpHeaders($requestContentType, $statusCode);
 		
 		$result["online exams"] = $rawData;

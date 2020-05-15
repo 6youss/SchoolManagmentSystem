@@ -29,7 +29,7 @@ if(isset($_POST["view"]) ){
 	$view = $_POST["view"];
     }*/
     
-   /* $json = file_get_contents('php://input');
+    /*$json = file_get_contents('php://input');
  
     // decoding the received JSON and store into $obj variable.
     $obj = json_decode($json,true);
@@ -43,7 +43,7 @@ if(isset($_POST["view"]) ){
 
     switch($view){
 
-        case "POSt":
+        case "get":
             // to handle REST Url /mobile/list/
             $examsRestHandler = new ExamsRestHandler();
            // $examsRestHandler->getSubjectOnlineExams($classId,$studentId,$subjectId,$date);

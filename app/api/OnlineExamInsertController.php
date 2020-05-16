@@ -13,7 +13,7 @@ $json = file_get_contents('php://input');
     case "insert":
         // to handle REST Url /mobile/list/
         $examsRestHandler = new ExamsRestHandler();
-        $examsRestHandler->insertOnlineExams($obj['examTitle'],$obj['examDescription'],$obj['examClass'],$obj['examTeacher']
+        $examsRestHandler->insertOnlineExam($obj['examTitle'],$obj['examDescription'],$obj['examClass'],$obj['examTeacher']
         ,$obj['examSubject'],$obj['examDate'],$obj['ExamEndDate'],$obj['examQuestion']);
             break;
 

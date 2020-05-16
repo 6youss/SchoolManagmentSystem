@@ -135,6 +135,33 @@ class ExamsRestHandler extends SimpleRest {
 			echo $response;
 		}
 	}
+
+	function insertOnlineExam($examTitle,$examDescription,$examClass,$examTeacher,$examSubject,$examDate,$ExamEndDate,$examQuestion) {	
+
+        $onlineExams = new OnlineExams();
+        $start = explode("/", $examDate);
+		$start = mktime(0,0,0,$start['0'],$start['1'],$start['2']);	
+		$end = explode("/", $ExamEndDate);
+	    $end = mktime(0,0,0,$end['0'],$end['1'],$end['2']);		
+		$rawData = $onlineExams->insertOnlineExam($examTitle,$examDescription,$examClass,$examTeacher,$examSubject,$start,$end,$examQuestion);
+        
+		if(empty($rawData)) {
+			$statusCode = 404;
+			$rawData = array('error' => 'ERROR!');		
+		} else {
+			$statusCode = 200;
+		}
+
+		$requestContentType = 'application/json';//$_POST['HTTP_ACCEPT'];
+		$this ->setHttpHeaders($requestContentType, $statusCode);
+		
+		$result["insert status"] = $rawData;
+				
+		if(strpos($requestContentType,'application/json') !== false){
+			$response = $this->encodeJson($result);
+			echo $response;
+		}
+	}
     
     public function encodeJson($responseData) {
 		$jsonResponse = json_encode($responseData);

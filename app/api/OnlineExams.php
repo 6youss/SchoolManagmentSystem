@@ -233,5 +233,13 @@ Class OnlineExams {
 		return $this->examMark;
     }	
     
+    public function insertOnlineExam($examTitle,$examDescription,$examClass,$examTeacher,$examSubject,$examDate,$ExamEndDate,$examQuestion){
+        
+		$query = "INSERT INTO `onlineexams`(`examTitle`, `examDescription`, `examClass`, `examTeacher`, `examSubject`, `examDate`, `ExamEndDate`, `ExamShowGrade`, `examQuestion`) 
+        VALUES ('".$examTitle."','".$examDescription."','".$examClass."',".$examTeacher.",".$examSubject.",'".$examDate."','".$ExamEndDate."',0,'".$examQuestion."')";
+        $dbcontroller = new DBController();
+        $this->examMark=$dbcontroller->executeInsertQuery($query);
+		return $this->examMark;
+    }
 }
 ?>

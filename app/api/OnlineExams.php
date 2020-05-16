@@ -241,5 +241,13 @@ Class OnlineExams {
         $this->examMark=$dbcontroller->executeInsertQuery($query);
 		return $this->examMark;
     }
+
+    public function deleteOnlineExam($examId){
+        
+        $query = "DELETE FROM `onlineexamsgrades` WHERE examId=".$examId;
+        $dbcontroller = new DBController();
+        $this->examMark=$dbcontroller->executeDeleteQuery($query);
+		return $this->examMark;
+    }
 }
 ?>

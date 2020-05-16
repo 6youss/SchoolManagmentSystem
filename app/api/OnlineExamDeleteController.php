@@ -22,7 +22,7 @@ if(isset($_GET["view"]) ){
     case "delete":
         // to handle REST Url /mobile/list/
         $examsRestHandler = new ExamsRestHandler();
-        $examsRestHandler->deleteOnlineExamMarks($examId);
+        $examsRestHandler->deleteOnlineExam($examId);
         break;
 
 

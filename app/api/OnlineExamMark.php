@@ -17,6 +17,14 @@ Class OnlineExamMark {
 		return $this->examMark;
 	}	
 	
-	
+	public function getOnlineExamMarks($examId){
+        
+		$query = "SELECT em.examGrade,em.examQuestionsAnswers,u.fullName,u.photo 
+		FROM onlineexamsgrades em 
+		where examId=".$examId." and em.studentId=u.id";
+        $dbcontroller = new DBController();
+        $this->examMark=$dbcontroller->executeSelectQuery($query);
+		return $this->examMark;
+	}
     
 }

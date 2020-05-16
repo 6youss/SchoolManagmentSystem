@@ -20,7 +20,7 @@ Class OnlineExamMark {
 	public function getOnlineExamMarks($examId){
         
 		$query = "SELECT em.examGrade,em.examQuestionsAnswers,u.fullName,u.photo 
-		FROM onlineexamsgrades em 
+		FROM onlineexamsgrades em,users u 
 		where examId=".$examId." and em.studentId=u.id";
         $dbcontroller = new DBController();
         $this->examMark=$dbcontroller->executeSelectQuery($query);

@@ -244,7 +244,7 @@ Class OnlineExams {
 
     public function deleteOnlineExam($examId){
         
-        $query = "DELETE FROM `onlineexams` WHERE examId=".$examId;
+        $query = "DELETE FROM `onlineexams` WHERE id=".$examId;
         $dbcontroller = new DBController();
         $this->examMark=$dbcontroller->executeDeleteQuery($query);
 		return $this->examMark;

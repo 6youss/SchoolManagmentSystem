@@ -16,8 +16,7 @@ if(isset($_GET["view"]) ){
     
     // name store into $name.
    $view = $obj['view'];
-   //$classId = $obj['classId'];
-   $teacherId = $obj['teacherId'];
+   $classId = $obj['classId'];
    $date = $obj['date'];
 
     switch($view){
@@ -25,7 +24,7 @@ if(isset($_GET["view"]) ){
         case "get":
             // to handle REST Url /mobile/list/
             $examsRestHandler = new ExamsRestHandler();
-            $examsRestHandler->getTeacherOnlineExams(/*$classId*/$teacherId,$date);
+            $examsRestHandler->getTeacherOnlineExams($classId,$date);
             break;
 
 

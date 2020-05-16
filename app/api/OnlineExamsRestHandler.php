@@ -86,12 +86,12 @@ class ExamsRestHandler extends SimpleRest {
 		}
 	}
 
-	function getTeacherSubjectOnlineExams(/*$classId*/$teacherId,$subjectId,$date) {	
+	function getTeacherSubjectOnlineExams($classId,$subjectId,$date) {	
 
         $onlineExams = new OnlineExams();
         $day = explode("/", $date);
 	    $day = mktime(0,0,0,$day['0'],$day['1'],$day['2']);		
-		$rawData = $onlineExams->getTeacherSubjectOnlineExams(/*$classId*/$teacherId,$subjectId,$day);
+		$rawData = $onlineExams->getTeacherSubjectOnlineExams($classId,$subjectId,$day);
         
 		if(empty($rawData)) {
 			$statusCode = 404;

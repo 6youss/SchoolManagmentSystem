@@ -19,7 +19,7 @@ if(isset($_GET["view"]) ){
    $examId = $obj['examId'];
    switch($view){
 
-    case "get":
+    case "delete":
         // to handle REST Url /mobile/list/
         $examsRestHandler = new ExamsRestHandler();
         $examsRestHandler->deleteOnlineExamMarks($examId);

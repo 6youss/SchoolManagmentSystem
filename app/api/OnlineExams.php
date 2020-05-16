@@ -129,9 +129,9 @@ Class OnlineExams {
 	}	
     
     
-    public function getTeacherOnlineExams($classId,$date){
+    public function getTeacherOnlineExams(/*$classId*/$teacherId,$date){
         $dbcontroller = new DBController();
-		$query = "SELECT id FROM onlineexams";
+		/*$query = "SELECT id FROM onlineexams";
         $ids=$dbcontroller->executeSelectQuery($query);
         $query = "SELECT examClass FROM onlineexams";
         $classes=$dbcontroller->executeSelectQuery($query);
@@ -154,7 +154,10 @@ Class OnlineExams {
                 $query=$query.$fids[$k]." or oe.id=";
             }
             }
-            }
+            }*/
+            $query = "SELECT oe.id,oe.examTitle,oe.examDescription,oe.examQuestion,oe.examDate,oe.ExamEndDate,
+            s.id subjectId,s.subjectTitle
+            FROM onlineexams oe,subject s where oe.examTeacher=".$teacherId." and oe.examSubject=s.id and";
         $exams=$dbcontroller->executeSelectQuery($query);
         for($i=0;$i<sizeof($exams);$i++){
             if(intval($exams[$i]['ExamEndDate']) < intval($date)){
@@ -177,9 +180,9 @@ Class OnlineExams {
     }	
     
 
-    public function getTeacherSubjectOnlineExams($classId,$subjectId,$date){
+    public function getTeacherSubjectOnlineExams(/*$classId*/$teacherId,$subjectId,$date){
         $dbcontroller = new DBController();
-		$query = "SELECT id FROM onlineexams where examSubject= ".$subjectId;
+		/*$query = "SELECT id FROM onlineexams where examSubject= ".$subjectId;
         $ids=$dbcontroller->executeSelectQuery($query);
         $query = "SELECT examClass FROM onlineexams where examSubject= ".$subjectId;
         $classes=$dbcontroller->executeSelectQuery($query);
@@ -202,7 +205,10 @@ Class OnlineExams {
                 $query=$query.$fids[$k]." or oe.id=";
             }
             }
-            }
+            }*/
+            $query = "SELECT oe.id,oe.examTitle,oe.examDescription,oe.examQuestion,oe.examDate,oe.ExamEndDate,
+            s.id subjectId,s.subjectTitle
+            FROM onlineexams oe,subject s where oe.examTeacher=".$teacherId." and oe.examSubject=".$subjectId." and oe.examSubject=s.id";
         $exams=$dbcontroller->executeSelectQuery($query);
         for($i=0;$i<sizeof($exams);$i++){
             if(intval($exams[$i]['ExamEndDate']) < intval($date)){

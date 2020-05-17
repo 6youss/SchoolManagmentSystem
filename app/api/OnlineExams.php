@@ -144,7 +144,7 @@ Class OnlineExams {
                 array_push($fids,$ids[$i]["id"]);
             }
             }
-            $query = "SELECT oe.id,oe.examTitle,oe.examDescription,oe.examQuestion,oe.examDate,oe.ExamEndDate,
+            $query = "SELECT oe.id,oe.examClass,oe.examTitle,oe.examDescription,oe.examQuestion,oe.examDate,oe.ExamEndDate,
             s.id subjectId,s.subjectTitle
             FROM onlineexams oe,subject s where oe.examSubject=s.id and (oe.id=";
             for($k=0;$k<sizeof($fids);$k++){
@@ -192,7 +192,7 @@ Class OnlineExams {
                 array_push($fids,$ids[$i]["id"]);
             }
             }
-            $query = "SELECT oe.id,oe.examTitle,oe.examDescription,oe.examQuestion,oe.examDate,oe.ExamEndDate,
+            $query = "SELECT oe.id,oe.examClass,oe.examTitle,oe.examDescription,oe.examQuestion,oe.examDate,oe.ExamEndDate,
             s.id subjectId,s.subjectTitle
             FROM onlineexams oe,subject s where oe.examSubject=s.id and (oe.id=";
             for($k=0;$k<sizeof($fids);$k++){

@@ -44,12 +44,6 @@ if(isset($_GET["subjectId"]) ){
     $id=$obj['id'];
     $status=$obj['status'];*/
 
-    $id = $_PUT["id"];
-    $status = $_PUT["status"];
-    $attendanceRestHandler = new AttendanceRestHandler();
-    $attendanceRestHandler->updateAttendance($id,$status);
-    /*
-
     $view = $_PUT["view"];
     $id = $_PUT["id"];
     $status = $_PUT["status"];

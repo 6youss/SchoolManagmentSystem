@@ -40,8 +40,9 @@ if(isset($_GET["subjectId"]) ){
     $view = $obj['view'];
     $id=$obj['id'];
     $status=$obj['status'];*/
-    
-    $view = $_POST["view"];
+    $attendanceRestHandler = new AttendanceRestHandler();
+    $attendanceRestHandler->updateAttendance($_POST["id"],$_POST["status"]);
+    /*$view = $_POST["view"];
     $id = $_POST["id"];
     $status = $_POST["status"];
 
@@ -53,5 +54,5 @@ if(isset($_GET["subjectId"]) ){
                     $attendanceRestHandler->updateAttendance($id,$status);
                     break;
 
-        }
+        }*/
         ?>

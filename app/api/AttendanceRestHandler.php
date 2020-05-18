@@ -126,11 +126,16 @@ class AttendanceRestHandler extends SimpleRest {
 		$attendance = new Attendance();
 		$rawData = $attendance->updateAttendance($id,$status);
         
-		if(empty($rawData)) {
-			$statusCode = 404;
-			$rawData = array('error' => 'ERROR!');		
-		} else {
-			$statusCode = 200;
+		if($_SERVER['REQUEST_METHOD'] == 'PUT'){
+			if(empty($rawData)) {
+				$statusCode = 404;
+				$rawData = array('error' => 'ERROR!');		
+			} else {
+				$statusCode = 200;
+			}
+		}else{
+			$statusCode = 400;
+			$rawData = array('error' => 'BAD REQUEST!');	
 		}
 
 		$requestContentType = 'application/json';

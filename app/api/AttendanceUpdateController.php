@@ -34,19 +34,17 @@ if(isset($_GET["subjectId"]) ){
     if(isset($_GET["status"]) ){
         $status = $_GET["status"];
         }}*/
-        $json = file_get_contents('php://input');
- 
-	 // decoding the received JSON and store into $obj variable.
-	 $obj = json_decode($json,true);
-	 
-	 // name store into $name.
+
+    /*$json = file_get_contents('php://input');
+	$obj = json_decode($json,true);
     $view = $obj['view'];
     $id=$obj['id'];
-    $status=$obj['status'];
-
-    /*$view = $_POSTT["view"];
+    $status=$obj['status'];*/
+    $attendanceRestHandler = new AttendanceRestHandler();
+    $attendanceRestHandler->updateAttendance($_POST["id"],$_POST["status"]);
+    /*$view = $_POST["view"];
     $id = $_POST["id"];
-    $status = $_POST["status"];*/
+    $status = $_POST["status"];
 
     switch($view){
 
@@ -56,5 +54,5 @@ if(isset($_GET["subjectId"]) ){
                     $attendanceRestHandler->updateAttendance($id,$status);
                     break;
 
-        }
+        }*/
         ?>

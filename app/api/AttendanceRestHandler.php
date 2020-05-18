@@ -133,8 +133,8 @@ class AttendanceRestHandler extends SimpleRest {
 			$statusCode = 200;
 		}
 
-		//$requestContentType = 'application/json';
-		$requestContentType = $_PUT['HTTP_ACCEPT'];
+		$requestContentType = 'application/json';
+		//$requestContentType = $_PUT['HTTP_ACCEPT'];
 		$this ->setHttpHeaders($requestContentType, $statusCode);
 		
 		$result["update status"] = $rawData;

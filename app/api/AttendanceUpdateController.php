@@ -34,7 +34,7 @@ if(isset($_GET["subjectId"]) ){
     if(isset($_GET["status"]) ){
         $status = $_GET["status"];
         }}*/
-        $json = file_get_contents('php://input');
+        /*$json = file_get_contents('php://input');
  
 	 // decoding the received JSON and store into $obj variable.
 	 $obj = json_decode($json,true);
@@ -42,7 +42,11 @@ if(isset($_GET["subjectId"]) ){
 	 // name store into $name.
     $view = $obj['view'];
     $id=$obj['id'];
-    $status=$obj['status'];
+    $status=$obj['status'];*/
+
+    $view = $_PUT["view"];
+    $id = $_PUT["id"];
+    $status = $_PUT["status"];
 
     switch($view){
 

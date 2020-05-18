@@ -54,7 +54,7 @@ if(isset($_GET["subjectId"]) ){
     $id = $_POST["id"];
     $status = $_POST["status"];
 */
-    switch($view){
+    /*switch($view){
 
                 case "update":
                     // to handle REST Url /mobile/list/
@@ -62,5 +62,5 @@ if(isset($_GET["subjectId"]) ){
                     $attendanceRestHandler->updateAttendance($id,$status);
                     break;
 
-        }
+        }*/
         ?>

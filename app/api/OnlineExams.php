@@ -242,6 +242,16 @@ Class OnlineExams {
 		return $this->examMark;
     }
 
+    public function updateOnlineExam($examId,$examTitle,$examDescription,$examClass,$examTeacher,$examSubject,$examDate,$ExamEndDate,$examQuestion){
+        
+		$query = "UPDATE `onlineexams` SET `examTitle`='".$examTitle."',`examDescription`='".$examDescription."',`examClass`='".$examClass."',
+        `examTeacher`=".$examTeacher.",`examSubject`=".$examSubject.",`examDate`='".$examDate."',`ExamEndDate`='".$ExamEndDate."',
+        `examQuestion`='".$examQuestion."' WHERE id=".$examId;
+        $dbcontroller = new DBController();
+        $this->examMark=$dbcontroller->executeUpdateQuery($query);
+		return $this->examMark;
+    }
+
     public function deleteOnlineExam($examId){
         
         $query = "DELETE FROM `onlineexams` WHERE id=".$examId;

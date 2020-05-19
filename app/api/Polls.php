@@ -11,7 +11,7 @@ Class Polls {
 	*/
 
 	public function getPolls($role){
-		$query = "SELECT * FROM polls where pollTarget = 'all' or pollTarget = '".$role."s'";
+		$query = "SELECT * FROM polls where (pollTarget = 'all' or pollTarget = '".$role."s') and pollStatus=1";
 		$dbcontroller = new DBController();
 		$this->polls = $dbcontroller->executeSelectQuery($query);
 		return $this->polls;

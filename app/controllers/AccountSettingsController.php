@@ -82,7 +82,8 @@ class AccountSettingsController extends \BaseController {
 	function savePassword(){
 		if (Hash::check(Input::get('password'), $this->data['users']->password)) {
 		    $User = User::where('id',Auth::user()->id)->first();
-			$User->password = Hash::make(Input::get('newPassword');
+			//$User->password = Hash::make(Input::get('newPassword');
+			$User->password = Hash::make(Input::get('newPassword'));
 			$User->save();
 			return json_encode(array("jsTitle"=>$this->panelInit->language['editPassword'],"jsMessage"=>$this->panelInit->language['pwdChangedSuccess'] ));
 		}else{

@@ -17,6 +17,13 @@ Class Polls {
 		return $this->polls;
 	}	
 
+	public function votePoll($id,$options,$users){
+		$query = "UPDATE `polls` SET `pollOptions`='".$options."',`userVoted`='".$users."' WHERE id=".$id;
+		$dbcontroller = new DBController();
+		$this->polls = $dbcontroller->executeUpdateQuery($query);
+		return $this->polls;
+	}	
+
 	/*public function getAllPolls(){
 		$query = "SELECT * FROM polls where pollTarget = 'all' ";
 		$dbcontroller = new DBController();

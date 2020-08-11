@@ -15,7 +15,7 @@ Class MediaItems {
 		$this->mediaitems = $dbcontroller->executeSelectQuery($query);
 		for($i=0;$i<sizeof($mediaitems);$i++){
 			$date=date('m/d/Y',intval($mediaitems[$i]['mediaDate']));
-                $mediaitems[$i]['mediaDate']=$date;
+                $this->mediaitems[$i]['mediaDate']=$date;
 		}
 		return $this->mediaitems;
     }	
@@ -26,7 +26,7 @@ Class MediaItems {
 		$this->mediaitems = $dbcontroller->executeSelectQuery($query);
 		for($i=0;$i<sizeof($mediaitems);$i++){
 			$date=date('m/d/Y',intval($mediaitems[$i]['mediaDate']));
-                $mediaitems[$i]['mediaDate']=$date;
+                $this->mediaitems[$i]['mediaDate']=$date;
 		}
 		return $this->mediaitems;
 	}	

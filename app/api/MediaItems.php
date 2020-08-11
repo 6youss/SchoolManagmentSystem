@@ -12,10 +12,11 @@ Class MediaItems {
 	public function getMediaItems(){
 		$query = "SELECT * FROM mediaitems where albumId=0"; //
 		$dbcontroller = new DBController();
-		$this->mediaitems = $dbcontroller->executeSelectQuery($query);
-		for($i=0;$i<sizeof($mediaitems);$i++){
-			$date=date('m/d/Y',intval($this->mediaitems[$i]['mediaDate']));
-                $this->mediaitems[$i]['mediaDate']=$date;
+		$items = $dbcontroller->executeSelectQuery($query);
+		for($i=0;$i<sizeof($items);$i++){
+			$date=date('m/d/Y',intval($items[$i]['mediaDate']));
+				$items[$i]['mediaDate']=$date;
+				array_push($this->mediaitems,$items[$i]);
 		}
 		return $this->mediaitems;
     }	
@@ -23,10 +24,11 @@ Class MediaItems {
     public function getMediaItemsChildren($id){
 		$query = "SELECT * FROM mediaitems where albumId=".$id;
 		$dbcontroller = new DBController();
-		$this->mediaitems = $dbcontroller->executeSelectQuery($query);
-		for($i=0;$i<sizeof($mediaitems);$i++){
-			$date=date('m/d/Y',intval($this->mediaitems[$i]['mediaDate']));
-                $this->mediaitems[$i]['mediaDate']=$date;
+		$items = $dbcontroller->executeSelectQuery($query);
+		for($i=0;$i<sizeof($items);$i++){
+			$date=date('m/d/Y',intval($items[$i]['mediaDate']));
+				$items[$i]['mediaDate']=$date;
+				array_push($this->mediaitems,$items[$i]);
 		}
 		return $this->mediaitems;
 	}	

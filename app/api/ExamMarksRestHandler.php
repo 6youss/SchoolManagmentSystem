@@ -96,6 +96,29 @@ class ExamMarksRestHandler extends SimpleRest {
 		}
 	}
 
+	function getClassSubjectExamExamMarks($classId,$subjectId,$examId) {	
+
+		$exammarks = new ExamMarks();
+		$rawData = $exammarks->getClassSubjectExamExamMarks($classId,$subjectId,$examId);
+        
+		if(empty($rawData)) {
+			$statusCode = 404;
+			$rawData = array('error' => 'No exam marks found!');		
+		} else {
+			$statusCode = 200;
+		}
+
+		$requestContentType = 'application/json';//$_POST['HTTP_ACCEPT'];
+		$this ->setHttpHeaders($requestContentType, $statusCode);
+		
+		$result["exam marks"] = $rawData;
+				
+		if(strpos($requestContentType,'application/json') !== false){
+			$response = $this->encodeJson($result);
+			echo $response;
+		}
+	}
+
 	function insertExamMarks($examId,$classId,$subjectId,$studentId,$examMark,$attendanceMark,$markComments) {	
 
 		$exammarks = new ExamMarks();

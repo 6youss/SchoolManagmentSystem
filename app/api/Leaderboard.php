@@ -9,7 +9,7 @@ Class Leaderboard {
 	/*
 		you should hookup the DAO here
 	*/
-	public function geLeaderboard(){
+	public function getLeaderboard(){
 		$query = "SELECT `id`, `username`, `email`,  `fullName`, `role`,  `studentRollId`,`birthday`, `gender`, `address`,
          `phoneNo`, `mobileNo`, `studentClass`, `parentProfession`,  `photo`, `isLeaderBoard`,  `transport` 
           FROM `users` WHERE isLeaderBoard != ''"; //

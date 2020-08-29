@@ -13,6 +13,10 @@ Class News {
 		$query = "SELECT * FROM newsboard where newsFor = 'all' or newsFor='".$role."'";
 		$dbcontroller = new DBController();
 		$this->news = $dbcontroller->executeSelectQuery($query);
+		for($i=0;$i<sizeof($this->news);$i++){
+			$date=date('m/d/Y',intval($this->news[$i]['newsDate']));
+			$this->news[$i]['newsDate']=$date;
+		}
 		return $this->news;
 	}	
 

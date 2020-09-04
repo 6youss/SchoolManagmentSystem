@@ -79,6 +79,20 @@ Class Books {
 		$dbcontroller = new DBController();
 		$this->books = $dbcontroller->executeSelectQuery($query);
 		return $this->books;
+	}
+	
+	public function getBooksNames(){
+		$query = "SELECT bookName FROM booklibrary";
+		$dbcontroller = new DBController();
+		$this->books = $dbcontroller->executeSelectQuery($query);
+		return $this->books;
+	}
+	
+	public function getAuthorsNames(){
+		$query = "SELECT bookAuthor FROM booklibrary";
+		$dbcontroller = new DBController();
+		$this->books = $dbcontroller->executeSelectQuery($query);
+		return $this->books;
     }
 	
 	

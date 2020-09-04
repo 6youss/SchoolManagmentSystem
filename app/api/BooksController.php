@@ -37,6 +37,18 @@ if(isset($_GET["view"]) ){
             $booksRestHandler->getTypeBooks("electronic");
         break;
 
+        case "booksnames":
+            $booksRestHandler = new BooksRestHandler();
+            //$booksRestHandler->getEBooks();
+            $booksRestHandler->getBooksNames();
+        break;
+
+        case "authorsnames":
+            $booksRestHandler = new BooksRestHandler();
+            //$booksRestHandler->getEBooks();
+            $booksRestHandler->getAuthorsNames();
+        break;
+
       
 
         }

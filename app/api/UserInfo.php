@@ -24,9 +24,12 @@ Class UserInfo {
 	}
 
 	public function getUserbyinfo($userName){
-		$query = "SELECT * FROM users where username ='".$userName."'";
+		$query = "SELECT * FROM users where username ='".$userName."' or email='".$userName."'";
 		$dbcontroller = new DBController();
 		$this->user = $dbcontroller->executeSelectQuery($query);
+		for($i=0;$i<sizeof($this->user);$i++){
+			$this->user[$i]['birthday']=date('m/d/Y',$this->user[$i]['birthday']);
+		}
 		return $this->user;
 	}
 	

@@ -82,14 +82,14 @@ Class Books {
 	}
 	
 	public function getBooksNames(){
-		$query = "SELECT bookName FROM booklibrary";
+		$query = "SELECT distinct bookName FROM booklibrary";
 		$dbcontroller = new DBController();
 		$this->books = $dbcontroller->executeSelectQuery($query);
 		return $this->books;
 	}
 	
 	public function getAuthorsNames(){
-		$query = "SELECT bookAuthor FROM booklibrary";
+		$query = "SELECT distinct bookAuthor FROM booklibrary";
 		$dbcontroller = new DBController();
 		$this->books = $dbcontroller->executeSelectQuery($query);
 		return $this->books;

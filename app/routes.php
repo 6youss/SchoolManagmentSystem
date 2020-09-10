@@ -343,7 +343,7 @@ Route::filter('api.csrf', function($route, $request)
 {
 	if ( Request::isMethod('post') )
 	{
-		if(!Input::has('_mobile') || !((Input::has('_token') AND Session::token() == Input::get('_token')) || ($request->header('X-Csrf-Token') != "" AND Session::token() == $request->header('X-Csrf-Token')) ) ){
+		if( !((Input::has('_token') AND Session::token() == Input::get('_token')) || ($request->header('X-Csrf-Token') != "" AND Session::token() == $request->header('X-Csrf-Token')) ) ){
 			return Response::json('CSRF does not match', 400);
 		}		
 	}

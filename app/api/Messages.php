@@ -12,7 +12,7 @@ Class Messages {
 	
 	public function getConversations($id){
 		//$query = "SELECT * FROM messages where fromId=".$id." or toId=".$id;
-		$query = "SELECT * FROM `messageslist` WHERE userId=".$id." order by id desc";
+		$query = "SELECT ml.lastMessage, ml.lastMessageDate, ml.messageStatus,u.username,u.photo FROM messageslist ml, users u WHERE ml.userId=".$id."and u.id=ml.toId order by id desc";
 		$dbcontroller = new DBController();
 		$this->messages = $dbcontroller->executeSelectQuery($query);
 		return $this->messages;

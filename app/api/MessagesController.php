@@ -31,6 +31,12 @@ if(isset($_GET["userId"]) ){
             $messagesRestHandler->getConversations($userId);
             break;
 
+            case "conversation":
+                // to handle REST Url /mobile/list/
+                $messagesRestHandler = new MessagesRestHandler();
+                $messagesRestHandler->getConversation($userId,$obj['user2Id']);
+                break;
+
         case "all":
             // to handle REST Url /mobile/list/
             $messagesRestHandler = new MessagesRestHandler();

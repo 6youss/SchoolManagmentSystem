@@ -17,6 +17,13 @@ Class Messages {
 		$dbcontroller = new DBController();
 		$this->messages = $dbcontroller->executeSelectQuery($query);
 		return $this->messages;
+	}
+	
+	public function getConversation($id,$id2){
+		$query = "SELECT * FROM `messages` WHERE (userId=fromId and userId=".$id.") or (userId=fromId and userId=".$id2.")";
+		$dbcontroller = new DBController();
+		$this->messages = $dbcontroller->executeSelectQuery($query);
+		return $this->messages;
     }
     
     public function getAllMessages($id){

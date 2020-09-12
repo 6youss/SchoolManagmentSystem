@@ -27,6 +27,31 @@ class MessagesRestHandler extends SimpleRest {
 			$response = $this->encodeJson($result);
 			echo $response;
 		}
+	}
+	
+	function getConversation($id,$id2) {	
+
+		$messages = new Messages();
+		$rawData = $messages->getConversation($id,$id2);
+		for($i=0;$i<sizeof($rawData);$i++){
+			$rawData[$i]['lastMessageDate']=date('m/d/Y H:i',$rawData[$i]['lastMessageDate']);
+		}
+		if(empty($rawData)) {
+			$statusCode = 404;
+			$rawData = array('error' => 'No conversation found!');		
+		} else {
+			$statusCode = 200;
+		}
+
+		$requestContentType = 'application/json';//$_POST['HTTP_ACCEPT'];
+		$this ->setHttpHeaders($requestContentType, $statusCode);
+		
+		$result["conversation"] = $rawData;
+				
+		if(strpos($requestContentType,'application/json') !== false){
+			$response = $this->encodeJson($result);
+			echo $response;
+		}
     }
 
     function getAllMessages($id) {	

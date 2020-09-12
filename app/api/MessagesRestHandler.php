@@ -4,6 +4,31 @@ require_once("Messages.php");
 		
 class MessagesRestHandler extends SimpleRest {
 
+	function getConversations($id) {	
+
+		$messages = new Messages();
+		$rawData = $messages->getConversations($id);
+		for($i=0;$i<sizeof($rawData);$i++){
+			$rawData[$i]['lastMessageDate']=date('m/d/Y',$rawData[$i]['lastMessageDate']);
+		}
+		if(empty($rawData)) {
+			$statusCode = 404;
+			$rawData = array('error' => 'No conversations found!');		
+		} else {
+			$statusCode = 200;
+		}
+
+		$requestContentType = 'application/json';//$_POST['HTTP_ACCEPT'];
+		$this ->setHttpHeaders($requestContentType, $statusCode);
+		
+		$result["conversations"] = $rawData;
+				
+		if(strpos($requestContentType,'application/json') !== false){
+			$response = $this->encodeJson($result);
+			echo $response;
+		}
+    }
+
     function getAllMessages($id) {	
 
 		$messages = new Messages();

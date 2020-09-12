@@ -25,6 +25,12 @@ if(isset($_GET["userId"]) ){
     
     switch($view){
 
+        case "conversations":
+            // to handle REST Url /mobile/list/
+            $messagesRestHandler = new MessagesRestHandler();
+            $messagesRestHandler->getConversations($userId);
+            break;
+
         case "all":
             // to handle REST Url /mobile/list/
             $messagesRestHandler = new MessagesRestHandler();

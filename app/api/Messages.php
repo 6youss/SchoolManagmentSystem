@@ -8,7 +8,15 @@ Class Messages {
 	//private $req="";
 	/*
 		you should hookup the DAO here
-    */
+	*/
+	
+	public function getConversations($id){
+		//$query = "SELECT * FROM messages where fromId=".$id." or toId=".$id;
+		$query = "SELECT * FROM `messageslist` WHERE userId=".$id." order by id desc";
+		$dbcontroller = new DBController();
+		$this->messages = $dbcontroller->executeSelectQuery($query);
+		return $this->messages;
+    }
     
     public function getAllMessages($id){
 		//$query = "SELECT * FROM messages where fromId=".$id." or toId=".$id;

@@ -57,7 +57,7 @@ Class Messages {
 	}
 
 	public function getMessageReciever($user){
-		$query = "SELECT id FROM users where username='".$user."' or email='".$user."'";
+		$query = "SELECT id,username,photo FROM users where username='".$user."' or email='".$user."'";
 		$dbcontroller = new DBController();
 		$this->messages = $dbcontroller->executeSelectQuery($query);
 		return $this->messages;

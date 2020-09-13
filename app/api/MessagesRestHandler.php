@@ -52,6 +52,50 @@ class MessagesRestHandler extends SimpleRest {
 			$response = $this->encodeJson($result);
 			echo $response;
 		}
+	}
+
+	function deleteConversation($conversation) {	
+
+		$messages = new Messages();
+		$rawData = $messages->deleteConversation($conversation);
+		if(empty($rawData)) {
+			$statusCode = 404;
+			$rawData = array('error' => 'ERROR!');		
+		} else {
+			$statusCode = 200;
+		}
+
+		$requestContentType = 'application/json';//$_POST['HTTP_ACCEPT'];
+		$this ->setHttpHeaders($requestContentType, $statusCode);
+		
+		$result["delete status"] = $rawData;
+				
+		if(strpos($requestContentType,'application/json') !== false){
+			$response = $this->encodeJson($result);
+			echo $response;
+		}
+    }
+	
+	function updateStatus($conversation,$status) {	
+
+		$messages = new Messages();
+		$rawData = $messages->updateStatus($conversation,$status);
+		if(empty($rawData)) {
+			$statusCode = 404;
+			$rawData = array('error' => 'ERROR!');		
+		} else {
+			$statusCode = 200;
+		}
+
+		$requestContentType = 'application/json';//$_POST['HTTP_ACCEPT'];
+		$this ->setHttpHeaders($requestContentType, $statusCode);
+		
+		$result["update status"] = $rawData;
+				
+		if(strpos($requestContentType,'application/json') !== false){
+			$response = $this->encodeJson($result);
+			echo $response;
+		}
     }
 
     function getAllMessages($id) {	

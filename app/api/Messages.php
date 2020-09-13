@@ -125,6 +125,22 @@ Class Messages {
 		
 	
 	}
+
+	public function updateStatus($conversation,$status){
+        
+		$query = "UPDATE `messageslist` SET `messageStatus`=".$status." WHERE id=".$conversation;
+        $dbcontroller = new DBController();
+        $this->messages=$dbcontroller->executeUpdateQuery($query);
+		return $this->messages;
+	}
+	
+	public function deleteConversation($conversation){
+        
+		$query = "DELETE FROM `messageslist` WHERE id=".$conversation;
+        $dbcontroller = new DBController();
+        $this->messages=$dbcontroller->executeDeleteQuery($query);
+		return $this->messages;
+    }
     
 }
 ?>

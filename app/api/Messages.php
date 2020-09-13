@@ -20,7 +20,8 @@ Class Messages {
 	}
 	
 	public function getConversation($id,$id2){
-		$query = "SELECT * FROM `messages` WHERE (userId=fromId and userId=".$id.") or (userId=fromId and userId=".$id2.") order by id desc";
+		$query = "SELECT * FROM `messages` WHERE (userId=fromId and userId=".$id." and toId=".$id2.") 
+		or (userId=fromId and userId=".$id2." and toId=".$id.") order by id desc";
 		$dbcontroller = new DBController();
 		$this->messages = $dbcontroller->executeSelectQuery($query);
 		return $this->messages;

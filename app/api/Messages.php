@@ -70,11 +70,27 @@ Class Messages {
 		if(empty($senderConversation)){
 			$query="INSERT INTO `messageslist`( `userId`, `toId`, `lastMessage`, `lastMessageDate`, `messageStatus`) 
 			VALUES (".$fromId.",".$toId.",'".$messageText."','".$dateSent."',0)";
-            $senderConversation=$dbcontroller->executeInsertQuery($query);
+			$senderConversation=$dbcontroller->executeInsertQuery($query);
+
+			$query="SELECT id FROM `messageslist` WHERE userId=".$fromId." and toId=".$toId;
+		$dbcontroller = new DBController();
+		$senderConversationId = $dbcontroller->executeSelectQuery($query);
+			
+			$query = "INSERT INTO `messages`( `messageId`, `userId`, `fromId`, `toId`, `messageText`, `dateSent`) 
+		VALUES ($senderConversationId,".$fromId.",".$fromId.",".$toId.",'".$messageText."','".$dateSent."')";
+		$this->messages = $dbcontroller->executeInsertQuery($query);
 		}else{
 			$query="UPDATE `messageslist` SET `lastMessage`='".$messageText."',
 			`lastMessageDate`='".$dateSent."',`messageStatus`= 0 WHERE userId=".$fromId." and toId=".$toId;
-            $senderConversation=$dbcontroller->executeUpdateQuery($query);
+			$senderConversation=$dbcontroller->executeUpdateQuery($query);
+
+			$query="SELECT id FROM `messageslist` WHERE userId=".$fromId." and toId=".$toId;
+			$dbcontroller = new DBController();
+			$senderConversationId = $dbcontroller->executeSelectQuery($query);
+			
+			$query = "INSERT INTO `messages`( `messageId`, `userId`, `fromId`, `toId`, `messageText`, `dateSent`) 
+		VALUES ($senderConversationId,".$fromId.",".$fromId.",".$toId.",'".$messageText."','".$dateSent."')";
+		$this->messages = $dbcontroller->executeInsertQuery($query);
 		}
 
 		$query="SELECT * FROM `messageslist` WHERE userId=".$toId." and toId=".$fromId;
@@ -82,19 +98,32 @@ Class Messages {
 		if(empty($recieverConversation)){
 			$query="INSERT INTO `messageslist`( `userId`, `toId`, `lastMessage`, `lastMessageDate`, `messageStatus`) 
 			VALUES (".$toId.",".$fromId.",'".$messageText."','".$dateSent."',1)";
-            $recieverConversation=$dbcontroller->executeInsertQuery($query);
+			$recieverConversation=$dbcontroller->executeInsertQuery($query);
+
+			$query="SELECT id FROM `messageslist` WHERE userId=".$toId." and toId=".$fromId;
+			$dbcontroller = new DBController();
+			$recieverConversationId = $dbcontroller->executeSelectQuery($query);
+			
+			$query = "INSERT INTO `messages`( `messageId`, `userId`, `fromId`, `toId`, `messageText`, `dateSent`) 
+			VALUES ($recieverConversationId,".$toId.",".$fromId.",".$toId.",'".$messageText."','".$dateSent."')";
+			$this->messages = $dbcontroller->executeInsertQuery($query);
+			return $this->messages;
 		}else{
 			$query="UPDATE `messageslist` SET `lastMessage`='".$messageText."',
 			`lastMessageDate`='".$dateSent."',`messageStatus`= 1 WHERE userId=".$toId." and toId=".$fromId;
-            $recieverConversation=$dbcontroller->executeUpdateQuery($query);
+			$recieverConversation=$dbcontroller->executeUpdateQuery($query);
+
+			$query="SELECT id FROM `messageslist` WHERE userId=".$toId." and toId=".$fromId;
+			$dbcontroller = new DBController();
+			$recieverConversationId = $dbcontroller->executeSelectQuery($query);
+			
+			$query = "INSERT INTO `messages`( `messageId`, `userId`, `fromId`, `toId`, `messageText`, `dateSent`) 
+			VALUES ($recieverConversationId,".$toId.",".$fromId.",".$toId.",'".$messageText."','".$dateSent."')";
+			$this->messages = $dbcontroller->executeInsertQuery($query);
+			return $this->messages;
 		}
-		$query = "INSERT INTO `messages`( `messageId`, `userId`, `fromId`, `toId`, `messageText`, `dateSent`) 
-		VALUES (1,".$fromId.",".$fromId.",".$toId.",'".$messageText."','".$dateSent."')";
-		$this->messages = $dbcontroller->executeInsertQuery($query);
-		$query = "INSERT INTO `messages`( `messageId`, `userId`, `fromId`, `toId`, `messageText`, `dateSent`) 
-		VALUES (2,".$toId.",".$fromId.",".$toId.",'".$messageText."','".$dateSent."')";
-		$this->messages = $dbcontroller->executeInsertQuery($query);
-		return $this->messages;
+		
+	
 	}
     
 }

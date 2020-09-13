@@ -34,7 +34,7 @@ class MessagesRestHandler extends SimpleRest {
 		$messages = new Messages();
 		$rawData = $messages->getConversation($id,$id2);
 		for($i=0;$i<sizeof($rawData);$i++){
-			$rawData[$i]['lastMessageDate']=date('m/d/Y H:i',$rawData[$i]['lastMessageDate']);
+			$rawData[$i]['dateSent']=date('m/d/Y H:i',$rawData[$i]['dateSent']);
 		}
 		if(empty($rawData)) {
 			$statusCode = 404;

@@ -178,9 +178,9 @@ class MessagesRestHandler extends SimpleRest {
 	function sendMessage($fromId,$toId,$messageText,$dateSent) {	
 
 		$messages = new Messages();
-		//$date = explode("/", $dateSent);
-			//$date = mktime($date['3'],$date['4'],$date['5'],$date['0'],$date['1'],$date['2']);
-		$rawData = $messages->sendMessage($fromId,$toId,$messageText,mktime($dateSent));
+		$date = explode("/", $dateSent);
+	    $date = mktime($date['3'],$date['4'],$date['5'],$date['0'],$date['1'],$date['2']);
+		$rawData = $messages->sendMessage($fromId,$toId,$messageText,$date);
         
 		if(empty($rawData)) {
 			$statusCode = 404;

@@ -67,7 +67,7 @@ Class Messages {
 		$query="SELECT * FROM `messageslist` WHERE userId=".$fromId." and toId=".$toId;
 		$dbcontroller = new DBController();
 		$senderConversation = $dbcontroller->executeSelectQuery($query);
-		if(sizeof($senderConversation)==0){
+		if(empty($senderConversation)){
 			$query="INSERT INTO `messageslist`( `userId`, `toId`, `lastMessage`, `lastMessageDate`, `messageStatus`) 
 			VALUES (".$fromId.",".$toId.",'".$messageText."','".$dateSent."',0)";
             $senderConversation=$dbcontroller->executeInsertQuery($query);
@@ -79,7 +79,7 @@ Class Messages {
 
 		$query="SELECT * FROM `messageslist` WHERE userId=".$toId." and toId=".$userId;
 		$revieverConversation = $dbcontroller->executeSelectQuery($query);
-		if(sizeof($revieverConversation)==0){
+		if(empty($revieverConversation)){
 			$query="INSERT INTO `messageslist`( `userId`, `toId`, `lastMessage`, `lastMessageDate`, `messageStatus`) 
 			VALUES (".$toId.",".$fromId.",'".$messageText."','".$dateSent."',1)";
             $revieverConversation=$dbcontroller->executeInsertQuery($query);

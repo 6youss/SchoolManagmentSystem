@@ -77,7 +77,7 @@ Class Messages {
 		$senderConversationId = $dbcontroller->executeSelectQuery($query);
 			
 			$query = "INSERT INTO `messages`( `messageId`, `userId`, `fromId`, `toId`, `messageText`, `dateSent`) 
-		VALUES (".$senderConversationId.",".$fromId.",".$fromId.",".$toId.",'".$messageText."','".$dateSent."')";
+		VALUES (".$senderConversationId[0]['id'].",".$fromId.",".$fromId.",".$toId.",'".$messageText."','".$dateSent."')";
 		$this->messages = $dbcontroller->executeInsertQuery($query);
 		}else{
 			$query="UPDATE `messageslist` SET `lastMessage`='".$messageText."',
@@ -89,7 +89,7 @@ Class Messages {
 			$senderConversationId = $dbcontroller->executeSelectQuery($query);
 			
 			$query = "INSERT INTO `messages`( `messageId`, `userId`, `fromId`, `toId`, `messageText`, `dateSent`) 
-		VALUES (".$senderConversationId.",".$fromId.",".$fromId.",".$toId.",'".$messageText."','".$dateSent."')";
+		VALUES (".$senderConversationId[0]['id'].",".$fromId.",".$fromId.",".$toId.",'".$messageText."','".$dateSent."')";
 		$this->messages = $dbcontroller->executeInsertQuery($query);
 		}
 
@@ -105,7 +105,7 @@ Class Messages {
 			$recieverConversationId = $dbcontroller->executeSelectQuery($query);
 			
 			$query = "INSERT INTO `messages`( `messageId`, `userId`, `fromId`, `toId`, `messageText`, `dateSent`) 
-			VALUES (".$recieverConversationId.",".$toId.",".$fromId.",".$toId.",'".$messageText."','".$dateSent."')";
+			VALUES (".$recieverConversationId[0]['id'].",".$toId.",".$fromId.",".$toId.",'".$messageText."','".$dateSent."')";
 			$this->messages = $dbcontroller->executeInsertQuery($query);
 			return $this->messages;
 		}else{
@@ -118,7 +118,7 @@ Class Messages {
 			$recieverConversationId = $dbcontroller->executeSelectQuery($query);
 			
 			$query = "INSERT INTO `messages`( `messageId`, `userId`, `fromId`, `toId`, `messageText`, `dateSent`) 
-			VALUES (".$recieverConversationId.",".$toId.",".$fromId.",".$toId.",'".$messageText."','".$dateSent."')";
+			VALUES (".$recieverConversationId[0]['id'].",".$toId.",".$fromId.",".$toId.",'".$messageText."','".$dateSent."')";
 			$this->messages = $dbcontroller->executeInsertQuery($query);
 			return $this->messages;
 		}

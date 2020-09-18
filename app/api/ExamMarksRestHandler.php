@@ -4,10 +4,10 @@ require_once("ExamMarks.php");
 		
 class ExamMarksRestHandler extends SimpleRest {
 
-	function getExamMarks($id) {	
+	function getExamMarks($classId,$subjectId,$studentId,$examId) {	
 
 		$exammarks = new ExamMarks();
-		$rawData = $exammarks->getExamMarks($id);
+		$rawData = $exammarks->getExamMarks($classId,$subjectId,$studentId,$examId);
         
 		if(empty($rawData)) {
 			$statusCode = 404;

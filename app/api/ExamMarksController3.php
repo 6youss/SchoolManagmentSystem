@@ -11,7 +11,8 @@ $obj = json_decode($json,true);
 $view = $obj['view'];
 $classId = $obj['classId'];
 $subjectId = $obj['subjectId'];
-$value = $obj['value'];
+$studentId = $obj['studentId'];
+$examId=$obj['examId'];
 
 
 /*{///////view
@@ -39,6 +40,11 @@ if(isset($_GET["classId"]) ){
         }}*/
 
     switch($view){
+
+        case "get":
+            $exammarksRestHandler = new ExamMarksRestHandler();
+            $exammarksRestHandler->getExamMarks($classId,$subjectId,$studentId,$examId);
+        break;
 
             case "student":
                 // to handle REST Url /mobile/list/

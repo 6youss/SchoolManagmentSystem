@@ -10,7 +10,7 @@ Class ExamMarks {
 		you should hookup the DAO here
 	*/
 	public function getExamMarks($classId,$subjectId,$studentId,$examId){
-		$query = "SELECT em.examMark,em.attendanceMark,em.markComments,
+		$query = "SELECT em.examId,em.examMark,em.attendanceMark,em.markComments,
 		e.examTitle,e.examDescription,e.examDate,
 		cl.className,
 		su.subjectTitle,

@@ -43,7 +43,7 @@ Class ExamMarks {
 		e.examTitle,e.examDescription,e.examDate,
 		cl.className,
 		su.subjectTitle,
-		st.id studentId,st.fullName,st.studentRollId,st.photo
+		st.username username,st.id studentId,st.fullName,st.studentRollId,st.photo
 		 FROM exammarks em,examslist e,classes cl,subject su,users st 
 		 where em.examId=e.id and em.classId=".$classId." and cl.id=".$classId." and em.subjectId=".$subjectId
 		 ." and su.id=".$subjectId." and em.studentId=st.id";
@@ -57,7 +57,7 @@ Class ExamMarks {
 		e.examTitle,e.examDescription,e.examDate,
 		cl.className,
 		su.subjectTitle,
-		st.fullName,st.studentRollId,st.photo
+		st.username,st.fullName,st.studentRollId,st.photo
 		 FROM exammarks em,examslist e,classes cl,subject su,users st 
 		 where em.examId=e.id and em.classId=".$classId." and cl.id=".$classId." and em.subjectId=".$subjectId." and su.id=".$subjectId
 		 ." and em.studentId=".$studentId." and st.id=".$studentId;
@@ -71,7 +71,7 @@ Class ExamMarks {
 		e.examTitle,e.examDescription,e.examDate,
 		cl.className,
 		su.subjectTitle,
-		st.fullName,st.studentRollId,st.photo
+		st.username,st.fullName,st.studentRollId,st.photo
 		 FROM exammarks em,examslist e,classes cl,subject su,users st 
 		 where em.studentId=st.id and em.examId=e.id and em.classId=".$classId." and cl.id=".$classId." and em.subjectId=".$subjectId." and su.id=".$subjectId
 		 ." and em.examId=".$examId." and e.id=".$examId;

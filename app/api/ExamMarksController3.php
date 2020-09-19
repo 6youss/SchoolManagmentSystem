@@ -12,7 +12,7 @@ $view = $obj['view'];
 $classId = $obj['classId'];
 $subjectId = $obj['subjectId'];
 $studentId = $obj['studentId'];
-$examId=$obj['examId'];
+//$examId=$obj['examId'];
 
 
 /*{///////view
@@ -43,7 +43,7 @@ if(isset($_GET["classId"]) ){
 
         case "get":
             $exammarksRestHandler = new ExamMarksRestHandler();
-            $exammarksRestHandler->getExamMarks($classId,$subjectId,$studentId,$examId);
+            $exammarksRestHandler->getExamMarks($classId,$subjectId,$studentId,$obj['examId']);
         break;
 
             case "student":

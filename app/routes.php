@@ -344,22 +344,8 @@ Route::filter('api.csrf', function($route, $request)
 	if ( Request::isMethod('post') )
 	{
 		if( !((Input::has('_token') AND Session::token() == Input::get('_token')) || ($request->header('X-Csrf-Token') != "" AND Session::token() == $request->header('X-Csrf-Token')) ) ){
-			if(!(Input::has('mobile') AND Input::get('mobile') == 'YES')){
-				return Response::json('Request failed1', 400);
-			}else{
-				if(!Auth::attempt(array('username' => Input::get('email'), 'password' => Input::get('password'),'activated'=>1))){
-					return Response::json('Request failed2', 400);
-				}
-			}
+			return Response::json('CSRF does not match', 400);
 		}		
 	}
-	else{
-		if ( Request::isMethod('get') ){
-			if((Input::has('mobile') AND Input::get('mobile') == 'YES')){
-				if(!Auth::attempt(array('username' => Input::get('email'), 'password' => Input::get('password'),'activated'=>1))){
-					return Response::json('Request failed3', 400);
-				}
-			}
-		}
-	}
 });
+

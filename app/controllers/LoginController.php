@@ -72,7 +72,7 @@ class LoginController extends BaseController {
 			$messageBody = "Dear Sir, <br/><br/> Please follow the follwoing link to restore your password : <br/><br/>
 			<a href='$restoreUrl'>$restoreUrl</a> <br/><br/>Regards,<br/> Management";
 			
-			$SmsHandler = new MailSmsController();
+			$SmsHandler = new MailSmsHandler();
 			$SmsHandler->mail($ifUserExistsGet->email,$this->panelInit->settingsArray['siteTitle']." | Restore Password",$messageBody,$ifUserExistsGet->fullName);  
 
 			$this->data['success'] = $this->panelInit->language['chkMailRestore'];

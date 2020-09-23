@@ -67,12 +67,12 @@ class LoginController extends BaseController {
 			$ifUserExistsGet->restoreUniqId = $uniqid;
 			$ifUserExistsGet->save();
 
-			$restoreUrl = URL::to('/forgetpwd//'.$uniqid);
+			$restoreUrl = URL::to('/forgetpwd/'.$uniqid);
 
 			$messageBody = "Dear Sir, <br/><br/> Please follow the follwoing link to restore your password : <br/><br/>
 			<a href='$restoreUrl'>$restoreUrl</a> <br/><br/>Regards,<br/> Management";
 			
-			$SmsHandler = new MailSmsHandler();
+			$SmsHandler = new MailSmsController();
 			$SmsHandler->mail($ifUserExistsGet->email,$this->panelInit->settingsArray['siteTitle']." | Restore Password",$messageBody,$ifUserExistsGet->fullName);  
 
 			$this->data['success'] = $this->panelInit->language['chkMailRestore'];

@@ -345,10 +345,10 @@ Route::filter('api.csrf', function($route, $request)
 	{
 		if( !((Input::has('_token') AND Session::token() == Input::get('_token')) || ($request->header('X-Csrf-Token') != "" AND Session::token() == $request->header('X-Csrf-Token')) ) ){
 			if(!(Input::has('mobile') AND Input::get('mobile') == 'YES')){
-				return Response::json('CSRF does not match', 400);
+				return Response::json('Request failed', 400);
 			}else{
-				if(!Auth::attempt(array('username' => Input::get('email'), 'password' => Input::get('password'),'activated'=>1))){
-					return Response::json('Authentication failed', 400);
+				if(Input::has('un') && Input::has('pw') && !Auth::attempt(array('username' => Input::get('un'), 'password' => Input::get('pw'),'activated'=>1))){
+					return Response::json('Request failed', 400);
 				}
 			}
 		}		
@@ -356,8 +356,8 @@ Route::filter('api.csrf', function($route, $request)
 	else{
 		if ( Request::isMethod('get') ){
 			if((Input::has('mobile') AND Input::get('mobile') == 'YES')){
-				if(!Auth::attempt(array('username' => Input::get('email'), 'password' => Input::get('password'),'activated'=>1))){
-					return Response::json('Authentication failed', 400);
+				if(Input::has('un') && Input::has('pw') && !Auth::attempt(array('username' => Input::get('un'), 'password' => Input::get('pw'),'activated'=>1))){
+					return Response::json('Request failed', 400);
 				}
 			}
 		}

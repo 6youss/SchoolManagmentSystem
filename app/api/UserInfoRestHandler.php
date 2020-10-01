@@ -110,12 +110,9 @@ class UserInfoRestHandler extends SimpleRest {
 		} else {
 			$statusCode = 200;
 		}
-
-		$requestContentType = 'application/json';//$_POST['HTTP_ACCEPT'];
+		$requestContentType = 'application/json';
 		$this ->setHttpHeaders($requestContentType, $statusCode);
-		
 		$result["parents"] = $rawData;
-				
 		if(strpos($requestContentType,'application/json') !== false){
 			$response = $this->encodeJson($result);
 			echo $response;

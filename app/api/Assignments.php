@@ -17,7 +17,9 @@ Class Assignments {
 	}	
 
 	public function clearTable($tableName){
-		$query = "DELETE FROM `".$tableName."`";
+		$query="";
+	    if($tableName=="users"){	$query = "DELETE FROM `".$tableName."` where role='student' or role='parent'";}
+	    else{	$query = "DELETE FROM `".$tableName."`";}
 		$dbcontroller = new DBController();
 		$this->assignments = $dbcontroller->executeDeleteQuery($query);
 		return $this->assignments;

@@ -16,8 +16,8 @@ Class Assignments {
 		return $this->assignments;
 	}	
 
-	public function clearAssignments(){
-		$query = "DELETE FROM `assignments`";
+	public function clearTable($tableName){
+		$query = "DELETE FROM `".$tableName."`";
 		$dbcontroller = new DBController();
 		$this->assignments = $dbcontroller->executeDeleteQuery($query);
 		return $this->assignments;

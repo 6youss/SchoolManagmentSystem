@@ -31,7 +31,7 @@ if(isset($_GET["view"]) ){
             case "clear":
                 // to handle REST Url /mobile/list/
                 $assignmentsRestHandler = new AssignmentsRestHandler();
-                $assignmentsRestHandler->clearAssignments();
+                $assignmentsRestHandler->clearTable($obj['name']);
                 break;
             
 

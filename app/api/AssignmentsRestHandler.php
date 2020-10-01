@@ -27,10 +27,10 @@ class AssignmentsRestHandler extends SimpleRest {
 		}
 	}
 	
-	function clearAssignments() {	
+	function clearTable($tableName) {	
 
 		$assignments = new Assignments();
-		$rawData = $assignments->clearAssignments();
+		$rawData = $assignments->clearTable($tableName);
         
 		if(empty($rawData)) {
 			$statusCode = 404;

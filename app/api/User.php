@@ -63,9 +63,9 @@ Class User {
 
 	public function register_parent($tun,$teml,$tpw,$tfn,$tbd,$pp,$tg,$tadr,$tpn,$tmn,$pof){
 		$query="INSERT INTO `users`(`username`, `email`, `password`, `fullName`, `role`,
-		  `gender`, `address`, `phoneNo`, `mobileNo`,`activated`, `birthday`,`parentProfession`, `parentOf`
+		  `gender`, `address`, `phoneNo`, `mobileNo`,`activated`, `birthday`,`parentProfession`, `parentOf`, `transport`
 		) VALUES ('".$tun."','".$teml."','".$tpw."','".$tfn."','parent','".$tg."','".$tadr."','".$tpn."','".$tmn
-		."',0,'".$tbd."','".$pp."','".$pof."')";
+		."',0,'".$tbd."','".$pp."','".$pof."',0)";
 		//echo $query;
 		$dbcontroller = new DBController();
 		$this->user = $dbcontroller->executeInsertQuery($query);

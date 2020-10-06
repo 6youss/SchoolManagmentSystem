@@ -80,9 +80,10 @@ Class OnlineExams {
         $exams[$i]['examDate']=$startDate;
         $endDate=date('m/d/Y',intval($exams[$i]['ExamEndDate']));
         $exams[$i]['ExamEndDate']=$endDate;
-        array_push($this->onlineExams,$exams[$i]);
+        //array_push($this->onlineExams,$exams[$i]);
         }
-		return $this->onlineExams;
+        //return $this->onlineExams;
+        return $exams;
     }	
     
 

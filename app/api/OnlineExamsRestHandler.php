@@ -36,6 +36,38 @@ class ExamsRestHandler extends SimpleRest {
 		}
 	}
 
+	function getOnlineExam($examId) {	
+
+        $onlineExams = new OnlineExams();
+        $day = explode("/", $date);
+	    $day = mktime(0,0,0,$day['0'],$day['1'],$day['2']);		
+		$rawData = $onlineExams->getOnlineExam($examId);
+        
+		if(empty($rawData)) {
+			$statusCode = 404;
+			$rawData = array('error' => 'No online exam found!');		
+		} else {
+			$statusCode = 200;
+		}
+
+		$requestContentType = 'application/json';//$_POST['HTTP_ACCEPT'];
+		//$requestContentType = $_SERVER['HTTP_ACCEPT'];
+		$this ->setHttpHeaders($requestContentType, $statusCode);
+		
+		$result["online exam"] = $rawData;
+				
+		if(strpos($requestContentType,'application/json') !== false){
+			$response = $this->encodeJson($result);
+			echo $response;
+		}else if(strpos($requestContentType,'text/html') !== false){
+			$response = $this->encodeHtml($rawData);
+			echo $response;
+		} else if(strpos($requestContentType,'application/xml') !== false){
+			$response = $this->encodeXml($rawData);
+			echo $response;
+		}
+	}
+
 	function getSubjectOnlineExams($classId,$studentId,$subjectId,$date) {	
 
         $onlineExams = new OnlineExams();

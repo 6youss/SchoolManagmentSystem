@@ -51,6 +51,11 @@ if(isset($_POST["view"]) ){
            $examsRestHandler->getSubjectOnlineExams($obj['classId'],$obj['studentId'],$obj['subjectId'],$obj['date']);
             break;
 
+            case "exam":
+                $examsRestHandler = new ExamsRestHandler();
+               $examsRestHandler->getOnlineExam($obj['examId']);
+                break;
+
 
         }
         ?>

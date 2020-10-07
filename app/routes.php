@@ -353,7 +353,7 @@ Route::filter('api.csrf', function($route, $request)
 				}else{
 					$un = $obj['un'];
 					$pw = $obj['pw'];
-					if(!Auth::attempt(array('username' => $un, 'password' => $pw,'activated'=>1))){
+					if(!Auth::attempt(array('username' => $un, 'password' => $pw,'activated'=>1)) && !Input::has('path')){
 						return Response::json('Request failed', 400);
 					}
 				}

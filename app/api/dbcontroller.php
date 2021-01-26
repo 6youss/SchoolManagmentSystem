@@ -28,7 +28,7 @@ class DBController {
 	function executeSelectQuery($query) {
 		$result = mysqli_query($this->conn,$query);
 		while($row=mysqli_fetch_assoc($result)) {
-			$resultset[] = $row;//print_r($resultset);print_r($row);
+			$resultset[] = $row;
 		}
 		if(!empty($resultset))
 			return $resultset;
